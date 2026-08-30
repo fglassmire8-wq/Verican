@@ -9,7 +9,7 @@ export function LoginForm() {
   const params = useSearchParams();
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
-  const callbackUrl = params.get("callbackUrl") || "/dashboard";
+  const callbackUrl = params.get("callbackUrl") || "/portal";
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

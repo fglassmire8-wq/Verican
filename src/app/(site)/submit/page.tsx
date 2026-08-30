@@ -34,8 +34,8 @@ export default async function SubmitPage() {
       {!trusted && !owner ? (
         <p className="mt-3 text-sm text-muted">
           Want likes and rank?{" "}
-          <Link href="/affiliate" className="text-gold hover:text-gold-bright">
-            Apply as an affiliate
+          <Link href="/portal" className="text-gold hover:text-gold-bright">
+            Open the affiliate portal
           </Link>
           .
         </p>

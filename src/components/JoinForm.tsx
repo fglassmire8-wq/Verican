@@ -33,7 +33,7 @@ export function JoinForm({ affiliate = false }: { affiliate?: boolean }) {
       return;
     }
     await signIn("credentials", { email, password, redirect: false });
-    router.push(affiliate ? "/dashboard" : "/");
+    router.push("/portal");
     router.refresh();
   }
 

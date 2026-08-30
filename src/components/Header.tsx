@@ -24,12 +24,12 @@ export async function Header() {
             Menu
           </summary>
           <nav className="absolute right-0 mt-3 w-56 border border-line bg-panel p-4 flex flex-col gap-3 text-sm">
-            <NavLinks isOwner={isOwner} userName={user?.name} />
+            <NavLinks isOwner={isOwner} signedIn={Boolean(user)} />
           </nav>
         </details>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-cream/80">
-          <NavLinks isOwner={isOwner} userName={user?.name} />
+          <NavLinks isOwner={isOwner} signedIn={Boolean(user)} />
         </nav>
       </div>
     </header>
@@ -38,10 +38,10 @@ export async function Header() {
 
 function NavLinks({
   isOwner,
-  userName,
+  signedIn,
 }: {
   isOwner: boolean;
-  userName?: string | null;
+  signedIn: boolean;
 }) {
   return (
     <>
@@ -51,16 +51,16 @@ function NavLinks({
       <Link href="/brands" className="hover:text-gold-bright">
         Brands
       </Link>
-      {userName ? (
+      {signedIn ? (
         <>
           <Link href="/submit" className="hover:text-gold-bright">
             Submit
           </Link>
-          <Link href="/dashboard" className="hover:text-gold-bright">
-            {userName}
+          <Link href="/portal" className="text-gold hover:text-gold-bright">
+            Portal
           </Link>
           {isOwner ? (
-            <Link href="/moderation" className="text-gold hover:text-gold-bright">
+            <Link href="/moderation" className="hover:text-gold-bright">
               Moderate
             </Link>
           ) : null}
