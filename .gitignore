@@ -47,6 +47,9 @@ yarn-error.log*
 # runtime user uploads (seed MAX A/C photos stay in public/uploads/max-ac/)
 /data/
 
+# generated when DATABASE_URL is Postgres (see scripts/prisma-provider.mjs)
+/prisma-postgres/schema.prisma
+
 # vercel
 .vercel
 

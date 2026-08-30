@@ -7,7 +7,8 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "db:seed": "prisma db seed"
+    "db:seed": "node scripts/db-seed.mjs",
+    "db:deploy": "node scripts/db-deploy.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
