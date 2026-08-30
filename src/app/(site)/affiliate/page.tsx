@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AffiliateApplyButton } from "@/components/AffiliateApplyButton";
 import { JoinForm } from "@/components/JoinForm";
+import { RefreshAccountStatusButton } from "@/components/RefreshAccountStatusButton";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 import { roleLabel } from "@/lib/utils";
@@ -77,6 +78,11 @@ export default async function AffiliatePage() {
               they stay unverified and unrewarded until you are verified and a
               review is approved.
             </p>
+            <p className="mt-3 text-sm text-muted">
+              You do not need to sign out. After the owner verifies you, open this
+              page again or check status — your session updates on the next request.
+            </p>
+            <RefreshAccountStatusButton />
           </>
         ) : user.affiliateStatus === "REJECTED" ? (
           <>

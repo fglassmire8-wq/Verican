@@ -44,6 +44,9 @@ yarn-error.log*
 *.db-wal
 *.db-shm
 
+# runtime user uploads (seed MAX A/C photos stay in public/uploads/max-ac/)
+/data/
+
 # vercel
 .vercel
 

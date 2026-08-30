@@ -142,7 +142,8 @@ export function SubmitForm() {
           className="mt-1 w-full bg-panel border border-line px-3 py-3 file:mr-4 file:border-0 file:bg-gold file:text-ink file:px-3 file:py-1.5 file:text-xs file:uppercase file:tracking-widest"
         />
         <span className="block mt-1 text-xs text-muted">
-          Up to 8 images, 10MB each, JPEG / PNG / WebP.
+          Up to 8 images, 10MB each, JPEG / PNG / WebP. Stored on this server&apos;s
+          disk (see README for deploy limits).
           {photoCount ? ` ${photoCount} selected.` : ""}
         </span>
       </label>

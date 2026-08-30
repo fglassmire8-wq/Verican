@@ -1,23 +1,12 @@
 import { NextResponse } from "next/server";
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
+import { extFor, writeReviewPhoto } from "@/lib/uploads";
 import { isTrustedAffiliate, slugify } from "@/lib/utils";
 
 const MAX_PHOTOS = 8;
 const MAX_BYTES = 10 * 1024 * 1024;
 const ALLOWED = new Set(["image/jpeg", "image/png", "image/webp", "image/jpg"]);
-
-function extFor(type: string, filename: string): string {
-  if (type === "image/png") return "png";
-  if (type === "image/webp") return "webp";
-  const fromName = filename.split(".").pop()?.toLowerCase();
-  if (fromName === "png" || fromName === "webp" || fromName === "jpg" || fromName === "jpeg") {
-    return fromName === "jpeg" ? "jpg" : fromName;
-  }
-  return "jpg";
-}
 
 export async function POST(request: Request) {
   const session = await getSession();
@@ -138,18 +127,16 @@ export async function POST(request: Request) {
   });
 
   if (files.length) {
-    const dir = path.join(process.cwd(), "public", "uploads", review.id);
-    await mkdir(dir, { recursive: true });
     const photos = [];
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const ext = extFor(file.type, file.name);
       const filename = `${String(i + 1).padStart(2, "0")}.${ext}`;
       const buf = Buffer.from(await file.arrayBuffer());
-      await writeFile(path.join(dir, filename), buf);
+      const photoPath = await writeReviewPhoto(review.id, filename, buf);
       photos.push({
         reviewId: review.id,
-        path: `/uploads/${review.id}/${filename}`,
+        path: photoPath,
         alt: `${strain} photo ${i + 1}`,
         sortOrder: i,
       });
