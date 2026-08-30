@@ -98,6 +98,9 @@ export default async function DashboardPage() {
       <p className="mt-6 text-sm text-muted leading-relaxed">
         Rank is ordering by likes on approved verified-affiliate reviews. There is
         no dollar amount here. Brand-funded discounts are configured later.
+        {user.affiliateStatus === "PENDING"
+          ? " Your affiliate application is pending — you do not need to sign out. After the owner verifies you, refresh this page or open Affiliate status."
+          : ""}
       </p>
 
       <div className="mt-6 flex flex-wrap gap-4">

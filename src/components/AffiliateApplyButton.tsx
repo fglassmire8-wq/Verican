@@ -1,10 +1,12 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function AffiliateApplyButton() {
   const router = useRouter();
+  const { update } = useSession();
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
 
@@ -13,12 +15,14 @@ export function AffiliateApplyButton() {
     setError("");
     const res = await fetch("/api/affiliate/apply", { method: "POST" });
     const data = await res.json();
-    setPending(false);
     if (!res.ok) {
+      setPending(false);
       setError(data.error || "Could not submit application.");
       return;
     }
+    await update();
     router.refresh();
+    setPending(false);
   }
 
   return (

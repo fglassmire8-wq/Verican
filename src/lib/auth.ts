@@ -43,6 +43,24 @@ export const authOptions: NextAuthOptions = {
         token.affiliateStatus = user.affiliateStatus;
         token.name = user.name;
       }
+
+      // Re-read role / affiliateStatus on later requests so owner verify
+      // (and apply / reject) show up without signing out.
+      if (!token.id) return token;
+
+      try {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: String(token.id) },
+          select: { role: true, affiliateStatus: true, name: true },
+        });
+        if (!dbUser) return token;
+        token.role = dbUser.role;
+        token.affiliateStatus = dbUser.affiliateStatus;
+        token.name = dbUser.name;
+      } catch {
+        // Keep the existing token if the database is briefly unavailable.
+      }
+
       return token;
     },
     async session({ session, token }) {
