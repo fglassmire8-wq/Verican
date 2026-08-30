@@ -14,7 +14,7 @@ export async function GET(
     return new NextResponse("Not found", { status: 404 });
   }
 
-  return new NextResponse(file.bytes, {
+  return new NextResponse(new Uint8Array(file.bytes), {
     headers: {
       "Content-Type": file.contentType,
       "Cache-Control": "public, max-age=31536000, immutable",
