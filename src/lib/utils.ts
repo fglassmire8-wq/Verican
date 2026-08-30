@@ -54,3 +54,17 @@ export function roleLabel(role: string, affiliateStatus: string): string {
   if (affiliateStatus === "REJECTED") return "Affiliate (rejected)";
   return "Member";
 }
+
+export function reviewDeskStatus(
+  status: string,
+  user: { role: string; affiliateStatus: string },
+): string {
+  if (status === "PENDING") return "Pending";
+  if (status === "REJECTED") return "Rejected";
+  if (isTrustedReview(status, user)) return "Approved";
+  return "Unverified note";
+}
+
+export function plural(count: number, singular: string, pluralForm?: string): string {
+  return count === 1 ? singular : (pluralForm ?? `${singular}s`);
+}

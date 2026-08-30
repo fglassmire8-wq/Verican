@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ModerationActions } from "@/components/ModerationActions";
 import { prisma } from "@/lib/prisma";
@@ -36,6 +37,13 @@ export default async function ModerationPage() {
         Approve or reject affiliate applications and pending reviews. Member notes
         publish unverified on their own. Verified-affiliate reviews stay here until
         you decide.
+      </p>
+      <p className="mt-3 text-sm text-muted">
+        Owner tools also live in the{" "}
+        <Link href="/portal" className="text-gold hover:text-gold-bright">
+          affiliate portal
+        </Link>
+        .
       </p>
 
       <section className="mt-12">
