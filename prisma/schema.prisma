@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String          @id @default(cuid())
+  email           String          @unique
+  passwordHash    String
+  name            String
+  role            String          @default("MEMBER")
+  affiliateStatus String          @default("NONE")
+  createdAt       DateTime        @default(now())
+  reviews         Review[]
+  likes           Like[]
+}
+
+model Brand {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  legalName String?
+  license   String?
+  location  String?
+  products  Product[]
+}
+
+model Store {
+  id      String   @id @default(cuid())
+  name    String
+  city    String
+  state   String
+  reviews Review[]
+
+  @@unique([name, city, state])
+}
+
+model Product {
+  id       String   @id @default(cuid())
+  slug     String   @unique
+  strain   String
+  brandId  String
+  brand    Brand    @relation(fields: [brandId], references: [id])
+  category String   @default("FLOWER")
+  reviews  Review[]
+
+  @@unique([strain, brandId])
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  storeId     String
+  store       Store    @relation(fields: [storeId], references: [id])
+  amount      String
+  priceCents  Int
+  currency    String   @default("USD")
+  notes       String
+  verdict     String
+  harvestDate String?
+  expDate     String?
+  thcPercent  Float?
+  thcaPercent Float?
+  topTerpene  String?
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  photos      Photo[]
+  likes       Like[]
+}
+
+model Photo {
+  id        String @id @default(cuid())
+  reviewId  String
+  review    Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  path      String
+  alt       String
+  sortOrder Int    @default(0)
+}
+
+model Like {
+  id       String @id @default(cuid())
+  reviewId String
+  userId   String
+  review   Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@unique([reviewId, userId])
+}
+
+model RewardRule {
+  id     String @id @default(cuid())
+  key    String @unique
+  label  String
+  config String
+}
