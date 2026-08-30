@@ -42,11 +42,25 @@ If the database already exists and you only need the owner account and MAX A/C r
 npm run db:seed
 ```
 
+## Environment
+
+| Variable | Local | Railway (volume + SQLite) | Railway (Postgres) |
+| --- | --- | --- | --- |
+| `DATABASE_URL` | `file:./dev.db` | `file:/data/prod.db` | the Postgres URL Railway gives you |
+| `NEXTAUTH_URL` | `http://localhost:3000` | `https://<service>.up.railway.app` | same, your public https origin |
+| `NEXTAUTH_SECRET` | long random string | a new long random string (not the local one) | same |
+| `SEED_OWNER_PASSWORD` | owner login on this computer | owner login on the public site | same |
+| `UPLOAD_DIR` | unset → `data/uploads/` | `/data/uploads` | `/data/uploads` (volume still required for photos) |
+
+`NEXTAUTH_URL` must be the public https origin browsers use. After a custom domain (vericann.com if we get it), change it to `https://vericann.com` and redeploy.
+
+If `NEXTAUTH_URL` is unset on Railway, the container sets it from `RAILWAY_PUBLIC_DOMAIN`. Set it yourself once you attach a custom domain.
+
 ## Owner login
 
 Email: `frankg2152@icloud.com`
 
-The password is the `SEED_OWNER_PASSWORD` value in `.env` on this computer. It is not stored in this README.
+The password is the `SEED_OWNER_PASSWORD` value in `.env` on this computer (or the Railway variable on the public site). It is not stored in this README.
 
 Seed also creates the approved MAX A/C review (Illicit Gardens, Cottonmouth, 28g, $150+tax, BUY) with the six photos in `public/uploads/max-ac/`.
 
@@ -62,13 +76,13 @@ Seed also creates the approved MAX A/C review (Illicit Gardens, Cottonmouth, 28g
 
 Committed seed photos live in `public/uploads/max-ac/` and ship with the repo, so they survive deploys.
 
-New review photos are written to `UPLOAD_DIR` (default `data/uploads/`, gitignored) and served at `/media/...`. That is ordinary disk, not a CDN. The MAX A/C seed stays at `/uploads/max-ac/` in git.
+New review photos are written to `UPLOAD_DIR` (default `data/uploads/`, gitignored) and served at `/media/...` by the existing media route. That is ordinary disk, not a CDN. The MAX A/C seed stays at `/uploads/max-ac/` in git.
 
 **Limit:** a new deploy or a new machine does not keep those files unless the disk is persistent.
 
 - **This computer / a VPS with a real disk:** files stay until you delete them.
-- **Fly / Railway:** attach a volume and set `UPLOAD_DIR` to the mount path (for example `/data/uploads`).
-- **Vercel:** the filesystem is ephemeral. Uploads are lost on the next deploy. Use Fly/Railway with a volume for v1, or add object storage later.
+- **Railway / Fly:** attach a volume and set `UPLOAD_DIR` to the mount path (for example `/data/uploads`).
+- **Vercel:** the filesystem is ephemeral. Uploads and a SQLite file are lost on the next deploy. Do not host v1 on Vercel.
 
 The MAX A/C seed photos are not affected by that limit.
 
@@ -76,16 +90,54 @@ The MAX A/C seed photos are not affected by that limit.
 
 Local stays SQLite via `DATABASE_URL="file:./dev.db"`. You do not need a paid database to run or develop VERICAN.
 
-When a host gives you Postgres, swap is:
+`prisma/schema.prisma` stays `provider = "sqlite"`. Do not edit it when you deploy.
 
-1. In `prisma/schema.prisma`, change `provider = "sqlite"` to `provider = "postgresql"`.
-2. Set `DATABASE_URL` to the Postgres URL (example is commented in `.env.example`).
-3. Run `npx prisma db push` then `npm run db:seed` against that database.
+- **SQLite** (`file:…`): `prisma migrate deploy` uses `prisma/migrations/`.
+- **Postgres** (`postgres://` or `postgresql://`): `scripts/prisma-provider.mjs` writes `prisma-postgres/schema.prisma` and `prisma migrate deploy` uses `prisma-postgres/migrations/`. Never apply the SQLite SQL in `prisma/migrations/` to Postgres.
 
-Do not run the existing SQLite files in `prisma/migrations/` against Postgres — those SQL statements are SQLite-only.
+The Docker start script runs `prisma migrate deploy`, then `prisma generate`, then `next start`.
 
-## Deploy later (cheap custom domain)
+## Deploy on Railway (public URL)
 
-A cheap custom domain on Vercel, Fly, or Railway is fine. Point DNS at the host when you are ready. Set the same env vars there (`DATABASE_URL`, `NEXTAUTH_URL` as the public https origin, `NEXTAUTH_SECRET`, `SEED_OWNER_PASSWORD`, and `UPLOAD_DIR` if you use a volume) and run migrate/push plus seed against that database.
+Vercel serverless disk is ephemeral, so this repo ships a **Dockerfile** for Railway (or Fly) with a volume. Railway first.
 
-Build command: `npm run build`. Start command: `npm run start`.
+1. Push this repo to GitHub (`fglassmire8-wq/Verican` on `main`).
+2. In [Railway](https://railway.app), **New Project** → **GitHub Repo** → `fglassmire8-wq/Verican`.
+3. Railway should detect the Dockerfile. If it does not, set the builder to Dockerfile (`railway.toml` already says `DOCKERFILE`).
+4. **Add a volume** on the service. Mount path: `/data`. Without this, SQLite and new photos disappear on every deploy.
+5. Set variables on the service:
+
+   ```
+   DATABASE_URL=file:/data/prod.db
+   NEXTAUTH_URL=https://<your-service>.up.railway.app
+   NEXTAUTH_SECRET=<long random string>
+   SEED_OWNER_PASSWORD=<owner password for the public site>
+   UPLOAD_DIR=/data/uploads
+   ```
+
+   Generate `NEXTAUTH_SECRET` with `openssl rand -base64 32`.
+
+6. Generate a public domain: service → **Settings** → **Networking** → **Generate Domain**. Put that https origin in `NEXTAUTH_URL` and redeploy if you set the variable before the domain existed.
+7. Wait for the deploy. The container runs migrate, generate, then `next start`. Health check is `/age`.
+8. **Seed once** from a Railway shell or one-off command on that same service (the volume is only inside the container — do not seed from your laptop against `file:/data/prod.db`):
+
+   ```bash
+   npm run db:seed
+   ```
+
+   That creates Francis (`frankg2152@icloud.com`) and the approved MAX A/C review with the six photos in `public/uploads/max-ac/`.
+
+9. Open the Railway URL, confirm 21+, sign in as Francis, and check `/portal`.
+
+Optional Postgres instead of SQLite on the volume: add Railway Postgres, set `DATABASE_URL` to that URL, keep the `/data` volume for `UPLOAD_DIR=/data/uploads`, deploy, then seed once the same way.
+
+### Custom domain later
+
+When you have **vericann.com** (or another domain):
+
+1. Railway → service → **Settings** → **Networking** → **Custom Domain**.
+2. Point DNS where Railway tells you.
+3. Set `NEXTAUTH_URL=https://vericann.com` and redeploy.
+
+Build command (local / CI): `npm run build`.  
+Start command (image): `./scripts/docker-start.sh` (`prisma migrate deploy`, `prisma generate`, `next start`).

@@ -1,0 +1,13 @@
+# Railway service config. Attach a volume at /data in the dashboard
+# (Volumes are not declared in this file). See README.
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "./scripts/docker-start.sh"
+healthcheckPath = "/age"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+requiredMountPath = "/data"

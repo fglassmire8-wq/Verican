@@ -3,8 +3,9 @@ generator client {
 }
 
 // Local default is SQLite (DATABASE_URL="file:./dev.db" in .env.example).
-// Later host: change provider to "postgresql", point DATABASE_URL at Postgres,
-// then `npx prisma db push` (do not apply the SQLite migration SQL to Postgres).
+// Docker/Railway: scripts/prisma-provider.mjs keeps this schema when
+// DATABASE_URL is file:… and writes prisma-postgres/schema.prisma when it
+// is postgres:// so `prisma migrate deploy` uses the matching SQL.
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
