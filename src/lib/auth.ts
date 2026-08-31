@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import { getPublicOrigin } from "@/lib/public-origin";
 import { prisma } from "@/lib/prisma";
 
 export const authOptions: NextAuthOptions = {
@@ -36,6 +37,19 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      const origin = getPublicOrigin({
+        headers: new Headers(),
+        url: baseUrl,
+      });
+      if (url.startsWith("/") && !url.startsWith("//")) return `${origin}${url}`;
+      try {
+        if (new URL(url).origin === origin) return url;
+      } catch {
+        // Ignore invalid callback URLs.
+      }
+      return origin;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;

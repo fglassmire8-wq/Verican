@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { SubmitForm } from "@/components/SubmitForm";
 import { prisma } from "@/lib/prisma";
+import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
 import { isTrustedAffiliate } from "@/lib/utils";
 
@@ -10,12 +12,13 @@ export const dynamic = "force-dynamic";
 
 export default async function SubmitPage() {
   const session = await getSession();
+  const originRequest = { headers: await headers() };
   if (!session?.user?.id) {
-    redirect("/login?callbackUrl=/submit");
+    redirect(publicUrl("/login?callbackUrl=/submit", originRequest).toString());
   }
 
   const user = await prisma.user.findUnique({ where: { id: session.user.id } });
-  if (!user) redirect("/login");
+  if (!user) redirect(publicUrl("/login", originRequest).toString());
 
   const trusted = isTrustedAffiliate(user);
   const owner = user.role === "OWNER";
