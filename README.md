@@ -95,7 +95,7 @@ Local stays SQLite via `DATABASE_URL="file:./dev.db"`. You do not need a paid da
 - **SQLite** (`file:…`): `prisma migrate deploy` uses `prisma/migrations/`.
 - **Postgres** (`postgres://` or `postgresql://`): `scripts/prisma-provider.mjs` writes `prisma-postgres/schema.prisma` and `prisma migrate deploy` uses `prisma-postgres/migrations/`. Never apply the SQLite SQL in `prisma/migrations/` to Postgres.
 
-The Docker start script runs `prisma migrate deploy`, then `prisma generate`, then `next start`.
+The Docker start script runs `prisma migrate deploy`, then `prisma generate`, then seeds only if the User table is empty (Francis + approved MAX A/C), then `next start`. It does not seed again when data already exists.
 
 ## Deploy on Railway (public URL)
 
@@ -119,17 +119,10 @@ Vercel serverless disk is ephemeral, so this repo ships a **Dockerfile** for Rai
 
 6. Generate a public domain: service → **Settings** → **Networking** → **Generate Domain**. Put that https origin in `NEXTAUTH_URL` and redeploy if you set the variable before the domain existed.
 7. Wait for the deploy. The container runs migrate, generate, then `next start`. Health check is `/age`.
-8. **Seed once** from a Railway shell or one-off command on that same service (the volume is only inside the container — do not seed from your laptop against `file:/data/prod.db`):
-
-   ```bash
-   npm run db:seed
-   ```
-
-   That creates Francis (`frankg2152@icloud.com`) and the approved MAX A/C review with the six photos in `public/uploads/max-ac/`.
-
+8. First boot seeds automatically when the User table is empty: Francis (`frankg2152@icloud.com`) and the approved MAX A/C review with the six photos in `public/uploads/max-ac/`. Later restarts skip seed if any user exists. You can still run `npm run db:seed` yourself (needs the same `SEED_OWNER_PASSWORD`).
 9. Open the Railway URL, confirm 21+, sign in as Francis, and check `/portal`.
 
-Optional Postgres instead of SQLite on the volume: add Railway Postgres, set `DATABASE_URL` to that URL, keep the `/data` volume for `UPLOAD_DIR=/data/uploads`, deploy, then seed once the same way.
+Optional Postgres instead of SQLite on the volume: add Railway Postgres, set `DATABASE_URL` to that URL, keep the `/data` volume for `UPLOAD_DIR=/data/uploads`, and deploy. First boot seeds the same way when User is empty.
 
 ### Custom domain later
 
@@ -140,4 +133,4 @@ When you have **vericann.com** (or another domain):
 3. Set `NEXTAUTH_URL=https://vericann.com` and redeploy.
 
 Build command (local / CI): `npm run build`.  
-Start command (image): `./scripts/docker-start.sh` (`prisma migrate deploy`, `prisma generate`, `next start`).
+Start command (image): `./scripts/docker-start.sh` (`prisma migrate deploy`, `prisma generate`, seed if User is empty, `next start`).
