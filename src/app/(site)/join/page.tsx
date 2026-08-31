@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { JoinForm } from "@/components/JoinForm";
+import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
@@ -8,7 +10,9 @@ export const metadata = { title: "Join" };
 
 export default async function JoinPage() {
   const session = await getSession();
-  if (session?.user?.id) redirect("/portal");
+  if (session?.user?.id) {
+    redirect(publicUrl("/portal", { headers: await headers() }).toString());
+  }
 
   return (
     <div className="mx-auto max-w-md px-4 py-16">
