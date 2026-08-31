@@ -4,6 +4,7 @@
 set -eu
 
 cd "$(dirname "$0")/.."
+export PATH="$PWD/node_modules/.bin:$PATH"
 
 if [ -z "${DATABASE_URL:-}" ]; then
   export DATABASE_URL="file:/data/prod.db"
