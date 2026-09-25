@@ -5,7 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms",
   description:
-    "VERICAN is a 21+ independent review site. Not a store. User opinions only. New Jersey first. No cannabis sales and no promised dollar payout.",
+    "The Green Vault is a 21+ independent review site. Not a store. User opinions only. New Jersey first. No cannabis sales and no promised dollar payout.",
 };
 
 export default function TermsPage() {
@@ -19,7 +19,7 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="font-display text-2xl text-cream">21 and older</h2>
           <p>
-            VERICAN is for adults 21 and older. Entering the site means you confirm
+            The Green Vault is for adults 21 and older. Entering the site means you confirm
             that you are 21 or older. The site does not check a government ID.
           </p>
         </section>
@@ -27,14 +27,14 @@ export default function TermsPage() {
         <section className="space-y-3">
           <h2 className="font-display text-2xl text-cream">Not a store</h2>
           <p>
-            VERICAN does not sell cannabis. There is no cart, no checkout, and no
+            The Green Vault does not sell cannabis. There is no cart, no checkout, and no
             shipping. Nothing on this site is an offer to sell cannabis. You buy, if
             you buy, at a licensed dispensary — not here.
           </p>
           <p>
             New Jersey is the first market. Reviews describe flower people bought and
             opened, because dispensary jars are sealed on the floor. The catalog lists
-            only flower with a public review. VERICAN does not add products on its own.
+            only flower with a public review. The Green Vault does not add products on its own.
           </p>
         </section>
 
@@ -42,14 +42,14 @@ export default function TermsPage() {
           <h2 className="font-display text-2xl text-cream">User opinions only</h2>
           <p>
             Reviews are the opinions of the people who posted them. They are not
-            VERICAN&apos;s opinion, not a brand&apos;s claim, and not medical, legal, or
+            The Green Vault&apos;s opinion, not a brand&apos;s claim, and not medical, legal, or
             safety advice. A BUY or DON&apos;T BUY note is one person&apos;s call after a
             purchase. Honest DON&apos;T BUY reviews are allowed.
           </p>
           <p>
             Member notes are unverified and unrewarded. They never count toward trusted
             rank. Verified-affiliate reviews stay pending until the owner approves them.
-            VERICAN does not promise that a review is complete or correct.
+            The Green Vault does not promise that a review is complete or correct.
           </p>
         </section>
 
@@ -62,7 +62,7 @@ export default function TermsPage() {
             is not a dollar amount.
           </p>
           <p>
-            VERICAN does not promise pay. Brand-funded discounts are not offered on
+            The Green Vault does not promise pay. Brand-funded discounts are not offered on
             this site today. Nothing in an account balance, a rank, or a review is a
             promise of money.
           </p>

@@ -7,7 +7,7 @@ import { ReviewCard } from "@/components/ReviewCard";
 import type { Metadata } from "next";
 
 function productShareDescription(strain: string, brand: string) {
-  return `User opinions of ${strain} by ${brand}. Independent 21+ reviews. VERICAN is not a store and does not sell cannabis.`;
+  return `User opinions of ${strain} by ${brand}. Independent 21+ reviews. The Green Vault is not a store and does not sell cannabis.`;
 }
 
 export const dynamic = "force-dynamic";

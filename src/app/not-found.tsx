@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { SITE_MARK } from "@/lib/site";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-ink text-cream flex items-center justify-center px-6">
       <div className="max-w-lg w-full text-center">
-        <p className="font-display text-4xl tracking-[0.28em] text-gold-bright">VERICAN</p>
+        <p className="font-display text-3xl sm:text-4xl tracking-[0.12em] sm:tracking-[0.18em] text-gold-bright">
+          {SITE_MARK}
+        </p>
         <h1 className="font-display text-3xl mt-6">Page not found</h1>
         <p className="mt-4 text-muted leading-relaxed">
           That address is not on this site. The catalog only includes flower with a

@@ -31,8 +31,8 @@ export function RewardPanel({ rules }: { rules: RewardRuleRow[] }) {
       <h2 className="font-display text-3xl mt-2">How rank pays</h2>
       <p className="mt-2 text-sm text-muted max-w-2xl leading-relaxed">
         Rank is ordering by likes on approved verified-affiliate reviews. There is
-        no dollar amount here. Brand-funded discounts are configured later. VERICAN
-        does not sell cannabis and does not promise pay.
+        no dollar amount here. Brand-funded discounts are configured later. The Green
+        Vault does not sell cannabis and does not promise pay.
       </p>
 
       {rules.length === 0 ? (

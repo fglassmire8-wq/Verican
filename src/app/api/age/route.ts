@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { publicUrl } from "@/lib/public-origin";
+import { AGE_COOKIE } from "@/lib/site";
 
 export async function POST(request: Request) {
   const form = await request.formData();
@@ -7,7 +8,7 @@ export async function POST(request: Request) {
   const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";
 
   const response = NextResponse.redirect(publicUrl(safeNext, request));
-  response.cookies.set("verican_21", "1", {
+  response.cookies.set(AGE_COOKIE, "1", {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
