@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { EmptyState } from "@/components/EmptyState";
 import { ProductCard } from "@/components/ProductCard";
 import { isTrustedReview } from "@/lib/utils";
 import Link from "next/link";
@@ -85,12 +86,15 @@ export default async function HomePage() {
             <h2 className="font-display text-3xl mt-2">Reviewed flower</h2>
           </div>
           <p className="text-sm text-muted max-w-sm text-right">
-            Empty except what people actually reviewed. No sample SKUs.
+            Only flower with an approved public review. Nothing is added ahead of time.
           </p>
         </div>
 
         {products.length === 0 ? (
-          <p className="text-muted">No approved reviews yet.</p>
+          <EmptyState title="No approved reviews yet">
+            Reviewed flower shows up here after someone posts a public review. VERICAN
+            does not add products on its own.
+          </EmptyState>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => {

@@ -19,7 +19,16 @@ export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
       <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Work</p>
       <h2 className="font-display text-3xl mt-2">Your reviews</h2>
       {reviews.length === 0 ? (
-        <p className="mt-4 text-muted">You have not posted a review yet.</p>
+        <div className="mt-4 border border-line bg-panel px-6 py-8">
+          <p className="text-cream">You have not posted a review yet.</p>
+          <p className="mt-2 text-sm text-muted">
+            After you buy,{" "}
+            <Link href="/submit" className="text-gold hover:text-gold-bright">
+              submit a photo review
+            </Link>
+            .
+          </p>
+        </div>
       ) : (
         <>
           <ul className="mt-6 space-y-3 md:hidden">

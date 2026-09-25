@@ -34,7 +34,7 @@ export default async function LoginPage() {
           Create a member account
         </Link>{" "}
         or{" "}
-        <Link href="/portal" className="text-gold hover:text-gold-bright">
+        <Link href="/affiliate" className="text-gold hover:text-gold-bright">
           apply as an affiliate
         </Link>
         .

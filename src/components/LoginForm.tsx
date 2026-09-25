@@ -3,13 +3,14 @@
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { safeInternalPath } from "@/lib/site";
 
 export function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
-  const callbackUrl = params.get("callbackUrl") || "/portal";
+  const callbackUrl = safeInternalPath(params.get("callbackUrl"), "/portal");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

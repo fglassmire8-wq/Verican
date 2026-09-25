@@ -7,7 +7,13 @@ type Photo = { path: string; alt: string };
 
 export function PhotoGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState(0);
-  if (!photos.length) return null;
+  if (!photos.length) {
+    return (
+      <div className="aspect-[4/5] border border-line bg-panel flex items-center justify-center px-6 text-center">
+        <p className="text-sm text-muted">No photo on the public reviews yet.</p>
+      </div>
+    );
+  }
   const current = photos[index] ?? photos[0];
 
   return (
