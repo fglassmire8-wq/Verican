@@ -154,7 +154,7 @@ export function SubmitForm() {
         </summary>
         <div className="mt-4 grid sm:grid-cols-2 gap-4">
           <label className="block text-sm">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Harvest</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Label harvest</span>
             <input
               name="harvestDate"
               placeholder="07/17/24"
@@ -162,7 +162,7 @@ export function SubmitForm() {
             />
           </label>
           <label className="block text-sm">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Exp</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Label exp</span>
             <input
               name="expDate"
               placeholder="01/17/25"

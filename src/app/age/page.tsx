@@ -1,5 +1,10 @@
+import Link from "next/link";
+import { safeInternalPath } from "@/lib/site";
+
 export const metadata = {
   title: "21+ only",
+  description:
+    "VERICAN is an independent cannabis review site for adults 21 and older. Not a store. VERICAN does not sell cannabis.",
 };
 
 export default async function AgePage({
@@ -8,7 +13,7 @@ export default async function AgePage({
   searchParams: Promise<{ next?: string }>;
 }) {
   const params = await searchParams;
-  const next = params.next && params.next.startsWith("/") ? params.next : "/";
+  const next = safeInternalPath(params.next, "/");
 
   return (
     <div className="min-h-screen bg-ink text-cream flex items-center justify-center px-6">
@@ -19,7 +24,9 @@ export default async function AgePage({
         </h1>
         <div className="editorial-rule my-8" />
         <p className="text-lg leading-relaxed text-cream/90">
-          This site is for adults 21 and over. Independent cannabis reviews — not a store.
+          This site is for adults 21 and over. Independent cannabis reviews — not a
+          store. VERICAN does not sell cannabis. Reviews are user opinions. New Jersey
+          first.
         </p>
         <form action="/api/age" method="post" className="mt-10 space-y-4">
           <input type="hidden" name="next" value={next} />
@@ -30,15 +37,26 @@ export default async function AgePage({
             I am 21 or older
           </button>
         </form>
-        <a
-          href="https://www.google.com"
-          className="mt-4 inline-block w-full border border-line py-3 tracking-[0.18em] uppercase text-sm text-muted hover:text-cream hover:border-muted transition-colors"
-        >
-          I am not 21
-        </a>
+        <details className="mt-4 text-left">
+          <summary className="block w-full list-none cursor-pointer text-center border border-line py-3 tracking-[0.18em] uppercase text-sm text-muted hover:text-cream hover:border-muted transition-colors [&::-webkit-details-marker]:hidden">
+            I am not 21
+          </summary>
+          <p className="mt-4 text-sm text-muted leading-relaxed text-center">
+            This site is only for adults 21 and older. Please close the page.
+          </p>
+        </details>
         <p className="mt-10 text-xs text-muted leading-relaxed">
-          VERICAN does not sell cannabis. Entering confirms you are 21+ and that you
-          understand reviews are user opinions.
+          Entering confirms you are 21 or older and that you understand reviews are
+          user opinions. VERICAN does not sell cannabis.
+        </p>
+        <p className="mt-4 text-xs text-muted">
+          <Link href="/privacy" className="hover:text-gold-bright">
+            Privacy
+          </Link>
+          <span className="mx-2">·</span>
+          <Link href="/terms" className="hover:text-gold-bright">
+            Terms
+          </Link>
         </p>
       </div>
     </div>

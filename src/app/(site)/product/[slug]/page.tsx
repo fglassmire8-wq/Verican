@@ -6,6 +6,10 @@ import { PhotoGallery } from "@/components/PhotoGallery";
 import { ReviewCard } from "@/components/ReviewCard";
 import type { Metadata } from "next";
 
+function productShareDescription(strain: string, brand: string) {
+  return `User opinions of ${strain} by ${brand}. Independent 21+ reviews. VERICAN is not a store and does not sell cannabis.`;
+}
+
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
@@ -16,10 +20,34 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = await prisma.product.findUnique({
     where: { slug },
-    include: { brand: true },
+    include: {
+      brand: true,
+      reviews: {
+        where: { status: "APPROVED" },
+        include: { photos: { orderBy: { sortOrder: "asc" }, take: 1 } },
+        orderBy: { createdAt: "desc" },
+      },
+    },
   });
-  if (!product) return { title: "Product" };
-  return { title: `${product.strain} — ${product.brand.name}` };
+  if (!product) return { title: "Page not found" };
+  const title = `${product.strain} — ${product.brand.name}`;
+  const description = productShareDescription(product.strain, product.brand.name);
+  const photo = product.reviews.flatMap((review) => review.photos)[0];
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: photo ? [{ url: photo.path, alt: photo.alt }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: photo ? [photo.path] : undefined,
+    },
+  };
 }
 
 export default async function ProductPage({

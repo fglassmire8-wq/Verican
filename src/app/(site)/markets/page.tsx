@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { EmptyState } from "@/components/EmptyState";
 import { ProductCard } from "@/components/ProductCard";
 import { isTrustedReview } from "@/lib/utils";
 
@@ -79,14 +80,14 @@ export default async function MarketsPage({
 
       <div className="mt-10">
         {products.length === 0 ? (
-          <p className="text-muted">
+          <EmptyState title={query ? "No matches" : "No approved reviews yet"}>
             {query
-              ? "No matching products. The catalog only includes reviewed flower."
-              : "No approved reviews yet."}
-          </p>
+              ? `Nothing public matches “${query}”. Search covers strain, brand, and store on approved reviews only.`
+              : "When a review is public, the strain, brand, and store can be searched here."}
+          </EmptyState>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => {
+            {products.map((product, index) => {
               const trusted = product.reviews.filter((review) =>
                 isTrustedReview(review.status, review.user),
               );
@@ -104,6 +105,7 @@ export default async function MarketsPage({
                   trustedBuy={trusted.filter((r) => r.verdict === "BUY").length}
                   trustedDontBuy={trusted.filter((r) => r.verdict === "DONT_BUY").length}
                   trustedLikes={trusted.reduce((sum, r) => sum + r.likes.length, 0)}
+                  priority={index < 3}
                 />
               );
             })}

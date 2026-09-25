@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { getSiteOrigin, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -17,14 +18,32 @@ const outfit = Outfit({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "VERICAN — Independent cannabis reviews",
-    template: "%s · VERICAN",
-  },
-  description:
-    "Independent 21+ cannabis review site. Check a photo and an honest review before you buy at a New Jersey dispensary. Not a store.",
-};
+// Per request so a Railway domain (or a later custom domain in NEXTAUTH_URL)
+// is the share-image origin. A build-time value would stick as localhost.
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(getSiteOrigin()),
+    title: {
+      default: SITE_TITLE,
+      template: `%s · ${SITE_NAME}`,
+    },
+    description: SITE_DESCRIPTION,
+    openGraph: {
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

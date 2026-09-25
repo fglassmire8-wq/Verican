@@ -1,24 +1,30 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import { CatalogImage } from "@/components/CatalogImage";
 
 type Photo = { path: string; alt: string };
 
 export function PhotoGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState(0);
-  if (!photos.length) return null;
+  if (!photos.length) {
+    return (
+      <div className="aspect-[4/5] border border-line bg-panel flex items-center justify-center px-6 text-center">
+        <p className="text-sm text-muted">No photo on the public reviews yet.</p>
+      </div>
+    );
+  }
   const current = photos[index] ?? photos[0];
 
   return (
     <div>
       <div className="relative aspect-[4/5] bg-panel-2 border border-line overflow-hidden">
-        <Image
+        <CatalogImage
           src={current.path}
           alt={current.alt}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 1024px) 100vw, 50vw"
           priority
         />
       </div>
@@ -34,7 +40,13 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
               }`}
               aria-label={photo.alt}
             >
-              <Image src={photo.path} alt="" fill className="object-cover" sizes="80px" />
+              <CatalogImage
+                src={photo.path}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="96px"
+              />
             </button>
           ))}
         </div>

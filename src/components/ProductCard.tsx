@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { CatalogImage } from "@/components/CatalogImage";
 import { verdictLabel } from "@/lib/utils";
 
 type ProductCardProps = {
@@ -10,6 +10,8 @@ type ProductCardProps = {
   trustedBuy: number;
   trustedDontBuy: number;
   trustedLikes: number;
+  /** First row of the catalog. Those photos are on screen immediately. */
+  priority?: boolean;
 };
 
 export function ProductCard({
@@ -20,6 +22,7 @@ export function ProductCard({
   trustedBuy,
   trustedDontBuy,
   trustedLikes,
+  priority = false,
 }: ProductCardProps) {
   const trustedCount = trustedBuy + trustedDontBuy;
   return (
@@ -29,12 +32,13 @@ export function ProductCard({
     >
       <div className="relative aspect-[4/5] bg-panel-2 overflow-hidden">
         {photo ? (
-          <Image
+          <CatalogImage
             src={photo.path}
             alt={photo.alt}
             fill
+            priority={priority}
             className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">

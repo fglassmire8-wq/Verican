@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmptyState } from "@/components/EmptyState";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +35,10 @@ export default async function BrandsPage() {
 
       <div className="mt-10 space-y-4">
         {brands.length === 0 ? (
-          <p className="text-muted">No brands with approved reviews yet.</p>
+          <EmptyState title="No brands yet">
+            A brand is listed after an approved public review. There is no placeholder
+            catalog.
+          </EmptyState>
         ) : (
           brands.map((brand) => (
             <article key={brand.id} className="border border-line bg-panel p-6">

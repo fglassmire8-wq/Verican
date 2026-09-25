@@ -18,7 +18,10 @@ export function PortalLeaderboard({
       </p>
 
       {rows.length === 0 ? (
-        <p className="mt-4 text-muted">No verified affiliates yet.</p>
+        <p className="mt-4 border border-line bg-panel px-6 py-8 text-muted">
+          No verified affiliates yet. Rank starts when the owner verifies an affiliate
+          and approves a review. Likes are the rank. No dollar amount is listed here.
+        </p>
       ) : (
         <ol className="mt-6 divide-y divide-line border border-line bg-panel">
           {rows.map((row) => {
