@@ -97,7 +97,7 @@ export default async function HomePage() {
           </EmptyState>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => {
+            {products.map((product, index) => {
               const trusted = product.reviews.filter((review) =>
                 isTrustedReview(review.status, review.user),
               );
@@ -115,6 +115,7 @@ export default async function HomePage() {
                   trustedBuy={trusted.filter((r) => r.verdict === "BUY").length}
                   trustedDontBuy={trusted.filter((r) => r.verdict === "DONT_BUY").length}
                   trustedLikes={trusted.reduce((sum, r) => sum + r.likes.length, 0)}
+                  priority={index < 3}
                 />
               );
             })}
