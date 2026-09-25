@@ -42,6 +42,7 @@ export function ReviewCard({ review, currentUserId }: ReviewCardProps) {
             {trusted ? "Verified affiliate" : "Unverified member review"}
             {review.user.role === "OWNER" ? " · Owner" : ""}
           </p>
+          <p className="text-sm text-cream mt-2">Posted {formatDate(review.createdAt)}</p>
         </div>
         <span
           className={`text-sm tracking-[0.16em] uppercase ${
@@ -71,13 +72,13 @@ export function ReviewCard({ review, currentUserId }: ReviewCardProps) {
         </div>
         {review.harvestDate ? (
           <div>
-            <dt className="uppercase tracking-widest text-[10px] text-gold">Harvest</dt>
+            <dt className="uppercase tracking-widest text-[10px] text-gold">Label harvest</dt>
             <dd>{review.harvestDate}</dd>
           </div>
         ) : null}
         {review.expDate ? (
           <div>
-            <dt className="uppercase tracking-widest text-[10px] text-gold">Exp</dt>
+            <dt className="uppercase tracking-widest text-[10px] text-gold">Label exp</dt>
             <dd>{review.expDate}</dd>
           </div>
         ) : null}
@@ -100,9 +101,14 @@ export function ReviewCard({ review, currentUserId }: ReviewCardProps) {
           </div>
         ) : null}
       </dl>
+      {review.harvestDate || review.expDate ? (
+        <p className="mt-3 text-xs text-muted">
+          Harvest and exp are printed on the package. They are not the date this review
+          was posted.
+        </p>
+      ) : null}
 
-      <div className="mt-5 flex items-center justify-between gap-4">
-        <p className="text-xs text-muted">{formatDate(review.createdAt)}</p>
+      <div className="mt-5 flex items-center justify-end gap-4">
         {trusted ? (
           <LikeButton
             reviewId={review.id}
