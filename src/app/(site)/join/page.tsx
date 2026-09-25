@@ -17,7 +17,7 @@ export default async function JoinPage() {
   return (
     <div className="mx-auto max-w-md px-4 py-16">
       <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Members</p>
-      <h1 className="font-display text-4xl mt-2">Join VERICAN</h1>
+      <h1 className="font-display text-4xl mt-2">Join The Green Vault</h1>
       <p className="mt-3 text-muted text-sm leading-relaxed">
         21+ only. Member reviews are unverified and unrewarded. They never count
         toward trusted rank. If you want likes and rank, apply as an affiliate

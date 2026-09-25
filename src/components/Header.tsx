@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { SignOutButton } from "@/components/SignOutButton";
+import { SITE_MARK } from "@/lib/site";
 
 export async function Header() {
   const session = await getSession();
@@ -11,8 +12,8 @@ export async function Header() {
     <header className="border-b border-line bg-ink/90 backdrop-blur-sm sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
         <Link href="/" className="shrink-0">
-          <span className="font-display text-2xl tracking-[0.28em] text-gold-bright">
-            VERICAN
+          <span className="font-display text-[1.05rem] min-[380px]:text-xl sm:text-2xl tracking-[0.12em] sm:tracking-[0.18em] text-gold-bright">
+            {SITE_MARK}
           </span>
           <span className="block text-[10px] uppercase tracking-[0.32em] text-muted mt-0.5">
             Independent reviews · NJ

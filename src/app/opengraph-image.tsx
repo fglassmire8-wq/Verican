@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { SITE_MARK } from "@/lib/site";
 
-export const alt = "VERICAN — Independent cannabis reviews. 21+ and not a store.";
+export const alt = "The Green Vault — Independent cannabis reviews. 21+ and not a store.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,12 +35,12 @@ export default function OpenGraphImage() {
           style={{
             display: "flex",
             marginTop: 28,
-            fontSize: 96,
-            letterSpacing: "0.16em",
+            fontSize: 72,
+            letterSpacing: "0.12em",
             color: "#e8d5a3",
           }}
         >
-          VERICAN
+          {SITE_MARK}
         </div>
         <div
           style={{
@@ -60,7 +61,7 @@ export default function OpenGraphImage() {
             color: "#9a8f7a",
           }}
         >
-          User opinions only. VERICAN does not sell cannabis.
+          User opinions only. The Green Vault does not sell cannabis.
         </div>
       </div>
     ),

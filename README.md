@@ -1,10 +1,10 @@
-# VERICAN
+# The Green Vault
 
 Independent 21+ cannabis reviews. New Jersey first.
 
 This GitHub repository is the source of truth for the site — not Base44 or any other builder.
 
-VERICAN is not a store. There is no cart and no SKU catalog. The point is a photo and an honest BUY or DON'T BUY note before you buy a sealed jar at a dispensary. VERICAN does not sell cannabis.
+The Green Vault is not a store. There is no cart and no SKU catalog. The point is a photo and an honest BUY or DON'T BUY note before you buy a sealed jar at a dispensary. The Green Vault does not sell cannabis.
 
 Users are the affiliates. Members can read reviews and leave unverified, unrewarded notes that never count toward trusted rank. A separate affiliate application is pending, then verified or rejected. Only approved reviews from verified affiliates get likes, drive rank, and may later receive brand-funded discounts. Rank is likes, not a dollar amount.
 
@@ -52,7 +52,7 @@ npm run db:seed
 | `SEED_OWNER_PASSWORD` | owner login on this computer | owner login on the public site | same |
 | `UPLOAD_DIR` | unset → `data/uploads/` | `/data/uploads` | `/data/uploads` (volume still required for photos) |
 
-`NEXTAUTH_URL` must be the public https origin browsers use. After a custom domain (vericann.com if we get it), change it to `https://vericann.com` and redeploy.
+`NEXTAUTH_URL` must be the public https origin browsers use. After a custom domain is attached, change it to that https origin and redeploy.
 
 If `NEXTAUTH_URL` is unset on Railway, the container sets it from `RAILWAY_PUBLIC_DOMAIN`. Set it yourself once you attach a custom domain.
 
@@ -70,7 +70,7 @@ Seed also creates the approved MAX A/C review (Illicit Gardens, Cottonmouth, 28g
 - Catalog is only what people actually reviewed (MAX A/C today)
 - No fake scores or SKUs
 - No hardcoded dollar rewards
-- VERICAN does not sell cannabis
+- The Green Vault does not sell cannabis
 
 ## Photos (v1 filesystem)
 
@@ -88,7 +88,7 @@ The MAX A/C seed photos are not affected by that limit.
 
 ## Database
 
-Local stays SQLite via `DATABASE_URL="file:./dev.db"`. You do not need a paid database to run or develop VERICAN.
+Local stays SQLite via `DATABASE_URL="file:./dev.db"`. You do not need a paid database to run or develop The Green Vault.
 
 `prisma/schema.prisma` stays `provider = "sqlite"`. Do not edit it when you deploy.
 
@@ -126,11 +126,11 @@ Optional Postgres instead of SQLite on the volume: add Railway Postgres, set `DA
 
 ### Custom domain later
 
-When you have **vericann.com** (or another domain):
+When you attach a custom domain later:
 
 1. Railway → service → **Settings** → **Networking** → **Custom Domain**.
 2. Point DNS where Railway tells you.
-3. Set `NEXTAUTH_URL=https://vericann.com` and redeploy.
+3. Set `NEXTAUTH_URL` to that https origin and redeploy.
 
 Build command (local / CI): `npm run build`.  
 Start command (image): `./scripts/docker-start.sh` (`prisma migrate deploy`, `prisma generate`, seed if User is empty, `next start`).

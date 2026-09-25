@@ -3,14 +3,24 @@
  * Descriptions stay with language already on the site. No payout or sales claims.
  */
 
-export const SITE_NAME = "VERICAN";
+/** Display name for titles, metadata, and sentences. */
+export const SITE_NAME = "The Green Vault";
 
-export const SITE_TITLE = "VERICAN — Independent cannabis reviews";
+/** Short gold lockup used in the header, footer, age gate, and share image. */
+export const SITE_MARK = "GREEN VAULT";
+
+export const SITE_TITLE = "The Green Vault — Independent cannabis reviews";
 
 export const SITE_DESCRIPTION =
-  "Independent 21+ cannabis review site. Check a photo and an honest review before you buy at a New Jersey dispensary. Not a store. VERICAN does not sell cannabis. Reviews are user opinions.";
+  "Independent 21+ cannabis review site. Check a photo and an honest review before you buy at a New Jersey dispensary. Not a store. The Green Vault does not sell cannabis. Reviews are user opinions.";
 
 export const CONTACT_EMAIL = "vericannprez@gmail.com";
+
+/** Age-gate flag set after a 21+ confirmation. */
+export const AGE_COOKIE = "greenvault_21";
+
+/** Previous age-gate cookie. Still accepted so an existing confirmation stays valid. */
+export const LEGACY_AGE_COOKIE = "verican_21";
 
 /** Browser-facing origin. Runtime env wins so a later custom domain does not need a code change. */
 export function getSiteOrigin(): string {
