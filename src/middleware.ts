@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { publicUrl } from "@/lib/public-origin";
 
-const AGE_COOKIE = "verican_21";
+const AGE_COOKIE = "gv_21";
 
 export function middleware(request: NextRequest) {
   const verified = request.cookies.get(AGE_COOKIE)?.value === "1";

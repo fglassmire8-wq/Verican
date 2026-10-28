@@ -4,7 +4,7 @@ import { safeInternalPath } from "@/lib/site";
 export const metadata = {
   title: "21+ only",
   description:
-    "VERICAN is an independent cannabis review site for adults 21 and older. Not a store. VERICAN does not sell cannabis.",
+    "Green Vault is an independent cannabis review site for adults 21 and older. Not a store. Green Vault does not sell cannabis.",
 };
 
 export default async function AgePage({
@@ -20,12 +20,12 @@ export default async function AgePage({
       <div className="max-w-lg w-full text-center">
         <p className="text-[11px] uppercase tracking-[0.4em] text-gold mb-6">New Jersey first</p>
         <h1 className="font-display text-5xl sm:text-6xl tracking-[0.28em] text-gold-bright">
-          VERICAN
+          GREEN VAULT
         </h1>
         <div className="editorial-rule my-8" />
         <p className="text-lg leading-relaxed text-cream/90">
           This site is for adults 21 and over. Independent cannabis reviews — not a
-          store. VERICAN does not sell cannabis. Reviews are user opinions. New Jersey
+          store. Green Vault does not sell cannabis. Reviews are user opinions. New Jersey
           first.
         </p>
         <form action="/api/age" method="post" className="mt-10 space-y-4">
@@ -47,7 +47,7 @@ export default async function AgePage({
         </details>
         <p className="mt-10 text-xs text-muted leading-relaxed">
           Entering confirms you are 21 or older and that you understand reviews are
-          user opinions. VERICAN does not sell cannabis.
+          user opinions. Green Vault does not sell cannabis.
         </p>
         <p className="mt-4 text-xs text-muted">
           <Link href="/privacy" className="hover:text-gold-bright">

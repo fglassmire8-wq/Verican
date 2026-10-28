@@ -12,7 +12,7 @@ export async function Header() {
       <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
         <Link href="/" className="shrink-0">
           <span className="font-display text-2xl tracking-[0.28em] text-gold-bright">
-            VERICAN
+            GREEN VAULT
           </span>
           <span className="block text-[10px] uppercase tracking-[0.32em] text-muted mt-0.5">
             Independent reviews · NJ

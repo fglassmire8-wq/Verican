@@ -26,7 +26,7 @@ export default async function AffiliatePage() {
         </p>
         <p>
           Reward status is ranking by likes — not a dollar amount. Brand-funded
-          discounts are configured later. VERICAN does not sell cannabis and does
+          discounts are configured later. Green Vault does not sell cannabis and does
           not promise pay.
         </p>
         <p>

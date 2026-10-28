@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "VERICAN — Independent cannabis reviews. 21+ and not a store.";
+export const alt = "Green Vault — Independent cannabis reviews. 21+ and not a store.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -39,7 +39,7 @@ export default function OpenGraphImage() {
             color: "#e8d5a3",
           }}
         >
-          VERICAN
+          GREEN VAULT
         </div>
         <div
           style={{
@@ -60,7 +60,7 @@ export default function OpenGraphImage() {
             color: "#9a8f7a",
           }}
         >
-          User opinions only. VERICAN does not sell cannabis.
+          User opinions only. Green Vault does not sell cannabis.
         </div>
       </div>
     ),

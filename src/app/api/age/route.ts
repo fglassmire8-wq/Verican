@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const safeNext = next.startsWith("/") && !next.startsWith("//") ? next : "/";
 
   const response = NextResponse.redirect(publicUrl(safeNext, request));
-  response.cookies.set("verican_21", "1", {
+  response.cookies.set("gv_21", "1", {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
