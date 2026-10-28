@@ -3,12 +3,12 @@
  * Descriptions stay with language already on the site. No payout or sales claims.
  */
 
-export const SITE_NAME = "VERICAN";
+export const SITE_NAME = "Green Vault";
 
-export const SITE_TITLE = "VERICAN — Independent cannabis reviews";
+export const SITE_TITLE = "Green Vault — Independent cannabis reviews";
 
 export const SITE_DESCRIPTION =
-  "Independent 21+ cannabis review site. Check a photo and an honest review before you buy at a New Jersey dispensary. Not a store. VERICAN does not sell cannabis. Reviews are user opinions.";
+  "Independent 21+ cannabis review site. Check a photo and an honest review before you buy at a New Jersey dispensary. Not a store. Green Vault does not sell cannabis. Reviews are user opinions.";
 
 export const CONTACT_EMAIL = "vericannprez@gmail.com";
 
@@ -26,7 +26,7 @@ export function getSiteOrigin(): string {
   const railway = process.env.RAILWAY_PUBLIC_DOMAIN?.trim();
   if (railway) return `https://${railway}`;
 
-  return "http://localhost:3000";
+  return process.env.NODE_ENV === "production" ? "https://greenvaultnj.com" : "http://localhost:3000";
 }
 
 /** Login and age-gate next paths stay on this site. */

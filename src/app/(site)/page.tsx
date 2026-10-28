@@ -38,7 +38,7 @@ export default async function HomePage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
             New Jersey dispensaries seal the product. You cannot inspect it on the floor.
-            VERICAN is a photo and an honest review first — then, after you buy, you post
+            Green Vault is a photo and an honest review first — then, after you buy, you post
             your own.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 max-w-3xl text-sm leading-relaxed">
@@ -92,7 +92,7 @@ export default async function HomePage() {
 
         {products.length === 0 ? (
           <EmptyState title="No approved reviews yet">
-            Reviewed flower shows up here after someone posts a public review. VERICAN
+            Reviewed flower shows up here after someone posts a public review. Green Vault
             does not add products on its own.
           </EmptyState>
         ) : (

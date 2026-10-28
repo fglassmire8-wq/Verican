@@ -5,7 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy",
   description:
-    "What VERICAN stores: an age confirmation, your account, and the reviews you choose to post. 21+ only. Not a store. No cannabis sales.",
+    "What Green Vault stores: an age confirmation, your account, and the reviews you choose to post. 21+ only. Not a store. No cannabis sales.",
 };
 
 export default function PrivacyPage() {
@@ -19,14 +19,14 @@ export default function PrivacyPage() {
         <section className="space-y-3">
           <h2 className="font-display text-2xl text-cream">What this site is</h2>
           <p>
-            VERICAN is an independent review site for adults 21 and older. It is not a
-            store. There is no cart and no checkout. VERICAN does not sell, ship, or
+            Green Vault is an independent review site for adults 21 and older. It is not a
+            store. There is no cart and no checkout. Green Vault does not sell, ship, or
             deliver cannabis.
           </p>
           <p>
             New Jersey is the first market. The point is a photo and a review before
             you buy a sealed product at a dispensary. Reviews on this site are user
-            opinions, not a statement from a brand or from VERICAN.
+            opinions, not a statement from a brand or from Green Vault.
           </p>
         </section>
 
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-2xl text-cream">What we store</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              An age confirmation cookie named <span className="text-cream">verican_21</span>{" "}
+              An age confirmation cookie named <span className="text-cream">gv_21</span>{" "}
               after you say you are 21 or older. It is a flag, not an ID check. It lasts
               about a year.
             </li>
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
             <li>Likes on approved reviews from verified affiliates.</li>
           </ul>
           <p>
-            VERICAN does not take payment and does not store card numbers. Rank is likes
+            Green Vault does not take payment and does not store card numbers. Rank is likes
             on approved verified-affiliate reviews. No dollar amount is recorded as a
             reward.
           </p>
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
             owner approves them.
           </p>
           <p>
-            VERICAN does not sell personal information. Account email is used to sign
+            Green Vault does not sell personal information. Account email is used to sign
             you in and to reply if you write to us. It is not published on a review.
           </p>
         </section>
