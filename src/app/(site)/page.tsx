@@ -3,6 +3,7 @@ import { EmptyState } from "@/components/EmptyState";
 import { ProductCard } from "@/components/ProductCard";
 import { isTrustedReview } from "@/lib/utils";
 import Link from "next/link";
+import { AffiliateTiers } from "@/components/AffiliateTiers";
 
 export const dynamic = "force-dynamic";
 
@@ -53,9 +54,10 @@ export default async function HomePage() {
               Browse categories
             </Link>
           </div>
-          <div className="mt-10 max-w-xl border border-line p-5 bg-panel">
+          <div className="mt-10 max-w-3xl border border-line p-5 bg-panel">
             <h2 className="font-display text-2xl text-gold-bright">Affiliate Program</h2>
             <p className="mt-2 text-muted">Become an affiliate. Sign up here.</p>
+            <AffiliateTiers compact />
             <Link
               href="/affiliate"
               className="mt-4 inline-block border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.12em] uppercase"

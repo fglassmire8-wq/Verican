@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { AffiliateTiers } from "@/components/AffiliateTiers";
 import { JoinForm } from "@/components/JoinForm";
 import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
@@ -18,6 +19,7 @@ export default async function AffiliatePage() {
     <div className="mx-auto max-w-2xl px-4 py-16">
       <h1 className="font-display text-4xl mt-2">Affiliate Program</h1>
       <p className="mt-5 text-muted leading-relaxed">Become an affiliate. Sign up here.</p>
+      <AffiliateTiers />
       <a
         href="#apply"
         className="mt-6 inline-block border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.12em] uppercase"
