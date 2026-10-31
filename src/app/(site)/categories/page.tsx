@@ -114,11 +114,11 @@ export default async function CategoriesPage({
           name="q"
           defaultValue={query}
           placeholder="MAX A/C, Illicit Gardens, Cottonmouth…"
-          className="flex-1 bg-panel border border-line px-4 py-3 text-cream placeholder:text-muted/60 outline-none focus:border-gold"
+          className="flex-1 min-w-0 bg-panel border border-line px-4 py-3 text-cream placeholder:text-muted/60 outline-none focus:border-gold"
         />
         <button
           type="submit"
-          className="border border-gold bg-gold text-ink px-5 py-3 text-sm tracking-[0.16em] uppercase"
+          className="shrink-0 border border-gold bg-gold text-ink px-4 sm:px-5 py-3 text-sm tracking-[0.16em] uppercase"
         >
           Search
         </button>
