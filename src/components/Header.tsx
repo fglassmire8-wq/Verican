@@ -45,11 +45,8 @@ function NavLinks({
 }) {
   return (
     <>
-      <Link href="/markets" className="hover:text-gold-bright">
-        Markets
-      </Link>
-      <Link href="/brands" className="hover:text-gold-bright">
-        Brands
+      <Link href="/categories" className="hover:text-gold-bright">
+        Categories
       </Link>
       {signedIn ? (
         <>

@@ -6,8 +6,7 @@ export const dynamic = "force-dynamic";
 
 const PUBLIC_PATHS = [
   "/",
-  "/markets",
-  "/brands",
+  "/categories",
   "/affiliate",
   "/join",
   "/login",

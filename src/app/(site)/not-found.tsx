@@ -13,7 +13,7 @@ export default function SiteNotFound() {
         <Link href="/" className="border border-gold bg-gold text-ink px-5 py-2.5">
           Back to reviews
         </Link>
-        <Link href="/markets" className="border border-line px-5 py-2.5 hover:border-gold">
+        <Link href="/categories" className="border border-line px-5 py-2.5 hover:border-gold">
           Search
         </Link>
       </div>

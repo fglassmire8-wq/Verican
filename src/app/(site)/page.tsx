@@ -29,52 +29,38 @@ export default async function HomePage() {
   return (
     <div>
       <section className="border-b border-line">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-          <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
-            21+ · Independent · Not a store
-          </p>
-          <h1 className="font-display text-4xl sm:text-6xl mt-4 max-w-3xl leading-tight text-cream">
-            Check the flower before you buy the jar.
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
+          <h1 className="font-display text-4xl sm:text-5xl max-w-3xl leading-tight text-cream">
+            Independent cannabis reviews for New Jersey.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-            New Jersey dispensaries seal the product. You cannot inspect it on the floor.
-            Green Vault is a photo and an honest review first — then, after you buy, you post
-            your own.
-          </p>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 max-w-3xl text-sm leading-relaxed">
-            <div className="border border-line p-5 bg-panel">
-              <h2 className="font-display text-2xl text-gold-bright">Members</h2>
-              <p className="mt-2 text-muted">
-                View reviews. You may leave an unverified, unrewarded note. Member reviews
-                are visually distinct and never count toward trusted rank.
-              </p>
-            </div>
-            <div className="border border-line p-5 bg-panel">
-              <h2 className="font-display text-2xl text-gold-bright">Affiliate Program</h2>
-              <p className="mt-2 text-muted">Become an affiliate. Sign up here.</p>
-              <Link
-                href="/affiliate"
-                className="mt-4 inline-block border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.12em] uppercase"
-              >
-                Sign up as an affiliate
-              </Link>
-            </div>
-          </div>
-          <p className="mt-8 text-sm text-muted">
-            Honest <span className="text-dont">DON&apos;T BUY</span> reviews are a feature.
+            Green Vault publishes independent, third-party reviews of medical and
+            recreational cannabis products, purely for quality control. In New Jersey you
+            usually can&apos;t see the product before you buy it, so our goal is for every
+            product on the market to eventually be reviewed.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/markets"
-              className="border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.16em] uppercase"
+              href="/affiliate"
+              className="border border-gold bg-gold text-ink px-6 py-3 text-base tracking-[0.08em] uppercase hover:bg-gold-bright hover:border-gold-bright"
             >
-              Search reviews
+              Become an affiliate — Sign up
             </Link>
             <Link
-              href="/affiliate"
-              className="border border-line px-5 py-2.5 text-sm tracking-[0.16em] uppercase text-cream hover:border-gold"
+              href="/categories"
+              className="border border-line bg-panel px-6 py-3 text-base tracking-[0.08em] uppercase text-cream hover:border-gold"
             >
-              Apply as affiliate
+              Browse categories
+            </Link>
+          </div>
+          <div className="mt-10 max-w-xl border border-line p-5 bg-panel">
+            <h2 className="font-display text-2xl text-gold-bright">Affiliate Program</h2>
+            <p className="mt-2 text-muted">Become an affiliate. Sign up here.</p>
+            <Link
+              href="/affiliate"
+              className="mt-4 inline-block border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.12em] uppercase"
+            >
+              Sign up as an affiliate
             </Link>
           </div>
         </div>
@@ -83,12 +69,11 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="flex items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Catalog</p>
-            <h2 className="font-display text-3xl mt-2">Reviewed flower</h2>
+            <h2 className="font-display text-3xl">Recently reviewed</h2>
           </div>
-          <p className="text-sm text-muted max-w-sm text-right">
-            Only flower with an approved public review. Nothing is added ahead of time.
-          </p>
+          <Link href="/categories" className="text-sm text-gold hover:text-gold-bright">
+            See all categories →
+          </Link>
         </div>
 
         {products.length === 0 ? (
