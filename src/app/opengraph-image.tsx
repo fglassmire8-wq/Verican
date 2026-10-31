@@ -14,15 +14,15 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "#0b0a08",
-          color: "#f3ead8",
+          background: "#fff8ef",
+          color: "#2a1d1a",
           padding: "80px",
         }}
       >
         <div
           style={{
             display: "flex",
-            color: "#c4a36a",
+            color: "#b4432a",
             letterSpacing: "0.28em",
             fontSize: 22,
             textTransform: "uppercase",
@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
             marginTop: 28,
             fontSize: 96,
             letterSpacing: "0.16em",
-            color: "#e8d5a3",
+            color: "#5b2a5e",
           }}
         >
           GREEN VAULT
@@ -57,7 +57,7 @@ export default function OpenGraphImage() {
             display: "flex",
             marginTop: 18,
             fontSize: 24,
-            color: "#9a8f7a",
+            color: "#6a5650",
           }}
         >
           User opinions only. Green Vault does not sell cannabis.

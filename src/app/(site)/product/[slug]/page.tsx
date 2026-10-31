@@ -93,7 +93,7 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
         {product.brand.name}
         {product.brand.location ? ` · ${product.brand.location}` : ""}
       </p>

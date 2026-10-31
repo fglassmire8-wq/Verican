@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { getSiteOrigin, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  weight: ["600", "700", "800", "900"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-outfit",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${outfit.variable} antialiased bg-ink text-cream`}>
+      <body className={`${nunito.variable} ${inter.variable} antialiased bg-ink text-cream`}>
         <Providers>{children}</Providers>
       </body>
     </html>

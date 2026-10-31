@@ -16,7 +16,7 @@ type PortalReview = {
 export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
   return (
     <section>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Work</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Work</p>
       <h2 className="font-display text-3xl mt-2">Your reviews</h2>
       {reviews.length === 0 ? (
         <div className="mt-4 border border-line bg-panel px-6 py-8">

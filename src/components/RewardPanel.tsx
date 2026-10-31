@@ -27,7 +27,7 @@ function rewardDetails(config: string): string[] {
 export function RewardPanel({ rules }: { rules: RewardRuleRow[] }) {
   return (
     <section>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Rewards</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Rewards</p>
       <h2 className="font-display text-3xl mt-2">How rank pays</h2>
       <p className="mt-2 text-sm text-muted max-w-2xl leading-relaxed">
         Rank is ordering by likes on approved verified-affiliate reviews. There is

@@ -27,7 +27,7 @@ export default async function BrandsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Cultivators</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Cultivators</p>
       <h1 className="font-display text-4xl mt-2">Brands</h1>
       <p className="mt-3 text-muted max-w-2xl">
         Brands appear here only after an approved public review. No placeholder catalog.

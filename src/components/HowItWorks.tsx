@@ -14,18 +14,18 @@ export function HowItWorks() {
     },
     {
       title: "The owner approves reviews",
-      body: "Verified-affiliate reviews stay pending until Francis approves them. Member notes publish unverified and never rank.",
+      body: "Verified-affiliate reviews stay pending until Green Vault approves them. Member notes publish unverified and never rank.",
     },
   ];
 
   return (
     <section>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Guide</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Guide</p>
       <h2 className="font-display text-3xl mt-2">How it works</h2>
       <ol className="mt-6 grid gap-4 sm:grid-cols-2">
         {steps.map((step, index) => (
           <li key={step.title} className="border border-line bg-panel p-5">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-gold">
+            <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
               {String(index + 1).padStart(2, "0")}
             </p>
             <h3 className="font-display text-xl mt-2 text-cream">{step.title}</h3>

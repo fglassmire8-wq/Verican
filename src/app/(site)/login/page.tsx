@@ -17,7 +17,7 @@ export default async function LoginPage() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-16">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Account</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Account</p>
       <h1 className="font-display text-4xl mt-2">Sign in</h1>
       <p className="mt-3 text-muted text-sm">
         Members and verified affiliates use the same login. After you sign in, the

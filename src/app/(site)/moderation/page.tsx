@@ -31,7 +31,7 @@ export default async function ModerationPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Owner only</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Owner only</p>
       <h1 className="font-display text-4xl mt-2">Moderation</h1>
       <p className="mt-3 text-muted max-w-2xl">
         Approve or reject affiliate applications and pending reviews. Member notes

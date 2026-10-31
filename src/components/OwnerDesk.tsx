@@ -37,7 +37,7 @@ export function OwnerDesk({
     <section className="border border-gold/30 bg-panel p-5 sm:p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Owner</p>
+          <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Owner</p>
           <h2 className="font-display text-3xl mt-2">Desk</h2>
           <p className="mt-2 text-sm text-muted max-w-2xl">
             Applications, pending reviews, and verified affiliates. Full tools stay

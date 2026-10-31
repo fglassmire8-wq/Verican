@@ -10,7 +10,7 @@ export function PortalLeaderboard({
 }) {
   return (
     <section>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Rank</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Rank</p>
       <h2 className="font-display text-3xl mt-2">Verified leaderboard</h2>
       <p className="mt-2 text-sm text-muted max-w-2xl">
         Ordered by likes on approved verified-affiliate reviews. Member notes never

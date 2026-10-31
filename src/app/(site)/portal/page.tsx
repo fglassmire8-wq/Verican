@@ -242,7 +242,7 @@ function PortalHeader({
 }) {
   return (
     <header>
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">{kicker}</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">{kicker}</p>
       <div className="mt-2 flex flex-wrap items-center gap-3">
         <h1 className="font-display text-4xl sm:text-5xl">{title}</h1>
         {chip}
@@ -264,7 +264,7 @@ function StatCard({
 }) {
   return (
     <div className="border border-line bg-panel p-4 sm:p-5">
-      <p className="text-[11px] uppercase tracking-[0.2em] text-gold">{label}</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">{label}</p>
       <p className="font-display text-3xl mt-2 tabular-nums">{value}</p>
       <p className="mt-2 text-xs sm:text-sm text-muted leading-snug">{hint}</p>
     </div>
@@ -293,7 +293,7 @@ function PendingBanner() {
       <p className="mt-2 text-sm text-muted leading-relaxed max-w-2xl">
         Francis has not verified you yet. You can still read reviews and post member
         notes — they stay unverified and unrewarded, and they do not drive rank while
-        you are pending. You do not need to sign out. After the owner verifies you,
+        you are pending. You do not need to sign out. After Green Vault verifies you,
         check status here; this page updates on the next request.
       </p>
       <RefreshAccountStatusButton />

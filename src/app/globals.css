@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #0b0a08;
-  --color-panel: #14120e;
-  --color-panel-2: #1c1914;
-  --color-gold: #c4a36a;
-  --color-gold-bright: #e8d5a3;
-  --color-cream: #f3ead8;
-  --color-muted: #9a8f7a;
-  --color-line: #2d291f;
-  --color-buy: #8fad7a;
-  --color-dont: #c48462;
+  --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #fff8ef;
+  --color-panel: #ffffff;
+  --color-panel-2: #fbeee0;
+  --color-gold: #b4432a;
+  --color-gold-bright: #5b2a5e;
+  --color-cream: #2a1d1a;
+  --color-muted: #6a5650;
+  --color-line: #e8d3bf;
+  --color-buy: #a35d00;
+  --color-dont: #c0392b;
 }
 
 html,
@@ -21,14 +21,38 @@ body {
   color: var(--color-cream);
 }
 
+html {
+  font-size: 17px;
+}
+
 body {
   font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.6;
   min-height: 100vh;
+  background-image: radial-gradient(circle at 10% 0%, #ffe3cc 0, transparent 40%),
+    radial-gradient(circle at 90% 10%, #f6dbe8 0, transparent 35%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+h4, h5, h6, label, button, strong, b {
+  font-weight: 700;
+}
+
+.text-ink {
+  /* text on accent-coloured buttons */
+  color: #ffffff;
 }
 
 ::selection {
-  background: #c4a36a;
-  color: #0b0a08;
+  background: #f2a65a;
+  color: #2a1d1a;
 }
 
 a {
@@ -43,5 +67,5 @@ select {
 
 .editorial-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c4a36a55, transparent);
+  background: linear-gradient(90deg, transparent, #b4432a66, transparent);
 }

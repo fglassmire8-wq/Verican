@@ -57,7 +57,7 @@ export default async function MarketsPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Search</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Search</p>
       <h1 className="font-display text-4xl mt-2">Markets</h1>
       <p className="mt-3 text-muted max-w-2xl">
         Search strain, brand, or store. Only flower with an approved public review appears.

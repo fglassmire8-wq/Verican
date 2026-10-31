@@ -25,7 +25,7 @@ export default async function SubmitPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
-      <p className="text-[11px] uppercase tracking-[0.3em] text-gold">After you buy</p>
+      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">After you buy</p>
       <h1 className="font-display text-4xl mt-2">Submit a review</h1>
       <p className="mt-3 text-muted leading-relaxed">
         {owner

@@ -47,7 +47,7 @@ export function ProductCard({
         )}
       </div>
       <div className="p-4 space-y-2">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-gold">{brand}</p>
+        <p className="text-[11px] uppercase tracking-[0.12em] text-gold">{brand}</p>
         <h2 className="font-display text-2xl text-cream">{strain}</h2>
         <p className="text-sm text-muted">
           {trustedCount === 0

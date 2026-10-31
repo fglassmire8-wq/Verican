@@ -30,7 +30,7 @@ export default async function HomePage() {
     <div>
       <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24">
-          <p className="text-[11px] uppercase tracking-[0.35em] text-gold">
+          <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
             21+ · Independent · Not a store
           </p>
           <h1 className="font-display text-4xl sm:text-6xl mt-4 max-w-3xl leading-tight text-cream">
@@ -50,17 +50,18 @@ export default async function HomePage() {
               </p>
             </div>
             <div className="border border-line p-5 bg-panel">
-              <h2 className="font-display text-2xl text-gold-bright">Verified affiliates</h2>
-              <p className="mt-2 text-muted">
-                Separate application. Pending, then verified or rejected. Only approved
-                reviews from verified affiliates get likes, drive rank, and may earn
-                brand-funded discounts later. Pay is not a dollar promise.
-              </p>
+              <h2 className="font-display text-2xl text-gold-bright">Affiliate Program</h2>
+              <p className="mt-2 text-muted">Become an affiliate. Sign up here.</p>
+              <Link
+                href="/affiliate"
+                className="mt-4 inline-block border border-gold bg-gold text-ink px-5 py-2.5 text-sm tracking-[0.12em] uppercase"
+              >
+                Sign up as an affiliate
+              </Link>
             </div>
           </div>
           <p className="mt-8 text-sm text-muted">
             Honest <span className="text-dont">DON&apos;T BUY</span> reviews are a feature.
-            Users are the affiliates.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
@@ -82,7 +83,7 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="flex items-end justify-between gap-4 mb-8">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Catalog</p>
+            <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Catalog</p>
             <h2 className="font-display text-3xl mt-2">Reviewed flower</h2>
           </div>
           <p className="text-sm text-muted max-w-sm text-right">
