@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { SignOutButton } from "@/components/SignOutButton";
+import { Chewy } from "next/font/google";
+
+const bubble = Chewy({ subsets: ["latin"], weight: "400", display: "swap" });
 
 export async function Header() {
   const session = await getSession();
@@ -11,7 +14,14 @@ export async function Header() {
     <header className="border-b border-line bg-ink/90 backdrop-blur-sm sticky top-0 z-40">
       <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
         <Link href="/" className="shrink-0">
-          <span className="font-display text-2xl tracking-[0.12em] text-gold-bright">
+          <span
+            className={`${bubble.className} text-3xl tracking-[0.06em]`}
+            style={{
+              color: "#2f9e44",
+              textShadow: "0 2px 0 #1b6e2c, 0 0 1px #1b6e2c",
+              WebkitTextStroke: "0.5px #1b6e2c",
+            }}
+          >
             GREEN VAULT
           </span>
           <span className="block text-[10px] uppercase tracking-[0.12em] text-muted mt-0.5">
