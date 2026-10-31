@@ -22,7 +22,7 @@ export function SubmitForm() {
       setError(json.error || "Could not save the review.");
       return;
     }
-    router.push("/portal");
+    router.push("/portal/reviews");
     router.refresh();
   }
 

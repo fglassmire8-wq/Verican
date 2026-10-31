@@ -3,14 +3,14 @@
 @theme {
   --font-display: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --color-ink: #fff8ef;
+  --color-ink: #ffffff;
   --color-panel: #ffffff;
-  --color-panel-2: #fbeee0;
-  --color-gold: #b4432a;
-  --color-gold-bright: #5b2a5e;
-  --color-cream: #2a1d1a;
-  --color-muted: #6a5650;
-  --color-line: #e8d3bf;
+  --color-panel-2: #f6f8f6;
+  --color-gold: #2f9e44;
+  --color-gold-bright: #1b6e2c;
+  --color-cream: #1f2937;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
   --color-buy: #a35d00;
   --color-dont: #c0392b;
 }
@@ -30,9 +30,7 @@ body {
   font-weight: 500;
   line-height: 1.6;
   min-height: 100vh;
-  background-image: radial-gradient(circle at 10% 0%, #ffe3cc 0, transparent 40%),
-    radial-gradient(circle at 90% 10%, #f6dbe8 0, transparent 35%);
-  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, .font-display {
@@ -43,22 +41,23 @@ h1, h2, h3, .font-display {
 
 /* Bubble-letter style: headings, display titles and nav links. */
 h1, h2, h3, .font-display, .bubble {
-  font-family: var(--font-bubble), var(--font-nunito), ui-sans-serif, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #2f9e44;
-  text-shadow: 0 2px 0 #1b6e2c;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1b6e2c;
+  text-shadow: none;
 }
 
 h3, .bubble-sm {
   /* smaller sizes: lighter shadow so letters stay crisp */
-  text-shadow: 0 1px 0 #1b6e2c;
+  text-shadow: none;
 }
 
 .bubble-nav {
-  font-family: var(--font-bubble), var(--font-nunito), ui-sans-serif, sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.03em;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0;
   color: #2f9e44;
   text-shadow: none;
 }
@@ -92,3 +91,11 @@ select {
   height: 1px;
   background: linear-gradient(90deg, transparent, #b4432a66, transparent);
 }
+
+/* Modern surfaces: rounded, subtly shadowed cards and clean controls */
+.bg-panel.border, .bg-panel-2.border, article.border {
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 14px rgba(16, 24, 40, 0.06);
+}
+a.bg-gold, button.bg-gold, .bg-gold { border-radius: 10px; }
+input, select, textarea { border-radius: 10px; }

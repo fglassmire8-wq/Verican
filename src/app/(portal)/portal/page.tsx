@@ -5,7 +5,6 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { JoinForm } from "@/components/JoinForm";
 import { OwnerDesk } from "@/components/OwnerDesk";
 import { PortalLeaderboard, UnrankedLeaderboardNote } from "@/components/PortalLeaderboard";
-import { PortalReviewsTable } from "@/components/PortalReviewsTable";
 import { RefreshAccountStatusButton } from "@/components/RefreshAccountStatusButton";
 import { RewardPanel } from "@/components/RewardPanel";
 import { StatusChip } from "@/components/StatusChip";
@@ -140,11 +139,6 @@ export default async function PortalPage() {
       ])
     : null;
 
-  const reviewsForTable = user.reviews.map((review) => ({
-    ...review,
-    user: { role: user.role, affiliateStatus: user.affiliateStatus },
-  }));
-
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
       <PortalHeader
@@ -192,10 +186,16 @@ export default async function PortalPage() {
 
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
-          href="/submit"
+          href="/portal/submit"
           className="border border-gold bg-gold text-ink px-5 py-3 text-sm tracking-[0.16em] uppercase"
         >
           Submit a photo review
+        </Link>
+        <Link
+          href="/portal/reviews"
+          className="border border-line px-5 py-3 text-sm tracking-[0.16em] uppercase hover:border-gold"
+        >
+          My reviews
         </Link>
         {isOwner ? (
           <Link
@@ -221,7 +221,6 @@ export default async function PortalPage() {
           <UnrankedLeaderboardNote trusted={trusted} />
         </div>
 
-        <PortalReviewsTable reviews={reviewsForTable} />
         <RewardPanel rules={rewardRules} />
         <HowItWorks />
       </div>

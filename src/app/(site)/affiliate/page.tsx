@@ -5,6 +5,7 @@ import { AffiliateTiers } from "@/components/AffiliateTiers";
 import { JoinForm } from "@/components/JoinForm";
 import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata = { title: "Affiliate Program" };
 export const dynamic = "force-dynamic";
@@ -27,6 +28,20 @@ export default async function AffiliatePage() {
         Sign up as an affiliate
       </a>
 
+      <div className="mt-10 border border-line bg-panel p-6">
+        <h2 className="font-display text-2xl">Join as a member</h2>
+        <p className="mt-2 text-sm text-muted">
+          Members can read reviews and post notes after a purchase. You can apply as an
+          affiliate later from the portal.
+        </p>
+        <Link
+          href="/join"
+          className="mt-5 inline-block border border-line px-5 py-2.5 text-sm tracking-[0.12em] uppercase hover:border-gold"
+        >
+          Create a member account
+        </Link>
+      </div>
+
       <div id="apply" className="mt-10 border border-line bg-panel p-6">
         <h2 className="font-display text-2xl">Apply as a new affiliate</h2>
         <div className="mt-6">
@@ -38,6 +53,17 @@ export default async function AffiliatePage() {
             Sign in
           </Link>{" "}
           and apply from the portal.
+        </p>
+      </div>
+
+      <div className="mt-10 border border-line bg-panel-2 p-5">
+        <h2 className="font-display text-xl">Advertise with Green Vault</h2>
+        <p className="mt-2 text-sm text-muted">
+          Brands and dispensaries interested in advertising can{" "}
+          <a className="text-gold hover:text-gold-bright" href={`mailto:${CONTACT_EMAIL}`}>
+            contact us
+          </a>
+          .
         </p>
       </div>
     </div>

@@ -1,32 +1,9 @@
-import { prisma } from "@/lib/prisma";
-import { EmptyState } from "@/components/EmptyState";
-import { ProductCard } from "@/components/ProductCard";
-import { isTrustedReview } from "@/lib/utils";
 import Link from "next/link";
 import { AffiliateTiers } from "@/components/AffiliateTiers";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
-  const products = await prisma.product.findMany({
-    where: {
-      reviews: { some: { status: "APPROVED" } },
-    },
-    include: {
-      brand: true,
-      reviews: {
-        where: { status: "APPROVED" },
-        include: {
-          user: true,
-          photos: { orderBy: { sortOrder: "asc" } },
-          likes: true,
-        },
-        orderBy: { createdAt: "desc" },
-      },
-    },
-    orderBy: { strain: "asc" },
-  });
-
+export default function HomePage() {
   return (
     <div>
       <section className="border-b border-line">
@@ -68,51 +45,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 className="font-display text-3xl">Recently reviewed</h2>
-          </div>
-          <Link href="/categories" className="text-sm text-gold hover:text-gold-bright">
-            See all categories →
-          </Link>
-        </div>
-
-        {products.length === 0 ? (
-          <EmptyState title="No reviews here yet">
-            Be the first.{" "}
-            <Link href="/submit" className="text-gold hover:text-gold-bright underline">
-              Submit a review
-            </Link>
-            . Green Vault does not add products on its own.
-          </EmptyState>
-        ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, index) => {
-              const trusted = product.reviews.filter((review) =>
-                isTrustedReview(review.status, review.user),
-              );
-              const photo =
-                trusted.flatMap((review) => review.photos)[0] ??
-                product.reviews.flatMap((review) => review.photos)[0] ??
-                null;
-              return (
-                <ProductCard
-                  key={product.id}
-                  slug={product.slug}
-                  strain={product.strain}
-                  brand={product.brand.name}
-                  photo={photo}
-                  trustedBuy={trusted.filter((r) => r.verdict === "BUY").length}
-                  trustedDontBuy={trusted.filter((r) => r.verdict === "DONT_BUY").length}
-                  trustedLikes={trusted.reduce((sum, r) => sum + r.likes.length, 0)}
-                  priority={index < 3}
-                />
-              );
-            })}
-          </div>
-        )}
-      </section>
     </div>
   );
 }

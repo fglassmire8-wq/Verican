@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSession } from "@/lib/session";
 import { SignOutButton } from "@/components/SignOutButton";
+import { HeaderMenu } from "@/components/HeaderMenu";
 
 export async function Header() {
   const session = await getSession();
@@ -9,28 +10,10 @@ export async function Header() {
 
   return (
     <header className="border-b border-line bg-ink/90 backdrop-blur-sm sticky top-0 z-40">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between gap-4">
-        <Link href="/" className="shrink-0">
-          <span className="bubble text-3xl tracking-[0.06em]" style={{ WebkitTextStroke: "0.5px #1b6e2c" }}>
-            GREEN VAULT
-          </span>
-          <span className="bubble block text-xl leading-none tracking-[0.06em] mt-0.5" style={{ WebkitTextStroke: "0.5px #1b6e2c" }}>
-            NJ
-          </span>
-        </Link>
-
-        <details className="relative md:hidden">
-          <summary className="list-none cursor-pointer bubble-nav">
-            Menu
-          </summary>
-          <nav className="absolute right-0 mt-3 w-56 border border-line bg-panel p-4 flex flex-col gap-3 text-sm">
-            <NavLinks isOwner={isOwner} signedIn={Boolean(user)} />
-          </nav>
-        </details>
-
-        <nav className="hidden md:flex items-center gap-6 text-sm text-cream/80">
+      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center min-h-[76px]">
+        <HeaderMenu>
           <NavLinks isOwner={isOwner} signedIn={Boolean(user)} />
-        </nav>
+        </HeaderMenu>
       </div>
     </header>
   );
@@ -47,6 +30,9 @@ function NavLinks({
     <>
       <Link href="/categories" className="bubble-nav">
         Categories
+      </Link>
+      <Link href="/reviews" className="bubble-nav">
+        Reviews
       </Link>
       {signedIn ? (
         <>
