@@ -39,7 +39,7 @@ export default async function PortalPage() {
             <h2 className="font-display text-2xl">Sign in</h2>
             <p className="mt-2 text-sm text-muted">
               Members and verified affiliates use the same login. The portal updates
-              when the owner verifies you.
+              when Green Vault verifies you.
             </p>
             <Link
               href="/login?callbackUrl=/portal"
@@ -65,7 +65,7 @@ export default async function PortalPage() {
         <div className="mt-6 border border-line bg-panel p-6">
           <h2 className="font-display text-2xl">Apply as a new affiliate</h2>
           <p className="mt-2 text-sm text-muted">
-            Creates an account and submits an application in one step. The owner still
+            Creates an account and submits an application in one step. Green Vault still
             has to verify you.
           </p>
           <div className="mt-6">
@@ -181,7 +181,7 @@ export default async function PortalPage() {
           value={likes}
           hint="On approved trusted reviews"
         />
-        <StatCard label="Pending" value={counts.pending} hint="Waiting on the owner" />
+        <StatCard label="Pending" value={counts.pending} hint="Waiting on Green Vault" />
         <StatCard label="Approved" value={counts.approved} hint="Published" />
         <StatCard
           label="Rejected"
@@ -278,7 +278,7 @@ function VerifiedBanner({ owner }: { owner: boolean }) {
         {owner ? "Owner desk" : "Verified affiliate"}
       </h2>
       <p className="mt-2 text-sm text-muted leading-relaxed max-w-2xl">
-        New photo reviews stay pending until the owner approves them
+        New photo reviews stay pending until Green Vault approves them
         {owner ? " — except owner reviews, which publish as trusted immediately" : ""}.
         Approved likes count toward rank. Honest DON&apos;T BUY is a feature.
       </p>
@@ -291,7 +291,7 @@ function PendingBanner() {
     <div className="border border-gold/40 bg-panel p-5 sm:p-6">
       <h2 className="font-display text-2xl">Application pending</h2>
       <p className="mt-2 text-sm text-muted leading-relaxed max-w-2xl">
-        Francis has not verified you yet. You can still read reviews and post member
+        Green Vault has not verified you yet. You can still read reviews and post member
         notes — they stay unverified and unrewarded, and they do not drive rank while
         you are pending. You do not need to sign out. After Green Vault verifies you,
         check status here; this page updates on the next request.

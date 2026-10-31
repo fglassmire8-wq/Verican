@@ -6,7 +6,7 @@ import { JoinForm } from "@/components/JoinForm";
 import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
 
-export const metadata = { title: "Affiliates" };
+export const metadata = { title: "Affiliate Program" };
 export const dynamic = "force-dynamic";
 
 export default async function AffiliatePage() {

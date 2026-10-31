@@ -31,7 +31,7 @@ export default async function SubmitPage() {
         {owner
           ? "Owner reviews publish immediately as trusted."
           : trusted
-            ? "Verified-affiliate reviews stay pending until the owner approves them. They do not get likes or rank until then."
+            ? "Verified-affiliate reviews stay pending until Green Vault approves them. They do not get likes or rank until then."
             : "Member reviews publish as unverified notes. They are unrewarded and never count toward trusted rank."}
       </p>
       {!trusted && !owner ? (

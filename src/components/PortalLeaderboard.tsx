@@ -19,7 +19,7 @@ export function PortalLeaderboard({
 
       {rows.length === 0 ? (
         <p className="mt-4 border border-line bg-panel px-6 py-8 text-muted">
-          No verified affiliates yet. Rank starts when the owner verifies an affiliate
+          No verified affiliates yet. Rank starts when Green Vault verifies an affiliate
           and approves a review. Likes are the rank. No dollar amount is listed here.
         </p>
       ) : (
@@ -70,7 +70,7 @@ export function UnrankedLeaderboardNote({ trusted }: { trusted: boolean }) {
   return (
     <p className="mt-3 text-sm text-muted">
       Your notes are excluded from this list until you are a verified affiliate and
-      the owner approves a review.
+      Green Vault approves a review.
     </p>
   );
 }

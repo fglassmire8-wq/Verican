@@ -43,6 +43,9 @@ export function OwnerDesk({
             Applications, pending reviews, and verified affiliates. Full tools stay
             on Moderation.
           </p>
+          <Link href="/account/password" className="mt-2 inline-block text-sm text-gold hover:text-gold-bright underline">
+            Change password
+          </Link>
         </div>
         <Link
           href="/moderation"

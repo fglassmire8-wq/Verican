@@ -48,7 +48,7 @@ export default function TermsPage() {
           </p>
           <p>
             Member notes are unverified and unrewarded. They never count toward trusted
-            rank. Verified-affiliate reviews stay pending until the owner approves them.
+            rank. Verified-affiliate reviews stay pending until Green Vault approves them.
             Green Vault does not promise that a review is complete or correct.
           </p>
         </section>
@@ -57,7 +57,7 @@ export default function TermsPage() {
           <h2 className="font-display text-2xl text-cream">Accounts, rank, and rewards</h2>
           <p>
             Members can read reviews and post notes. A verified affiliate is a separate
-            application: pending, then verified or rejected by the owner. Only approved
+            application: pending, then verified or rejected by Green Vault. Only approved
             reviews from verified affiliates can be liked. Rank is that like count. It
             is not a dollar amount.
           </p>
@@ -72,7 +72,7 @@ export default function TermsPage() {
           <h2 className="font-display text-2xl text-cream">What you post</h2>
           <p>
             You are responsible for your reviews and photos. Post only what you are
-            willing to show publicly and what you have the right to share. The owner
+            willing to show publicly and what you have the right to share. Green Vault
             can approve, reject, or remove a review or an affiliate application.
           </p>
         </section>

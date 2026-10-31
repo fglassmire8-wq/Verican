@@ -13,7 +13,7 @@ export function HowItWorks() {
       body: "Only approved reviews from verified affiliates can be liked. Rank is likes, not a dollar amount.",
     },
     {
-      title: "The owner approves reviews",
+      title: "Green Vault approves reviews",
       body: "Verified-affiliate reviews stay pending until Green Vault approves them. Member notes publish unverified and never rank.",
     },
   ];

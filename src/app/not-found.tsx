@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-ink text-cream flex items-center justify-center px-6">
       <div className="max-w-lg w-full text-center">
-        <p className="font-display text-4xl tracking-[0.12em] text-gold-bright">GREEN VAULT</p>
+        <p className="bubble text-4xl tracking-[0.06em]">GREEN VAULT</p>
         <h1 className="font-display text-3xl mt-6">Page not found</h1>
         <p className="mt-4 text-muted leading-relaxed">
           That address is not on this site. The catalog only includes flower with a

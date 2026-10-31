@@ -79,9 +79,12 @@ export default async function HomePage() {
         </div>
 
         {products.length === 0 ? (
-          <EmptyState title="No approved reviews yet">
-            Reviewed flower shows up here after someone posts a public review. Green Vault
-            does not add products on its own.
+          <EmptyState title="No reviews here yet">
+            Be the first.{" "}
+            <Link href="/submit" className="text-gold hover:text-gold-bright underline">
+              Submit a review
+            </Link>
+            . Green Vault does not add products on its own.
           </EmptyState>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
