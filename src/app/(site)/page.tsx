@@ -31,7 +31,7 @@ export default async function HomePage() {
       <section className="border-b border-line">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
           <h1 className="font-display text-4xl sm:text-5xl max-w-3xl leading-tight text-cream">
-            Independent cannabis reviews for New Jersey.
+            Third party peer reviews
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
             Green Vault publishes independent, third-party reviews of medical and

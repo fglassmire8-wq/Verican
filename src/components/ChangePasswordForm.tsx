@@ -43,13 +43,13 @@ export function ChangePasswordForm() {
           value={currentPassword} onChange={(e) => setCurrent(e.target.value)} required />
       </label>
       <label className="block text-sm">
-        New password (12+ characters)
-        <input type="password" autoComplete="new-password" className={input} minLength={12}
+        New password (8+ characters)
+        <input type="password" autoComplete="new-password" className={input} minLength={8}
           value={newPassword} onChange={(e) => setNew(e.target.value)} required />
       </label>
       <label className="block text-sm">
         Confirm new password
-        <input type="password" autoComplete="new-password" className={input} minLength={12}
+        <input type="password" autoComplete="new-password" className={input} minLength={8}
           value={confirm} onChange={(e) => setConfirm(e.target.value)} required />
       </label>
       <button type="submit" disabled={busy}
