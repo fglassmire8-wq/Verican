@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Nunito } from "next/font/google";
+import { Chewy, Inter, Nunito } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { getSiteOrigin, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
@@ -8,6 +8,13 @@ const nunito = Nunito({
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
   variable: "--font-nunito",
+  display: "swap",
+});
+
+const chewy = Chewy({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bubble",
   display: "swap",
 });
 
@@ -52,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable} ${inter.variable} antialiased bg-ink text-cream`}>
+      <body className={`${nunito.variable} ${chewy.variable} ${inter.variable} antialiased bg-ink text-cream`}>
         <Providers>{children}</Providers>
       </body>
     </html>
