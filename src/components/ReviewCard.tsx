@@ -12,6 +12,8 @@ type ReviewCardProps = {
     amount: string;
     priceCents: number;
     currency: string;
+    priceIncludesTax?: boolean;
+    pricePerGramCents?: number | null;
     harvestDate: string | null;
     expDate: string | null;
     thcPercent: number | null;
@@ -84,7 +86,11 @@ export function ReviewCard({
         <div>
           <dt className="uppercase tracking-widest text-[10px] text-gold">Amount / price</dt>
           <dd>
-            {review.amount} · {formatPrice(review.priceCents, review.currency)} plus tax
+            {review.amount} · {formatPrice(review.priceCents, review.currency)}
+            {review.priceIncludesTax ? " out the door" : " plus tax"}
+            {review.pricePerGramCents != null
+              ? ` · ${formatPrice(review.pricePerGramCents, review.currency)}/g`
+              : ""}
           </dd>
         </div>
         {review.harvestDate ? (

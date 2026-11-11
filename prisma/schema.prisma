@@ -64,8 +64,10 @@ model Review {
   store       Store    @relation(fields: [storeId], references: [id])
   amount      String
   priceCents  Int
-  currency    String   @default("USD")
-  notes       String
+  currency          String   @default("USD")
+  priceIncludesTax  Boolean  @default(false)
+  pricePerGramCents Int?
+  notes             String
   verdict     String
   harvestDate String?
   expDate     String?
