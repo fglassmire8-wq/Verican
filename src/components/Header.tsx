@@ -10,10 +10,13 @@ export async function Header() {
 
   return (
     <header className="border-b border-line bg-ink/90 backdrop-blur-sm sticky top-0 z-40">
-      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center min-h-[76px]">
+      <div className="mx-auto max-w-6xl px-4 py-4 flex items-center gap-3 min-h-[76px]">
         <HeaderMenu>
           <NavLinks isOwner={isOwner} signedIn={Boolean(user)} />
         </HeaderMenu>
+        <Link href="/" className="font-display text-2xl sm:text-3xl leading-none">
+          Green Vault, NJ
+        </Link>
       </div>
     </header>
   );
