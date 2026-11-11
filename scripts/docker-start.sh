@@ -26,6 +26,8 @@ npx prisma migrate deploy --schema="$SCHEMA"
 npx prisma generate --schema="$SCHEMA"
 # First boot only: seed Francis + MAX A/C when User is empty.
 node scripts/seed-if-empty.mjs
+# Idempotent: publish approved Animal Star Cookies if it is not already live.
+node scripts/publish-animal-star-cookies.mjs
 
 if [ "$#" -gt 0 ]; then
   exec "$@"

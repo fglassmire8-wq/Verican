@@ -76,7 +76,9 @@ export function ReviewCard({
         <div>
           <dt className="uppercase tracking-widest text-[10px] text-gold">Bought</dt>
           <dd>
-            {review.store.name}, {review.store.city}, {review.store.state}
+            {[review.store.name, review.store.city, review.store.state]
+              .filter((part) => part && part.trim())
+              .join(", ")}
           </dd>
         </div>
         <div>
