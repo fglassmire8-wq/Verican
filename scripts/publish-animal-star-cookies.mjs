@@ -18,6 +18,9 @@ const PHOTOS = [
   { file: "07-bud-between-fingers.jpg", alt: "Bud between the fingers" },
   { file: "08-bud-on-thumb.jpg", alt: "Bud on the thumb" },
   { file: "09-buds-in-jar.jpg", alt: "Buds in the jar, up close" },
+  { file: "10-bud-up-close-by-the-window.jpg", alt: "Bud up close by the window" },
+  { file: "11-bud-between-the-fingers-daylight.jpg", alt: "Bud between the fingers, daylight" },
+  { file: "12-bud-on-the-thumb-daylight.jpg", alt: "Bud on the thumb, daylight" },
 ];
 
 const PURCHASED_AT = new Date("2026-11-10T12:00:00-05:00");
