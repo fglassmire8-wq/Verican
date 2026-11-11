@@ -4,6 +4,7 @@ import { getSession } from "@/lib/session";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { ReviewCard } from "@/components/ReviewCard";
+import { getVisitorStats } from "@/lib/review-ratings";
 import type { Metadata } from "next";
 
 function productShareDescription(strain: string, brand: string) {
@@ -76,6 +77,11 @@ export default async function ProductPage({
 
   if (!product) notFound();
 
+  const visitorStats = await getVisitorStats(
+    product.reviews.map((review) => review.id),
+    { includeVisitor: true },
+  );
+
   const trusted = product.reviews.filter((review) =>
     isTrustedReview(review.status, review.user),
   );
@@ -125,6 +131,10 @@ export default async function ProductPage({
               key={review.id}
               review={review}
               currentUserId={session?.user?.id}
+              visitorAverage={visitorStats.get(review.id)?.average ?? null}
+              visitorCount={visitorStats.get(review.id)?.count ?? 0}
+              visitorHalves={visitorStats.get(review.id)?.visitorHalves ?? null}
+              interactiveRatings
             />
           ))}
         </div>
@@ -143,6 +153,10 @@ export default async function ProductPage({
                 key={review.id}
                 review={review}
                 currentUserId={session?.user?.id}
+                visitorAverage={visitorStats.get(review.id)?.average ?? null}
+                visitorCount={visitorStats.get(review.id)?.count ?? 0}
+                visitorHalves={visitorStats.get(review.id)?.visitorHalves ?? null}
+                interactiveRatings
               />
             ))}
           </div>

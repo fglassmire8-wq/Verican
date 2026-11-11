@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { ReviewerRatingControl } from "@/components/ReviewerRatingControl";
+import { formatReviewerRating } from "@/lib/rating";
 import { isTrustedReview, plural, reviewDeskStatus, verdictLabel } from "@/lib/utils";
 
 type PortalReview = {
   id: string;
   status: string;
   verdict: string;
+  rating: number | null;
   createdAt: Date;
   product: { slug: string; strain: string; brand: { name: string } };
   store: { name: string; city: string; state: string };
@@ -45,6 +48,7 @@ export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
                   <th className="px-4 py-3 font-medium">Verdict</th>
                   <th className="px-4 py-3 font-medium">Photos</th>
                   <th className="px-4 py-3 font-medium">Likes</th>
+                  <th className="px-4 py-3 font-medium">Reviewer rating</th>
                   <th className="px-4 py-3 font-medium">Status</th>
                 </tr>
               </thead>
@@ -77,6 +81,12 @@ export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
                       <td className="px-4 py-3 text-muted">{review.photos.length}</td>
                       <td className="px-4 py-3 text-muted">
                         {trusted ? review.likes.length : "—"}
+                      </td>
+                      <td className="px-4 py-3">
+                        <ReviewerRatingControl
+                          reviewId={review.id}
+                          initialHalves={review.rating}
+                        />
                       </td>
                       <td className="px-4 py-3 text-muted">
                         {reviewDeskStatus(review.status, review.user)}
@@ -120,8 +130,12 @@ function ReviewCardRow({ review }: { review: PortalReview }) {
       <p className="mt-3 text-sm text-muted">
         {review.photos.length} {plural(review.photos.length, "photo")} ·{" "}
         {trusted ? `${review.likes.length} ${plural(review.likes.length, "like")}` : "likes not counted"}{" "}
+        · {review.rating != null ? formatReviewerRating(review.rating) : "no reviewer rating"}{" "}
         · {reviewDeskStatus(review.status, review.user)}
       </p>
+      <div className="mt-3">
+        <ReviewerRatingControl reviewId={review.id} initialHalves={review.rating} />
+      </div>
     </li>
   );
 }

@@ -74,8 +74,23 @@ model Review {
   topTerpene  String?
   status      String   @default("PENDING")
   createdAt   DateTime @default(now())
+  rating      Int?
   photos      Photo[]
   likes       Like[]
+  ratings     ReviewRating[]
+}
+
+model ReviewRating {
+  id        String   @id @default(cuid())
+  reviewId  String
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  visitorId String
+  value     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([reviewId, visitorId])
+  @@index([reviewId])
 }
 
 model Photo {

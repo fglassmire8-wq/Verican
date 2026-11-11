@@ -120,6 +120,22 @@ export function SubmitForm() {
       </fieldset>
 
       <label className="block text-sm">
+        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Reviewer rating (optional)</span>
+        <select
+          name="rating"
+          defaultValue=""
+          className="mt-1 w-full bg-panel border border-line px-3 py-3 outline-none focus:border-gold"
+        >
+          <option value="">No rating</option>
+          {["0.5", "1.0", "1.5", "2.0", "2.5", "3.0", "3.5", "4.0", "4.5", "5.0"].map((value) => (
+            <option key={value} value={value}>
+              {value} / 5
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="block text-sm">
         <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Notes</span>
         <textarea
           name="notes"

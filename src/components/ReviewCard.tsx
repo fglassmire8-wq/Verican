@@ -1,5 +1,8 @@
 import { formatDate, formatPrice, isTrustedReview, verdictLabel } from "@/lib/utils";
 import { LikeButton } from "@/components/LikeButton";
+import { StarRating } from "@/components/StarRating";
+import { VisitorRating } from "@/components/VisitorRating";
+import { formatReviewerRating, halvesToStars } from "@/lib/rating";
 
 type ReviewCardProps = {
   review: {
@@ -16,14 +19,26 @@ type ReviewCardProps = {
     topTerpene: string | null;
     status: string;
     createdAt: Date;
+    rating: number | null;
     user: { name: string; role: string; affiliateStatus: string };
     store: { name: string; city: string; state: string };
     likes: { userId: string }[];
   };
   currentUserId?: string;
+  visitorAverage?: number | null;
+  visitorCount?: number;
+  visitorHalves?: number | null;
+  interactiveRatings?: boolean;
 };
 
-export function ReviewCard({ review, currentUserId }: ReviewCardProps) {
+export function ReviewCard({
+  review,
+  currentUserId,
+  visitorAverage = null,
+  visitorCount = 0,
+  visitorHalves = null,
+  interactiveRatings = false,
+}: ReviewCardProps) {
   const trusted = isTrustedReview(review.status, review.user);
   const liked = currentUserId
     ? review.likes.some((like) => like.userId === currentUserId)
@@ -119,6 +134,30 @@ export function ReviewCard({ review, currentUserId }: ReviewCardProps) {
         ) : (
           <p className="text-xs text-muted">Not counted in trusted rank</p>
         )}
+      </div>
+
+      {review.rating != null ? (
+        <div className="mt-5 border-t border-line pt-4">
+          <p className="uppercase tracking-widest text-[10px] text-gold">Reviewer rating</p>
+          <div className="mt-1">
+            <StarRating
+              value={halvesToStars(review.rating)}
+              size={20}
+              idPrefix={`reviewer-${review.id}`}
+              label={formatReviewerRating(review.rating)}
+            />
+          </div>
+        </div>
+      ) : null}
+
+      <div className={review.rating != null ? "mt-4" : "mt-5 border-t border-line pt-4"}>
+        <VisitorRating
+          reviewId={review.id}
+          average={visitorAverage}
+          count={visitorCount}
+          visitorHalves={visitorHalves}
+          interactive={interactiveRatings}
+        />
       </div>
     </article>
   );

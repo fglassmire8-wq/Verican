@@ -2,6 +2,7 @@ import Link from "next/link";
 import { EmptyState } from "@/components/EmptyState";
 import { ReviewCard } from "@/components/ReviewCard";
 import { prisma } from "@/lib/prisma";
+import { getVisitorStats } from "@/lib/review-ratings";
 import { getSession } from "@/lib/session";
 
 export const metadata = { title: "Reviews" };
@@ -19,6 +20,7 @@ export default async function ReviewsPage() {
     },
     orderBy: { createdAt: "desc" },
   });
+  const visitorStats = await getVisitorStats(reviews.map((review) => review.id));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
@@ -45,7 +47,12 @@ export default async function ReviewsPage() {
                 >
                   {review.product.strain} · {review.product.brand.name}
                 </Link>
-                <ReviewCard review={review} currentUserId={session?.user?.id} />
+                <ReviewCard
+                  review={review}
+                  currentUserId={session?.user?.id}
+                  visitorAverage={visitorStats.get(review.id)?.average ?? null}
+                  visitorCount={visitorStats.get(review.id)?.count ?? 0}
+                />
               </div>
             ))}
           </div>
