@@ -59,7 +59,7 @@ export function ReviewCard({
             {trusted ? "Verified affiliate" : "Unverified member review"}
             {review.user.role === "OWNER" ? " · Owner" : ""}
           </p>
-          <p className="text-sm text-cream mt-2">Posted {formatDate(review.createdAt)}</p>
+          <p className="text-sm text-cream mt-2">Purchased {formatDate(review.createdAt)}</p>
         </div>
         <span
           className={`text-sm tracking-[0.16em] uppercase ${
