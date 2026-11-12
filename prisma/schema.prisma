@@ -120,3 +120,15 @@ model RewardRule {
   label  String
   config String
 }
+
+model PageView {
+  id           String   @id @default(cuid())
+  path         String
+  visitorHash  String
+  referrerHost String?
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path])
+  @@index([visitorHash])
+}

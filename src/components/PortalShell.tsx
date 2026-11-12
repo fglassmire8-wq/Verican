@@ -21,7 +21,7 @@ export function PortalShell({
   isOwner: boolean;
 }) {
   const pathname = usePathname();
-  const tabs = isOwner ? [...TABS, { href: "/moderation", label: "Moderate" }] : TABS;
+  const tabs = isOwner ? [...TABS, { href: "/portal/stats", label: "Stats" }, { href: "/moderation", label: "Moderate" }] : TABS;
   const active = (href: string) =>
     href === "/portal" ? pathname === "/portal" : pathname.startsWith(href);
 

@@ -54,6 +54,10 @@ export default function PrivacyPage() {
             on approved verified-affiliate reviews. No dollar amount is recorded as a
             reward.
           </p>
+          <p>
+            Basic, anonymous page-visit counts are collected; there are no third-party
+            trackers.
+          </p>
         </section>
 
         <section className="space-y-3">
