@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
         if (!email || !password) return null;
 
         const user = await prisma.user.findUnique({ where: { email } });
-        if (!user) return null;
+        if (!user || user.disabled) return null;
 
         const ok = await bcrypt.compare(password, user.passwordHash);
         if (!ok) return null;
@@ -65,9 +65,14 @@ export const authOptions: NextAuthOptions = {
       try {
         const dbUser = await prisma.user.findUnique({
           where: { id: String(token.id) },
-          select: { role: true, affiliateStatus: true, name: true },
+          select: { role: true, affiliateStatus: true, name: true, disabled: true },
         });
-        if (!dbUser) return token;
+        if (!dbUser || dbUser.disabled) {
+          token.id = "";
+          token.role = "NONE";
+          token.affiliateStatus = "NONE";
+          return token;
+        }
         token.role = dbUser.role;
         token.affiliateStatus = dbUser.affiliateStatus;
         token.name = dbUser.name;

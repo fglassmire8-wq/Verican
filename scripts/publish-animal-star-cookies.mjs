@@ -1,7 +1,8 @@
 /**
  * Idempotent publish of Francis's approved Animal Star Cookies review.
- * Safe to run on every boot: creates the review once, refreshes photos/fields
- * to the approved spec, and never changes reviewer rating or other reviews.
+ * Safe to run on every boot: creates the review and photos only if they have
+ * never been published (PublishLock). Does not overwrite later founder edits
+ * or recreate a review the founder deleted.
  */
 import { PrismaClient } from "@prisma/client";
 
@@ -66,11 +67,7 @@ try {
 
   const product = await prisma.product.upsert({
     where: { slug: "animal-star-cookies" },
-    update: {
-      strain: "Animal Star Cookies",
-      brandId: brand.id,
-      category: "FLOWER",
-    },
+    update: {},
     create: {
       slug: "animal-star-cookies",
       strain: "Animal Star Cookies",
@@ -79,55 +76,63 @@ try {
     },
   });
 
-  const existing = await prisma.review.findFirst({
-    where: { userId: francis.id, productId: product.id },
-    orderBy: { createdAt: "asc" },
-  });
-
-  const data = {
-    productId: product.id,
-    userId: francis.id,
-    storeId: store.id,
-    amount: "28g",
-    priceCents: 13000,
-    priceIncludesTax: false,
-    pricePerGramCents: 464,
-    currency: "USD",
-    notes: NOTES,
-    verdict: "BUY",
-    harvestDate: "08/09/26",
-    expDate: "08/09/27",
-    thcPercent: 28.55,
-    thcaPercent: 33.1,
-    topTerpene: "limonene 0.53%, trans-caryophyllene 0.51%, myrcene 0.42%, humulene 0.21%",
-    status: "APPROVED",
-  };
-
-  const review = existing
-    ? await prisma.review.update({
-        where: { id: existing.id },
-        data,
-      })
-    : await prisma.review.create({
+  const lockKey = "animal-star-cookies";
+  const lock = await prisma.publishLock.findUnique({ where: { key: lockKey } });
+  if (lock) {
+    console.error(
+      `Animal Star Cookies already published (lock ${lockKey}); leaving review unchanged.`,
+    );
+  } else {
+    const existing = await prisma.review.findFirst({
+      where: { userId: francis.id, productId: product.id },
+      orderBy: { createdAt: "asc" },
+    });
+    if (existing) {
+      await prisma.publishLock.create({
+        data: { key: lockKey, reviewId: existing.id },
+      });
+      console.error(
+        `Animal Star Cookies review already exists (${existing.id}); recorded lock and left it unchanged.`,
+      );
+    } else {
+      const review = await prisma.review.create({
         data: {
-          ...data,
+          productId: product.id,
+          userId: francis.id,
+          storeId: store.id,
+          amount: "28g",
+          priceCents: 13000,
+          priceIncludesTax: false,
+          pricePerGramCents: 464,
+          currency: "USD",
+          notes: NOTES,
+          verdict: "BUY",
+          harvestDate: "08/09/26",
+          expDate: "08/09/27",
+          thcPercent: 28.55,
+          thcaPercent: 33.1,
+          topTerpene:
+            "limonene 0.53%, trans-caryophyllene 0.51%, myrcene 0.42%, humulene 0.21%",
+          status: "APPROVED",
           createdAt: PURCHASED_AT,
         },
       });
-
-  await prisma.photo.deleteMany({ where: { reviewId: review.id } });
-  await prisma.photo.createMany({
-    data: PHOTOS.map((photo, i) => ({
-      reviewId: review.id,
-      path: `/uploads/animal-star-cookies/${photo.file}`,
-      alt: photo.alt,
-      sortOrder: i,
-    })),
-  });
-
-  console.error(
-    `Published Animal Star Cookies review ${review.id} (slug animal-star-cookies, ${PHOTOS.length} photos).`,
-  );
+      await prisma.photo.createMany({
+        data: PHOTOS.map((photo, i) => ({
+          reviewId: review.id,
+          path: `/uploads/animal-star-cookies/${photo.file}`,
+          alt: photo.alt,
+          sortOrder: i,
+        })),
+      });
+      await prisma.publishLock.create({
+        data: { key: lockKey, reviewId: review.id },
+      });
+      console.error(
+        `Published Animal Star Cookies review ${review.id} (slug animal-star-cookies, ${PHOTOS.length} photos).`,
+      );
+    }
+  }
 } finally {
   await prisma.$disconnect();
 }

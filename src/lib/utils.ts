@@ -61,6 +61,7 @@ export function reviewDeskStatus(
 ): string {
   if (status === "PENDING") return "Pending";
   if (status === "REJECTED") return "Rejected";
+  if (status === "HIDDEN") return "Hidden";
   if (isTrustedReview(status, user)) return "Approved";
   return "Unverified note";
 }

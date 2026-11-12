@@ -1,7 +1,8 @@
 /**
  * Idempotent publish of Francis's approved Miss Grass Thai Wedding Cake review.
- * Safe on every boot. Never changes other reviews. Updates this review to the
- * approved spec, including the 4.0 reviewer rating he gave for this one.
+ * Safe on every boot. Creates the review and photos only if they have never
+ * been published (PublishLock). Does not overwrite later founder edits or
+ * recreate a review the founder deleted.
  */
 import { PrismaClient } from "@prisma/client";
 
@@ -32,11 +33,7 @@ try {
 
   const brand = await prisma.brand.upsert({
     where: { name: "Miss Grass" },
-    update: {
-      legalName: "Packaged by Garden Greens, LLC",
-      license: "C000017-LIC",
-      location: "Vineland, NJ",
-    },
+    update: {},
     create: {
       name: "Miss Grass",
       legalName: "Packaged by Garden Greens, LLC",
@@ -63,11 +60,7 @@ try {
 
   const product = await prisma.product.upsert({
     where: { slug: "thai-wedding-cake" },
-    update: {
-      strain: "Thai Wedding Cake",
-      brandId: brand.id,
-      category: "FLOWER",
-    },
+    update: {},
     create: {
       slug: "thai-wedding-cake",
       strain: "Thai Wedding Cake",
@@ -76,57 +69,64 @@ try {
     },
   });
 
-  const existing = await prisma.review.findFirst({
-    where: { userId: francis.id, productId: product.id },
-    orderBy: { createdAt: "asc" },
-  });
-
-  const data = {
-    productId: product.id,
-    userId: francis.id,
-    storeId: store.id,
-    amount: "14g indoor smalls · Balanced Hybrid",
-    priceCents: 7300,
-    currency: "USD",
-    priceIncludesTax: true,
-    pricePerGramCents: null,
-    notes: NOTES,
-    verdict: "BUY",
-    harvestDate: "10/19/26",
-    expDate: "04/19/27",
-    thcPercent: 28.85,
-    thcaPercent: 32.66,
-    topTerpene:
-      "total cannabinoids 34.55%; total terpenes 2.5%; myrcene 1.02%, limonene 0.56%, caryophyllene 0.29%, linalool 0.29%",
-    status: "APPROVED",
-    rating: 8,
-  };
-
-  const review = existing
-    ? await prisma.review.update({
-        where: { id: existing.id },
-        data,
-      })
-    : await prisma.review.create({
+  const lockKey = "thai-wedding-cake";
+  const lock = await prisma.publishLock.findUnique({ where: { key: lockKey } });
+  if (lock) {
+    console.error(
+      `Thai Wedding Cake already published (lock ${lockKey}); leaving review unchanged.`,
+    );
+  } else {
+    const existing = await prisma.review.findFirst({
+      where: { userId: francis.id, productId: product.id },
+      orderBy: { createdAt: "asc" },
+    });
+    if (existing) {
+      await prisma.publishLock.create({
+        data: { key: lockKey, reviewId: existing.id },
+      });
+      console.error(
+        `Thai Wedding Cake review already exists (${existing.id}); recorded lock and left it unchanged.`,
+      );
+    } else {
+      const review = await prisma.review.create({
         data: {
-          ...data,
+          productId: product.id,
+          userId: francis.id,
+          storeId: store.id,
+          amount: "14g indoor smalls · Balanced Hybrid",
+          priceCents: 7300,
+          currency: "USD",
+          priceIncludesTax: true,
+          pricePerGramCents: null,
+          notes: NOTES,
+          verdict: "BUY",
+          harvestDate: "10/19/26",
+          expDate: "04/19/27",
+          thcPercent: 28.85,
+          thcaPercent: 32.66,
+          topTerpene:
+            "total cannabinoids 34.55%; total terpenes 2.5%; myrcene 1.02%, limonene 0.56%, caryophyllene 0.29%, linalool 0.29%",
+          status: "APPROVED",
+          rating: 8,
           createdAt: PURCHASED_AT,
         },
       });
-
-  await prisma.photo.deleteMany({ where: { reviewId: review.id } });
-  await prisma.photo.createMany({
-    data: PHOTOS.map((photo, i) => ({
-      reviewId: review.id,
-      path: `/uploads/thai-wedding-cake/${photo.file}`,
-      alt: photo.alt,
-      sortOrder: i,
-    })),
-  });
-
-  console.error(
-    `Published Thai Wedding Cake review ${review.id} (slug thai-wedding-cake, ${PHOTOS.length} photos, reviewer rating 4.0).`,
-  );
+      await prisma.photo.createMany({
+        data: PHOTOS.map((photo, i) => ({
+          reviewId: review.id,
+          path: `/uploads/thai-wedding-cake/${photo.file}`,
+          alt: photo.alt,
+          sortOrder: i,
+        })),
+      });
+      await prisma.publishLock.create({
+        data: { key: lockKey, reviewId: review.id },
+      });
+      console.error(
+        `Published Thai Wedding Cake review ${review.id} (slug thai-wedding-cake, ${PHOTOS.length} photos, reviewer rating 4.0).`,
+      );
+    }
+  }
 } finally {
   await prisma.$disconnect();
 }

@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, readFile, unlink, writeFile } from "fs/promises";
 import path from "path";
 
 const MAX_SEGMENT_DEPTH = 3;
@@ -78,4 +78,23 @@ export async function readRuntimeUpload(segments: string[]): Promise<{
   } catch {
     return null;
   }
+}
+
+/** Remove a stored photo file. Safe against path traversal. Missing files are ignored. */
+export async function deleteStoredPhoto(photoPath: string): Promise<void> {
+  let root: string;
+  let rest: string;
+  if (photoPath.startsWith("/media/")) {
+    root = runtimeUploadDir();
+    rest = photoPath.slice("/media/".length);
+  } else if (photoPath.startsWith("/uploads/")) {
+    root = path.join(process.cwd(), "public", "uploads");
+    rest = photoPath.slice("/uploads/".length);
+  } else {
+    return;
+  }
+  const segments = rest.split("/").filter(Boolean);
+  const abs = safeJoin(root, segments);
+  if (!abs) return;
+  await unlink(abs).catch(() => {});
 }
