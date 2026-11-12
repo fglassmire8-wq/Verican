@@ -49,6 +49,7 @@ export default async function AdminCatalogPage() {
                   slug: product.slug,
                   category: product.category,
                   brandId: product.brandId,
+                  lineage: product.lineage,
                 }}
               />
               <div className="mt-3 flex flex-wrap gap-3">

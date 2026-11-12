@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
+import { publicLineage } from "@/lib/product-lineage";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -96,6 +97,7 @@ export default async function ProductPage({
   const buy = trusted.filter((r) => r.verdict === "BUY").length;
   const dont = trusted.filter((r) => r.verdict === "DONT_BUY").length;
   const likes = trusted.reduce((sum, r) => sum + r.likes.length, 0);
+  const lineage = publicLineage(product.lineage);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -109,6 +111,12 @@ export default async function ProductPage({
         {product.brand.legalName ? ` · ${product.brand.legalName}` : ""}
         {product.brand.license ? ` · license ${product.brand.license}` : ""}
       </p>
+      {lineage ? (
+        <p className="mt-2 text-muted text-sm">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-gold">Lineage</span>
+          <span className="ml-2">{lineage}</span>
+        </p>
+      ) : null}
 
       <p className="mt-4 text-sm text-cream/80">
         {trusted.length === 0

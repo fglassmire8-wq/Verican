@@ -51,6 +51,7 @@ model Product {
   brandId  String
   brand    Brand    @relation(fields: [brandId], references: [id])
   category String   @default("FLOWER")
+  lineage  String?
   reviews  Review[]
 
   @@unique([strain, brandId])

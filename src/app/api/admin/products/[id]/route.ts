@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireConfirm, requireFounderApi } from "@/lib/admin-auth";
 import { deleteReviewAndFiles } from "@/lib/admin-reviews";
 import { prisma } from "@/lib/prisma";
+import { normalizeLineage } from "@/lib/product-lineage";
 import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -38,6 +39,11 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     const brand = await prisma.brand.findUnique({ where: { id: String(body.brandId) } });
     if (!brand) return NextResponse.json({ error: "Brand not found." }, { status: 404 });
     data.brandId = brand.id;
+  }
+  if (body.lineage !== undefined) {
+    const lineage = normalizeLineage(body.lineage);
+    if (!lineage.ok) return NextResponse.json({ error: lineage.error }, { status: 400 });
+    data.lineage = lineage.lineage;
   }
   const updated = await prisma.product.update({ where: { id }, data });
   return NextResponse.json({ ok: true, product: { id: updated.id, slug: updated.slug } });

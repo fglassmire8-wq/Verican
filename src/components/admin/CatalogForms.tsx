@@ -52,13 +52,23 @@ function SaveForm({
 export function ProductForm({
   product,
 }: {
-  product: { id: string; strain: string; slug: string; category: string; brandId: string };
+  product: { id: string; strain: string; slug: string; category: string; brandId: string; lineage: string | null };
 }) {
   return (
     <SaveForm url={`/api/admin/products/${product.id}`}>
       <input name="strain" defaultValue={product.strain} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
       <input name="slug" defaultValue={product.slug} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
       <input name="category" defaultValue={product.category} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
+      <label className="block text-sm">
+        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Lineage</span>
+        <input
+          name="lineage"
+          defaultValue={product.lineage ?? ""}
+          placeholder="Cap Junky x Rosetta Stone"
+          maxLength={300}
+          className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
+        />
+      </label>
       <input type="hidden" name="brandId" value={product.brandId} />
     </SaveForm>
   );
