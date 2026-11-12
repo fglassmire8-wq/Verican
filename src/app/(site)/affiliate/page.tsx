@@ -5,6 +5,7 @@ import { AffiliateTiers } from "@/components/AffiliateTiers";
 import { JoinForm } from "@/components/JoinForm";
 import { publicUrl } from "@/lib/public-origin";
 import { getSession } from "@/lib/session";
+import { isGoogleAuthEnabled } from "@/lib/google-auth";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata = { title: "Affiliate Program" };
@@ -45,7 +46,7 @@ export default async function AffiliatePage() {
       <div id="apply" className="mt-10 border border-line bg-panel p-6">
         <h2 className="font-display text-2xl">Apply as a new affiliate</h2>
         <div className="mt-6">
-          <JoinForm affiliate />
+          <JoinForm affiliate googleEnabled={isGoogleAuthEnabled()} />
         </div>
         <p className="mt-6 text-sm text-muted">
           Already a member?{" "}

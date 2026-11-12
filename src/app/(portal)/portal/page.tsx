@@ -15,6 +15,7 @@ import {
   trustedLikesReceived,
 } from "@/lib/affiliates";
 import { prisma } from "@/lib/prisma";
+import { isGoogleAuthEnabled } from "@/lib/google-auth";
 import { getSession } from "@/lib/session";
 import { isTrustedAffiliate, plural } from "@/lib/utils";
 
@@ -68,7 +69,7 @@ export default async function PortalPage() {
             has to verify you.
           </p>
           <div className="mt-6">
-            <JoinForm affiliate />
+            <JoinForm affiliate googleEnabled={isGoogleAuthEnabled()} />
           </div>
         </div>
         <div className="mt-12">

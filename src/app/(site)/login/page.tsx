@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/LoginForm";
 import { publicUrl } from "@/lib/public-origin";
+import { isGoogleAuthEnabled } from "@/lib/google-auth";
 import { getSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
@@ -25,7 +26,7 @@ export default async function LoginPage() {
       </p>
       <div className="mt-8">
         <Suspense fallback={<p className="text-muted text-sm">Loading…</p>}>
-          <LoginForm />
+          <LoginForm googleEnabled={isGoogleAuthEnabled()} />
         </Suspense>
       </div>
       <p className="mt-6 text-sm text-muted">

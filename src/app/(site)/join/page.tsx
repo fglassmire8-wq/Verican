@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { JoinForm } from "@/components/JoinForm";
 import { publicUrl } from "@/lib/public-origin";
+import { isGoogleAuthEnabled } from "@/lib/google-auth";
 import { getSession } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +25,7 @@ export default async function JoinPage() {
         separately. After you join, the portal is your desk.
       </p>
       <div className="mt-8">
-        <JoinForm />
+        <JoinForm googleEnabled={isGoogleAuthEnabled()} />
       </div>
       <p className="mt-6 text-sm text-muted">
         Already have an account?{" "}

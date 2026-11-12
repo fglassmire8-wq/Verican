@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { applyAffiliate } from "@/lib/affiliate-apply";
 import { getSession } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 
@@ -19,13 +20,9 @@ export async function POST() {
     return NextResponse.json({ error: "Your application is already pending." }, { status: 400 });
   }
 
-  await prisma.user.update({
-    where: { id: user.id },
-    data: {
-      role: user.role === "OWNER" ? "OWNER" : "AFFILIATE",
-      affiliateStatus: "PENDING",
-    },
-  });
-
+  const result = await applyAffiliate(user.id);
+  if (!result.ok) {
+    return NextResponse.json({ error: result.error }, { status: result.status });
+  }
   return NextResponse.json({ ok: true });
 }
