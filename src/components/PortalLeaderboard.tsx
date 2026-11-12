@@ -48,7 +48,7 @@ export function PortalLeaderboard({
                       ) : null}
                     </p>
                     <p className="text-xs uppercase tracking-[0.16em] text-muted mt-1">
-                      {owner ? "Owner" : "Verified affiliate"}
+                      {owner ? "Founder" : "Verified affiliate"}
                     </p>
                   </div>
                 </div>

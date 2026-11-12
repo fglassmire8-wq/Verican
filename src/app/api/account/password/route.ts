@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 export async function POST(request: Request) {
   const owner = await requireOwner();
   if (!owner) {
-    return NextResponse.json({ error: "Owner sign-in required." }, { status: 401 });
+    return NextResponse.json({ error: "Founder sign-in required." }, { status: 401 });
   }
 
   const body = (await request.json().catch(() => null)) as
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
   const user = await prisma.user.findUnique({ where: { id: owner.id } });
   if (!user || user.role !== "OWNER") {
-    return NextResponse.json({ error: "Owner sign-in required." }, { status: 401 });
+    return NextResponse.json({ error: "Founder sign-in required." }, { status: 401 });
   }
   const ok = await bcrypt.compare(currentPassword, user.passwordHash);
   if (!ok) {

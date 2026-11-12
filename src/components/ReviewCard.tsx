@@ -57,7 +57,7 @@ export function ReviewCard({
           <p className="font-display text-xl text-cream">{review.user.name}</p>
           <p className="text-xs uppercase tracking-[0.18em] text-muted mt-1">
             {trusted ? "Verified affiliate" : "Unverified member review"}
-            {review.user.role === "OWNER" ? " · Owner" : ""}
+            {review.user.role === "OWNER" ? " · Founder" : ""}
           </p>
           <p className="text-sm text-cream mt-2">Purchased {formatDate(review.createdAt)}</p>
         </div>

@@ -17,7 +17,7 @@ export default async function ChangePasswordPage() {
   return (
     <div className="mx-auto max-w-md px-4 py-12 sm:py-16">
       <h1 className="font-display text-3xl">Change password</h1>
-      <p className="mt-2 text-sm text-muted">Owner account: {owner.email}</p>
+      <p className="mt-2 text-sm text-muted">Founder account: {owner.email}</p>
       <ChangePasswordForm />
     </div>
   );

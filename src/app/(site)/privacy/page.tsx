@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             Approved reviews are public, including member notes and the name on the
             account that posted them. Photos you attach are public with that review.
             Pending verified-affiliate reviews stay off the public catalog until the
-            owner approves them.
+            founder approves them.
           </p>
           <p>
             Green Vault does not sell personal information. Account email is used to sign

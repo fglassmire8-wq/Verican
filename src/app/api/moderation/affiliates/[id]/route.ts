@@ -8,7 +8,7 @@ export async function POST(
 ) {
   const owner = await requireOwner();
   if (!owner) {
-    return NextResponse.json({ error: "Owner only." }, { status: 403 });
+    return NextResponse.json({ error: "Founder only." }, { status: 403 });
   }
 
   const { id } = await context.params;

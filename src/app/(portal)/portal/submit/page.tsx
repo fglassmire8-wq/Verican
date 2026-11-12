@@ -29,7 +29,7 @@ export default async function PortalSubmitPage() {
       <h1 className="font-display text-4xl mt-2">Submit a review</h1>
       <p className="mt-3 text-muted leading-relaxed">
         {owner
-          ? "Owner reviews publish immediately as trusted."
+          ? "Founder reviews publish immediately as trusted."
           : trusted
             ? "Verified-affiliate reviews stay pending until Green Vault approves them. They do not get likes or rank until then."
             : "Member reviews publish as unverified notes. They are unrewarded and never count toward trusted rank."}

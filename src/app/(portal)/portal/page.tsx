@@ -274,11 +274,11 @@ function VerifiedBanner({ owner }: { owner: boolean }) {
   return (
     <div className="border border-gold/40 bg-panel p-5 sm:p-6">
       <h2 className="font-display text-2xl">
-        {owner ? "Owner desk" : "Verified affiliate"}
+        {owner ? "Founder desk" : "Verified affiliate"}
       </h2>
       <p className="mt-2 text-sm text-muted leading-relaxed max-w-2xl">
         New photo reviews stay pending until Green Vault approves them
-        {owner ? " — except owner reviews, which publish as trusted immediately" : ""}.
+        {owner ? " — except founder reviews, which publish as trusted immediately" : ""}.
         Approved likes count toward rank. Honest DON&apos;T BUY is a feature.
       </p>
     </div>

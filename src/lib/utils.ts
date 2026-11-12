@@ -48,7 +48,7 @@ export function verdictLabel(verdict: string): string {
 }
 
 export function roleLabel(role: string, affiliateStatus: string): string {
-  if (role === "OWNER") return "Owner";
+  if (role === "OWNER") return "Founder";
   if (affiliateStatus === "VERIFIED") return "Verified affiliate";
   if (affiliateStatus === "PENDING") return "Affiliate (pending)";
   if (affiliateStatus === "REJECTED") return "Affiliate (rejected)";
