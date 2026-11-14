@@ -8,8 +8,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      { source: "/markets", destination: "/categories", permanent: true },
-      { source: "/brands", destination: "/categories", permanent: true },
+      {
+        source: "/categories",
+        has: [{ type: "query", key: "c" }],
+        destination: "/reviews?category=:c",
+        permanent: true,
+      },
+      { source: "/categories", destination: "/reviews", permanent: true },
+      { source: "/submit", destination: "/portal/submit", permanent: true },
+      { source: "/markets", destination: "/reviews", permanent: true },
+      { source: "/brands", destination: "/reviews", permanent: true },
     ];
   },
 };

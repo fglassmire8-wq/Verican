@@ -25,10 +25,10 @@ export default function HomePage() {
               Become an affiliate — Sign up
             </Link>
             <Link
-              href="/categories"
+              href="/reviews"
               className="border border-line bg-panel px-6 py-3 text-base tracking-[0.08em] uppercase text-cream hover:border-gold"
             >
-              Browse categories
+              Browse reviews
             </Link>
           </div>
           <div className="mt-10 max-w-3xl border border-line p-5 bg-panel">

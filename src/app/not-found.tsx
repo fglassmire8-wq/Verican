@@ -11,10 +11,10 @@ export default function NotFound() {
           public review.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm tracking-[0.16em] uppercase">
-          <Link href="/" className="border border-gold bg-gold text-ink px-5 py-2.5">
+          <Link href="/reviews" className="border border-gold bg-gold text-ink px-5 py-2.5">
             Back to reviews
           </Link>
-          <Link href="/categories" className="border border-line px-5 py-2.5 hover:border-gold">
+          <Link href="/reviews" className="border border-line px-5 py-2.5 hover:border-gold">
             Search
           </Link>
         </div>

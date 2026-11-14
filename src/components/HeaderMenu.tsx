@@ -2,7 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function HeaderMenu({ children }: { children: React.ReactNode }) {
+export function HeaderMenu({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -25,7 +31,7 @@ export function HeaderMenu({ children }: { children: React.ReactNode }) {
   }, [open]);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className={`relative ${className ?? ""}`}>
       <button
         type="button"
         aria-label="Menu"

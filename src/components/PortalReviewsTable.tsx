@@ -26,7 +26,7 @@ export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
           <p className="text-cream">You have not posted a review yet.</p>
           <p className="mt-2 text-sm text-muted">
             After you buy,{" "}
-            <Link href="/submit" className="text-gold hover:text-gold-bright">
+            <Link href="/portal/submit" className="text-gold hover:text-gold-bright">
               submit a photo review
             </Link>
             .
