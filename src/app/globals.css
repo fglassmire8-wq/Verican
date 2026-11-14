@@ -5,14 +5,16 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --color-ink: #ffffff;
   --color-panel: #ffffff;
-  --color-panel-2: #f6f8f6;
-  --color-gold: #2f9e44;
-  --color-gold-bright: #1b6e2c;
-  --color-cream: #1f2937;
-  --color-muted: #6b7280;
-  --color-line: #e5e7eb;
-  --color-buy: #a35d00;
+  --color-panel-2: #eff6ff;
+  --color-gold: #1d4ed8;
+  --color-gold-bright: #1e40af;
+  --color-cream: #1e293b;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-navy: #0b1f4d;
+  --color-buy: #0e7490;
   --color-dont: #c0392b;
+  --color-star: #f59e0b;
 }
 
 html,
@@ -44,7 +46,7 @@ h1, h2, h3, .font-display, .bubble {
   font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #1b6e2c;
+  color: #0b1f4d;
   text-shadow: none;
 }
 
@@ -58,10 +60,10 @@ h3, .bubble-sm {
   font-weight: 600;
   font-size: 0.98rem;
   letter-spacing: 0;
-  color: #2f9e44;
+  color: #1d4ed8;
   text-shadow: none;
 }
-.bubble-nav:hover { color: #1b6e2c; }
+.bubble-nav:hover { color: #1e40af; }
 
 h4, h5, h6, label, button, strong, b {
   font-weight: 700;
@@ -73,8 +75,8 @@ h4, h5, h6, label, button, strong, b {
 }
 
 ::selection {
-  background: #f2a65a;
-  color: #2a1d1a;
+  background: #dbeafe;
+  color: #0b1f4d;
 }
 
 a {
@@ -89,7 +91,7 @@ select {
 
 .editorial-rule {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #b4432a66, transparent);
+  background: linear-gradient(90deg, transparent, #1d4ed866, transparent);
 }
 
 /* Modern surfaces: rounded, subtly shadowed cards and clean controls */

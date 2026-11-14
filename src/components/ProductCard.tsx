@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CatalogImage } from "@/components/CatalogImage";
+import { categoryLabel } from "@/lib/categories";
 import { verdictLabel } from "@/lib/utils";
 
 type ProductCardProps = {
@@ -12,6 +13,7 @@ type ProductCardProps = {
   trustedLikes: number;
   /** First row of the catalog. Those photos are on screen immediately. */
   priority?: boolean;
+  category?: string | null;
 };
 
 export function ProductCard({
@@ -23,6 +25,7 @@ export function ProductCard({
   trustedDontBuy,
   trustedLikes,
   priority = false,
+  category,
 }: ProductCardProps) {
   const trustedCount = trustedBuy + trustedDontBuy;
   return (
@@ -49,6 +52,9 @@ export function ProductCard({
       <div className="p-4 space-y-2">
         <p className="text-[11px] uppercase tracking-[0.12em] text-gold">{brand}</p>
         <h2 className="font-display text-2xl text-cream">{strain}</h2>
+        {category ? (
+          <p className="text-[11px] uppercase tracking-[0.12em] text-navy">{categoryLabel(category)}</p>
+        ) : null}
         <p className="text-sm text-muted">
           {trustedCount === 0
             ? "No verified reviews yet"

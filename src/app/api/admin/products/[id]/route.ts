@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireConfirm, requireFounderApi } from "@/lib/admin-auth";
 import { deleteReviewAndFiles } from "@/lib/admin-reviews";
 import { prisma } from "@/lib/prisma";
+import { parseCategory } from "@/lib/categories";
 import { normalizeLineage } from "@/lib/product-lineage";
 import { slugify } from "@/lib/utils";
 
@@ -22,9 +23,9 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     data.strain = strain;
   }
   if (body.category !== undefined) {
-    const category = String(body.category).trim().toUpperCase();
-    if (!category) return NextResponse.json({ error: "Category is required." }, { status: 400 });
-    data.category = category;
+    const category = parseCategory(body.category);
+    if (!category) return NextResponse.json({ error: "Choose a valid category." }, { status: 400 });
+    data.category = category.value;
   }
   if (body.slug !== undefined) {
     const slug = slugify(String(body.slug)) || slugify(String(body.strain ?? product.strain));

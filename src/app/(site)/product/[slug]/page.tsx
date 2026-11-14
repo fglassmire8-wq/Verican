@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
+import { categoryLabel } from "@/lib/categories";
 import { publicLineage } from "@/lib/product-lineage";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
 import { PhotoGallery } from "@/components/PhotoGallery";
@@ -107,7 +108,7 @@ export default async function ProductPage({
       </p>
       <h1 className="font-display text-4xl sm:text-5xl mt-2">{product.strain}</h1>
       <p className="mt-2 text-muted text-sm">
-        {product.category === "FLOWER" ? "Flower" : product.category}
+        {categoryLabel(product.category)}
         {product.brand.legalName ? ` · ${product.brand.legalName}` : ""}
         {product.brand.license ? ` · license ${product.brand.license}` : ""}
       </p>

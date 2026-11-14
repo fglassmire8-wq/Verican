@@ -16,9 +16,9 @@ function Star({ fill, size, clipId }: { fill: number; size: number; clipId: stri
           <rect x="0" y="0" width={width} height="24" />
         </clipPath>
       </defs>
-      <path d={STAR_PATH} fill="#e5e7eb" />
+      <path d={STAR_PATH} fill="#e2e8f0" />
       {fill > 0 ? (
-        <path d={STAR_PATH} fill="#2f9e44" clipPath={`url(#${clipId})`} />
+        <path d={STAR_PATH} fill="#f59e0b" clipPath={`url(#${clipId})`} />
       ) : null}
     </svg>
   );

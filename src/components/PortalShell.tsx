@@ -26,12 +26,12 @@ export function PortalShell({
     href === "/portal" ? pathname === "/portal" : pathname.startsWith(href);
 
   return (
-    <div className="portal-shell min-h-screen bg-[#f4f7f5] md:flex">
-      <aside className="md:w-64 md:shrink-0 md:min-h-screen bg-[#0f2418] text-white md:sticky md:top-0 md:h-screen flex flex-col">
+    <div className="portal-shell min-h-screen bg-white md:flex">
+      <aside className="md:w-64 md:shrink-0 md:min-h-screen bg-navy text-white md:sticky md:top-0 md:h-screen flex flex-col">
         <div className="px-5 py-4 md:py-6 flex items-center justify-between md:block">
           <Link href="/portal" className="block">
             <span className="block text-lg font-extrabold tracking-tight text-white">Green Vault</span>
-            <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-[#6fdc8c]">
+            <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-[#93c5fd]">
               Affiliates
             </span>
           </Link>
@@ -51,7 +51,7 @@ export function PortalShell({
                 aria-current={active(t.href) ? "page" : undefined}
                 className={`whitespace-nowrap rounded-lg px-3 py-2 font-semibold transition-colors ${
                   active(t.href)
-                    ? "bg-[#2f9e44] text-white"
+                    ? "bg-gold text-ink"
                     : "text-white/75 hover:bg-white/10 hover:text-white"
                 }`}
               >

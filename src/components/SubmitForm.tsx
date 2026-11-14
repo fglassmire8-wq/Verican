@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { PRODUCT_CATEGORIES } from "@/lib/categories";
 
 export function SubmitForm() {
   const router = useRouter();
@@ -48,6 +49,25 @@ export function SubmitForm() {
           />
         </label>
       </div>
+
+      <label className="block text-sm">
+        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Category</span>
+        <select
+          name="category"
+          required
+          defaultValue=""
+          className="mt-1 w-full bg-panel border border-line px-3 py-3 outline-none focus:border-gold"
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          {PRODUCT_CATEGORIES.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <div className="grid sm:grid-cols-3 gap-4">
         <label className="block text-sm sm:col-span-1">

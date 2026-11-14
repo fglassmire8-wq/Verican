@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { PRODUCT_CATEGORIES, parseCategory } from "@/lib/categories";
 
 function SaveForm({
   url,
@@ -58,7 +59,21 @@ export function ProductForm({
     <SaveForm url={`/api/admin/products/${product.id}`}>
       <input name="strain" defaultValue={product.strain} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
       <input name="slug" defaultValue={product.slug} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
-      <input name="category" defaultValue={product.category} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
+      <label className="block text-sm">
+        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Category</span>
+        <select
+          name="category"
+          required
+          defaultValue={parseCategory(product.category)?.value ?? "FLOWER"}
+          className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
+        >
+          {PRODUCT_CATEGORIES.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </label>
       <label className="block text-sm">
         <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Lineage</span>
         <input

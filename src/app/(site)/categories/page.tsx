@@ -2,25 +2,15 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { EmptyState } from "@/components/EmptyState";
 import { ProductCard } from "@/components/ProductCard";
+import { PRODUCT_CATEGORIES, categoryLabel, parseCategory } from "@/lib/categories";
 import { isTrustedReview } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "Categories" };
 
-const BASE_CATEGORIES: { value: string; label: string }[] = [
-  { value: "FLOWER", label: "Flower" },
-  { value: "VAPE", label: "Vapes" },
-  { value: "CONCENTRATE", label: "Concentrates" },
-  { value: "EDIBLE", label: "Edibles" },
-  { value: "PREROLL", label: "Pre-rolls" },
-];
-
 function labelFor(value: string) {
-  return (
-    BASE_CATEGORIES.find((c) => c.value === value)?.label ??
-    value.charAt(0) + value.slice(1).toLowerCase()
-  );
+  return categoryLabel(value);
 }
 
 export default async function CategoriesPage({
@@ -30,17 +20,9 @@ export default async function CategoriesPage({
 }) {
   const { q = "", c = "" } = await searchParams;
   const query = q.trim();
-  const category = c.trim().toUpperCase();
+  const category = parseCategory(c)?.value ?? "";
 
-  const used = await prisma.product.findMany({
-    where: { reviews: { some: { status: "APPROVED" } } },
-    select: { category: true },
-    distinct: ["category"],
-  });
-  const categories = [...BASE_CATEGORIES];
-  for (const { category: value } of used) {
-    if (!categories.some((x) => x.value === value)) categories.push({ value, label: labelFor(value) });
-  }
+  const categories = PRODUCT_CATEGORIES;
 
   const products = await prisma.product.findMany({
     where: {
@@ -93,7 +75,7 @@ export default async function CategoriesPage({
       <nav className="mt-6 flex flex-wrap gap-2" aria-label="Product categories">
         {[{ value: "", label: "All" }, ...categories].map((item) => {
           const active = item.value === category;
-          const href = item.value ? `/categories?c=${item.value.toLowerCase()}` : "/categories";
+          const href = "slug" in item && item.value ? `/categories?c=${item.slug}` : "/categories";
           return (
             <Link
               key={item.value || "all"}
@@ -152,6 +134,7 @@ export default async function CategoriesPage({
                   trustedDontBuy={trusted.filter((r) => r.verdict === "DONT_BUY").length}
                   trustedLikes={trusted.reduce((sum, r) => sum + r.likes.length, 0)}
                   priority={index < 3}
+                  category={product.category}
                 />
               );
             })}

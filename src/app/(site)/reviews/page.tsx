@@ -1,26 +1,39 @@
 import Link from "next/link";
 import { EmptyState } from "@/components/EmptyState";
-import { ReviewCard } from "@/components/ReviewCard";
+import { ReviewThumbCard } from "@/components/ReviewThumbCard";
+import { PRODUCT_CATEGORIES, parseCategory } from "@/lib/categories";
 import { prisma } from "@/lib/prisma";
-import { getVisitorStats } from "@/lib/review-ratings";
-import { getSession } from "@/lib/session";
 
 export const metadata = { title: "Reviews" };
 export const dynamic = "force-dynamic";
 
-export default async function ReviewsPage() {
-  const session = await getSession();
+export default async function ReviewsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category: categoryParam = "" } = await searchParams;
+  const selected = parseCategory(categoryParam);
+
   const reviews = await prisma.review.findMany({
     where: { status: "APPROVED" },
     include: {
-      user: true,
-      store: true,
-      likes: true,
+      photos: { orderBy: { sortOrder: "asc" }, take: 1 },
       product: { include: { brand: true } },
     },
     orderBy: { createdAt: "desc" },
   });
-  const visitorStats = await getVisitorStats(reviews.map((review) => review.id));
+
+  const counts = Object.fromEntries(
+    PRODUCT_CATEGORIES.map((item) => [
+      item.value,
+      reviews.filter((review) => review.product.category === item.value).length,
+    ]),
+  ) as Record<string, number>;
+
+  const filtered = selected
+    ? reviews.filter((review) => review.product.category === selected.value)
+    : reviews;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
@@ -28,36 +41,93 @@ export default async function ReviewsPage() {
       <p className="mt-3 text-muted max-w-2xl">
         Every approved, public review on Green Vault, newest first.
       </p>
+
+      <nav className="mt-8 flex flex-wrap gap-2" aria-label="Filter reviews by category">
+        <FilterChip href="/reviews" label="All" count={reviews.length} active={!selected} />
+        {PRODUCT_CATEGORIES.map((item) => (
+          <FilterChip
+            key={item.value}
+            href={`/reviews?category=${item.slug}`}
+            label={item.label}
+            count={counts[item.value] ?? 0}
+            active={selected?.value === item.value}
+          />
+        ))}
+      </nav>
+
       <div className="mt-10">
-        {reviews.length === 0 ? (
-          <EmptyState title="No reviews here yet">
-            Be the first.{" "}
-            <Link href="/portal/submit" className="text-gold hover:text-gold-bright underline">
-              Submit a review
-            </Link>
-            . Green Vault does not add products on its own.
+        {filtered.length === 0 ? (
+          <EmptyState title={selected ? `No ${selected.label.toLowerCase()} reviews yet` : "No reviews here yet"}>
+            {selected ? (
+              <>Nothing in {selected.label} yet.{" "}
+                <Link href="/reviews" className="text-gold hover:text-gold-bright underline">
+                  See all reviews
+                </Link>
+                .
+              </>
+            ) : (
+              <>
+                Be the first.{" "}
+                <Link href="/portal/submit" className="text-gold hover:text-gold-bright underline">
+                  Submit a review
+                </Link>
+                . Green Vault does not add products on its own.
+              </>
+            )}
           </EmptyState>
         ) : (
-          <div className="grid gap-8 lg:grid-cols-2">
-            {reviews.map((review) => (
-              <div key={review.id}>
-                <Link
-                  href={`/product/${review.product.slug}`}
-                  className="mb-2 block text-sm font-semibold text-gold hover:text-gold-bright"
-                >
-                  {review.product.strain} · {review.product.brand.name}
-                </Link>
-                <ReviewCard
-                  review={review}
-                  currentUserId={session?.user?.id}
-                  visitorAverage={visitorStats.get(review.id)?.average ?? null}
-                  visitorCount={visitorStats.get(review.id)?.count ?? 0}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((review, index) => {
+              const photo = review.photos[0] ?? null;
+              return (
+                <ReviewThumbCard
+                  key={review.id}
+                  number={index + 1}
+                  slug={review.product.slug}
+                  strain={review.product.strain}
+                  brand={review.product.brand.name}
+                  category={review.product.category}
+                  photo={photo}
+                  priority={index < 3}
                 />
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
     </div>
+  );
+}
+
+function FilterChip({
+  href,
+  label,
+  count,
+  active,
+}: {
+  href: string;
+  label: string;
+  count: number;
+  active: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${
+        active
+          ? "border-gold bg-gold text-ink"
+          : "border-line bg-panel text-cream hover:bg-panel-2 hover:border-gold"
+      }`}
+    >
+      <span>{label}</span>
+      <span
+        className={`rounded-full px-1.5 text-xs tabular-nums ${
+          active ? "bg-white/20 text-ink" : "bg-panel-2 text-muted"
+        }`}
+      >
+        {count}
+      </span>
+    </Link>
   );
 }

@@ -34,9 +34,9 @@ export function HeaderMenu({ children }: { children: React.ReactNode }) {
         onClick={() => setOpen((o) => !o)}
         className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-panel-2"
       >
-        <span className="block h-[2px] w-6 rounded bg-[#1b6e2c]" />
-        <span className="block h-[2px] w-6 rounded bg-[#1b6e2c]" />
-        <span className="block h-[2px] w-6 rounded bg-[#1b6e2c]" />
+        <span className="block h-[2px] w-6 rounded bg-navy" />
+        <span className="block h-[2px] w-6 rounded bg-navy" />
+        <span className="block h-[2px] w-6 rounded bg-navy" />
       </button>
       {open ? (
         <nav

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 import { extFor, writeReviewPhoto } from "@/lib/uploads";
 import { parseStarRating } from "@/lib/rating";
+import { parseCategory } from "@/lib/categories";
 import { isTrustedAffiliate, slugify } from "@/lib/utils";
 
 const MAX_PHOTOS = 8;
@@ -35,6 +36,7 @@ export async function POST(request: Request) {
   const thcRaw = String(form.get("thcPercent") || "").trim();
   const thcaRaw = String(form.get("thcaPercent") || "").trim();
   const topTerpene = String(form.get("topTerpene") || "").trim() || null;
+  const category = parseCategory(form.get("category"));
   const ratingParse = parseStarRating(form.get("rating"));
   if (!ratingParse.ok) {
     return NextResponse.json({ error: ratingParse.error }, { status: 400 });
@@ -43,6 +45,9 @@ export async function POST(request: Request) {
 
   if (!strain || !brandName || !storeName || !storeCity || !amount || !notes) {
     return NextResponse.json({ error: "Strain, brand, store, city, amount, and notes are required." }, { status: 400 });
+  }
+  if (!category) {
+    return NextResponse.json({ error: "Category is required." }, { status: 400 });
   }
   if (verdict !== "BUY" && verdict !== "DONT_BUY") {
     return NextResponse.json({ error: "Verdict must be BUY or DON'T BUY." }, { status: 400 });
@@ -104,7 +109,7 @@ export async function POST(request: Request) {
       slug = `${slugBase}-${n++}`;
     }
     product = await prisma.product.create({
-      data: { slug, strain, brandId: brand.id, category: "FLOWER" },
+      data: { slug, strain, brandId: brand.id, category: category.value },
     });
   }
 
