@@ -22,34 +22,37 @@ export function ReviewThumbCard({
   return (
     <Link
       href={`/product/${slug}`}
-      className="group block border border-line bg-panel hover:border-gold/50 transition-colors"
+      className="review-photo-tile group relative block aspect-square overflow-hidden rounded-[3px] bg-panel-2"
+      aria-label={`${strain} by ${brand}`}
     >
-      <div className="relative aspect-[4/5] bg-panel-2 overflow-hidden">
-        <span className="absolute left-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gold text-ink text-sm font-bold">
-          {number}
+      {photo ? (
+        <CatalogImage
+          src={photo.path}
+          alt={photo.alt}
+          fill
+          priority={priority}
+          className="object-cover"
+          sizes="(max-width: 767px) 33vw, (max-width: 1023px) 20vw, 180px"
+        />
+      ) : (
+        <span className="absolute inset-0 flex items-center justify-center px-1 text-center text-[10px] text-muted">
+          No photo yet
         </span>
-        <span className="absolute right-3 top-3 z-10 rounded-full bg-white/95 border border-line px-2.5 py-1 text-[11px] uppercase tracking-[0.12em] text-navy">
-          {categoryLabel(category)}
+      )}
+      <span className="absolute left-1 top-1 z-10 flex h-5 min-w-5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold tabular-nums leading-none text-ink">
+        {number}
+      </span>
+      <span className="absolute right-1 top-1 z-10 max-w-[calc(100%-1.75rem)] truncate rounded bg-black/45 px-1 py-px text-[9px] font-medium uppercase tracking-wide text-white">
+        {categoryLabel(category)}
+      </span>
+      <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/75 via-black/40 to-transparent px-1.5 pb-1 pt-6">
+        <span className="block truncate text-[11px] font-semibold leading-tight text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">
+          {strain}
         </span>
-        {photo ? (
-          <CatalogImage
-            src={photo.path}
-            alt={photo.alt}
-            fill
-            priority={priority}
-            className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">
-            No photo yet
-          </div>
-        )}
-      </div>
-      <div className="p-4 space-y-1">
-        <p className="text-[11px] uppercase tracking-[0.12em] text-gold">{brand}</p>
-        <h2 className="font-display text-2xl text-cream">{strain}</h2>
-      </div>
+        <span className="block truncate text-[9px] leading-tight text-white/85 [text-shadow:0_1px_2px_rgba(0,0,0,0.8)]">
+          {brand}
+        </span>
+      </span>
     </Link>
   );
 }

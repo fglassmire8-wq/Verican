@@ -1,8 +1,10 @@
+import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import { EmptyState } from "@/components/EmptyState";
 import { ReviewThumbCard } from "@/components/ReviewThumbCard";
 import { PRODUCT_CATEGORIES, parseCategory } from "@/lib/categories";
 import { prisma } from "@/lib/prisma";
+import { reviewGridColumnCounts } from "@/lib/review-grid";
 
 export const metadata = { title: "Reviews" };
 export const dynamic = "force-dynamic";
@@ -55,7 +57,7 @@ export default async function ReviewsPage({
         ))}
       </nav>
 
-      <div className="mt-10">
+      <div className="mt-5">
         {filtered.length === 0 ? (
           <EmptyState title={selected ? `No ${selected.label.toLowerCase()} reviews yet` : "No reviews here yet"}>
             {selected ? (
@@ -76,7 +78,7 @@ export default async function ReviewsPage({
             )}
           </EmptyState>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ReviewPhotoGrid count={filtered.length}>
             {filtered.map((review, index) => {
               const photo = review.photos[0] ?? null;
               return (
@@ -88,11 +90,11 @@ export default async function ReviewsPage({
                   brand={review.product.brand.name}
                   category={review.product.category}
                   photo={photo}
-                  priority={index < 3}
+                  priority={index < 8}
                 />
               );
             })}
-          </div>
+          </ReviewPhotoGrid>
         )}
       </div>
     </div>
@@ -129,5 +131,30 @@ function FilterChip({
         {count}
       </span>
     </Link>
+  );
+}
+
+function ReviewPhotoGrid({
+  count,
+  children,
+}: {
+  count: number;
+  children: ReactNode;
+}) {
+  const cols = reviewGridColumnCounts(count);
+  return (
+    <div
+      className="review-photo-grid"
+      style={
+        {
+          "--review-cols-mobile": String(cols.mobile),
+          "--review-cols-tablet": String(cols.tablet),
+          "--review-cols-desktop": String(cols.desktop),
+          "--review-cols-wide": String(cols.wide),
+        } as CSSProperties
+      }
+    >
+      {children}
+    </div>
   );
 }
