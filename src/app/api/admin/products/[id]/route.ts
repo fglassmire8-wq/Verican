@@ -37,7 +37,15 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     }
     data.slug = slug;
   }
-  if (body.brandId !== undefined) {
+  if (body.brandName !== undefined) {
+    const name = String(body.brandName).trim();
+    const brand = await prisma.brand.upsert({
+      where: { name },
+      create: { name },
+      update: {},
+    });
+    data.brandId = brand.id;
+  } else if (body.brandId !== undefined) {
     const brand = await prisma.brand.findUnique({ where: { id: String(body.brandId) } });
     if (!brand) return NextResponse.json({ error: "Brand not found." }, { status: 404 });
     data.brandId = brand.id;
@@ -47,7 +55,16 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     if (!lineage.ok) return NextResponse.json({ error: lineage.error }, { status: 400 });
     data.lineage = lineage.lineage;
   }
-  const updated = await prisma.product.update({ where: { id }, data });
+  let updated;
+  try {
+    updated = await prisma.product.update({ where: { id }, data });
+  } catch (error) {
+    const code = typeof error === "object" && error && "code" in error ? String(error.code) : "";
+    if (code === "P2002") {
+      return NextResponse.json({ error: "A product with that strain and brand already exists." }, { status: 409 });
+    }
+    throw error;
+  }
   if (data.lineage) {
     const archived = await upsertStrainGenetics({
       strainName: String(updated.strain),

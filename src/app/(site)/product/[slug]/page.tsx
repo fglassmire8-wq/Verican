@@ -5,7 +5,7 @@ import { categoryLabel } from "@/lib/categories";
 import { publicLineage } from "@/lib/product-lineage";
 import { archivedLineageFor } from "@/lib/strain-genetics";
 import { ProductPhotoEditor } from "@/components/admin/ProductPhotoEditor";
-import { ProductLineageEditor } from "@/components/admin/ProductLineageEditor";
+import { ProductDetailsBoxes } from "@/components/ProductDetailsBoxes";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -107,7 +107,6 @@ export default async function ProductPage({
   const archived = publicLineage(product.lineage)
     ? null
     : await archivedLineageFor(product.strain);
-  const lineage = publicLineage(product.lineage) ?? publicLineage(archived);
   const isFounder = session?.user?.role === "OWNER";
   const manageReview =
     product.reviews.find((review) => review.photoOnly) ?? product.reviews[0] ?? null;
@@ -115,33 +114,22 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      {product.brand.name ? (
-      <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
-        {product.brand.name}
-        {product.brand.location ? ` · ${product.brand.location}` : ""}
-      </p>
-      ) : null}
-      <h1 className="font-display text-4xl sm:text-5xl mt-2">{product.strain}</h1>
+      <h1 className="font-display text-4xl sm:text-5xl">{product.strain}</h1>
       <p className="mt-2 text-muted text-sm">
         {categoryLabel(product.category)}
         {photoOnlySize ? ` · ${photoOnlySize}` : ""}
-        {product.brand.legalName ? ` · ${product.brand.legalName}` : ""}
-        {product.brand.license ? ` · license ${product.brand.license}` : ""}
       </p>
-      {lineage ? (
-        <p className="mt-2 text-muted text-sm">
-          <span className="text-[11px] uppercase tracking-[0.12em] text-gold">Lineage</span>
-          <span className="ml-2">{lineage}</span>
-        </p>
-      ) : null}
-      {isFounder ? (
-        <ProductLineageEditor
-          productId={product.id}
-          strain={product.strain}
-          lineage={product.lineage}
-          archivedLineage={archived}
-        />
-      ) : null}
+      <ProductDetailsBoxes
+        productId={product.id}
+        strain={product.strain}
+        brandName={product.brand.name}
+        brandLegalName={product.brand.legalName}
+        brandLicense={product.brand.license}
+        brandLocation={product.brand.location}
+        lineage={publicLineage(product.lineage)}
+        archivedLineage={archived}
+        isFounder={isFounder}
+      />
 
       {trusted.length === 0 ? (
         uniquePhotos.length ? (

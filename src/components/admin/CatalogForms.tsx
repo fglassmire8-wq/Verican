@@ -53,38 +53,63 @@ function SaveForm({
 export function ProductForm({
   product,
 }: {
-  product: { id: string; strain: string; slug: string; category: string; brandId: string; lineage: string | null; archivedLineage?: string | null };
+  product: {
+    id: string;
+    strain: string;
+    slug: string;
+    category: string;
+    brandName: string;
+    lineage: string | null;
+    archivedLineage?: string | null;
+  };
 }) {
   return (
     <SaveForm url={`/api/admin/products/${product.id}`}>
-      <input name="strain" defaultValue={product.strain} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
-      <input name="slug" defaultValue={product.slug} className="w-full bg-panel border border-line px-3 py-2 text-sm" />
-      <label className="block text-sm">
-        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Category</span>
-        <select
-          name="category"
-          required
-          defaultValue={parseCategory(product.category)?.value ?? "FLOWER"}
-          className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
-        >
-          {PRODUCT_CATEGORIES.map((item) => (
-            <option key={item.value} value={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="block text-sm">
-        <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Lineage</span>
+      <section className="border border-line bg-panel-2 p-4 rounded-[14px]">
+        <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Brand</p>
         <input
-          name="lineage"
-          defaultValue={product.lineage || product.archivedLineage || ""}
-          placeholder="Cap Junky x Rosetta Stone"
-          maxLength={300}
-          className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
+          name="brandName"
+          defaultValue={product.brandName}
+          placeholder="Brand unknown"
+          className="mt-2 w-full bg-panel border border-line px-3 py-2 text-sm"
         />
-      </label>
-      <input type="hidden" name="brandId" value={product.brandId} />
+      </section>
+      <section className="border border-line bg-panel-2 p-4 rounded-[14px]">
+        <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Strain</p>
+        <input name="strain" defaultValue={product.strain} required className="mt-2 w-full bg-panel border border-line px-3 py-2 text-sm" />
+        <label className="block mt-3 text-sm">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-gold">Lineage</span>
+          <input
+            name="lineage"
+            defaultValue={product.lineage || product.archivedLineage || ""}
+            placeholder="Parent strains, if you know them"
+            maxLength={300}
+            className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
+          />
+        </label>
+        {product.archivedLineage && !product.lineage ? (
+          <p className="mt-1 text-xs text-muted">Prefilled from the strain genetics archive.</p>
+        ) : null}
+        <label className="block mt-3 text-sm">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-gold">Slug</span>
+          <input name="slug" defaultValue={product.slug} className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm" />
+        </label>
+        <label className="block mt-3 text-sm">
+          <span className="text-[11px] uppercase tracking-[0.12em] text-gold">Category</span>
+          <select
+            name="category"
+            required
+            defaultValue={parseCategory(product.category)?.value ?? "FLOWER"}
+            className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"
+          >
+            {PRODUCT_CATEGORIES.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </section>
     </SaveForm>
   );
 }

@@ -54,7 +54,7 @@ export default async function AdminCatalogPage() {
                   strain: product.strain,
                   slug: product.slug,
                   category: product.category,
-                  brandId: product.brandId,
+                  brandName: product.brand.name,
                   lineage: product.lineage,
                   archivedLineage: archivedByProductId[product.id],
                 }}
