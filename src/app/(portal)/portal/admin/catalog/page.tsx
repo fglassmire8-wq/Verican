@@ -3,6 +3,7 @@ import { BrandForm, ProductForm, StoreForm } from "@/components/admin/CatalogFor
 import { ConfirmButton } from "@/components/admin/ConfirmButton";
 import { requireFounderPage } from "@/lib/admin-auth";
 import { prisma } from "@/lib/prisma";
+import { archivedLineageFor } from "@/lib/strain-genetics";
 
 export const metadata = { title: "Catalog · Founder admin" };
 export const dynamic = "force-dynamic";
@@ -23,6 +24,11 @@ export default async function AdminCatalogPage() {
       orderBy: { name: "asc" },
     }),
   ]);
+
+  const archivedByProductId: Record<string, string | null> = {};
+  for (const product of products) {
+    archivedByProductId[product.id] = product.lineage ? null : await archivedLineageFor(product.strain);
+  }
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
@@ -50,6 +56,7 @@ export default async function AdminCatalogPage() {
                   category: product.category,
                   brandId: product.brandId,
                   lineage: product.lineage,
+                  archivedLineage: archivedByProductId[product.id],
                 }}
               />
               <div className="mt-3 flex flex-wrap gap-3">

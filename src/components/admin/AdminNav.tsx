@@ -5,6 +5,7 @@ const LINKS = [
   { href: "/portal/admin/reviews", label: "Reviews" },
   { href: "/portal/admin/users", label: "Users" },
   { href: "/portal/admin/catalog", label: "Catalog" },
+  { href: "/portal/admin/genetics", label: "Genetics" },
 ];
 
 export function AdminNav({ path }: { path: string }) {

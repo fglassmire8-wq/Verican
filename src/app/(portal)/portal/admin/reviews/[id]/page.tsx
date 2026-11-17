@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { ConfirmButton } from "@/components/admin/ConfirmButton";
-import { PhotoCaptionForm } from "@/components/admin/PhotoCaptionForm";
+import { ProductPhotoEditor } from "@/components/admin/ProductPhotoEditor";
 import { ReviewEditForm } from "@/components/admin/ReviewEditForm";
 import { requireFounderPage } from "@/lib/admin-auth";
 import { prisma } from "@/lib/prisma";
@@ -61,29 +61,15 @@ export default async function AdminReviewDetailPage({
         </div>
       </section>
 
-      <section className="mt-12">
-        <h2 className="font-display text-2xl">Photos</h2>
-        {review.photos.length === 0 ? (
-          <p className="mt-3 text-sm text-muted">No photos.</p>
-        ) : (
-          <ul className="mt-4 space-y-6">
-            {review.photos.map((photo) => (
-              <li key={photo.id} className="border border-line bg-panel p-4">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={photo.path} alt={photo.alt} className="max-h-48 w-auto mb-3" />
-                <PhotoCaptionForm id={photo.id} alt={photo.alt} />
-                <div className="mt-3">
-                  <ConfirmButton
-                    url={`/api/admin/photos/${photo.id}`}
-                    confirmText={`Delete this photo (${photo.alt})? The file will be removed too.`}
-                    label="Delete photo"
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      <ProductPhotoEditor
+        reviewId={review.id}
+        photos={review.photos.map((photo) => ({
+          id: photo.id,
+          path: photo.path,
+          alt: photo.alt,
+          sortOrder: photo.sortOrder,
+        }))}
+      />
 
       <section className="mt-12">
         <h2 className="font-display text-2xl">Likes</h2>

@@ -20,7 +20,7 @@ type PendingReview = {
   createdAt: Date;
   user: { name: string };
   product: { strain: string; brand: { name: string } };
-  store: { name: string; city: string; state: string };
+  store: { name: string; city: string; state: string } | null;
   photos: unknown[];
 };
 
@@ -100,7 +100,7 @@ export function OwnerDesk({
                         </span>
                       </p>
                       <p className="text-sm text-muted mt-1">
-                        {review.user.name} · {review.store.name}, {review.store.city}{" "}
+                        {review.user.name}{review.store ? ` · ${review.store.name}, ${review.store.city}` : ""}{" "}
                         · {review.photos.length} {plural(review.photos.length, "photo")}{" "}
                         · {formatPrice(review.priceCents, review.currency)} ·{" "}
                         {formatDate(review.createdAt)}

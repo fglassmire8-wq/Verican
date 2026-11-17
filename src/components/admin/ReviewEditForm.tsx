@@ -30,7 +30,7 @@ export function ReviewEditForm({
     topTerpene: string | null;
     rating: number | null;
     createdAt: string;
-    store: { name: string; city: string; state: string };
+    store: { name: string; city: string; state: string } | null;
   };
 }) {
   const router = useRouter();
@@ -139,15 +139,15 @@ export function ReviewEditForm({
         </label>
         <label className="block text-sm">
           <span className="text-[11px] uppercase tracking-[0.16em] text-gold">Store</span>
-          <input name="storeName" defaultValue={review.store.name} required className="mt-1 w-full bg-panel border border-line px-3 py-2" />
+          <input name="storeName" defaultValue={review.store?.name ?? ""} className="mt-1 w-full bg-panel border border-line px-3 py-2" />
         </label>
         <label className="block text-sm">
           <span className="text-[11px] uppercase tracking-[0.16em] text-gold">City</span>
-          <input name="storeCity" defaultValue={review.store.city} required className="mt-1 w-full bg-panel border border-line px-3 py-2" />
+          <input name="storeCity" defaultValue={review.store?.city ?? ""} className="mt-1 w-full bg-panel border border-line px-3 py-2" />
         </label>
         <label className="block text-sm">
           <span className="text-[11px] uppercase tracking-[0.16em] text-gold">State</span>
-          <input name="storeState" defaultValue={review.store.state} required className="mt-1 w-full bg-panel border border-line px-3 py-2" />
+          <input name="storeState" defaultValue={review.store?.state ?? ""} className="mt-1 w-full bg-panel border border-line px-3 py-2" />
         </label>
         <label className="block text-sm">
           <span className="text-[11px] uppercase tracking-[0.16em] text-gold">Harvest date</span>

@@ -53,7 +53,7 @@ function SaveForm({
 export function ProductForm({
   product,
 }: {
-  product: { id: string; strain: string; slug: string; category: string; brandId: string; lineage: string | null };
+  product: { id: string; strain: string; slug: string; category: string; brandId: string; lineage: string | null; archivedLineage?: string | null };
 }) {
   return (
     <SaveForm url={`/api/admin/products/${product.id}`}>
@@ -78,7 +78,7 @@ export function ProductForm({
         <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Lineage</span>
         <input
           name="lineage"
-          defaultValue={product.lineage ?? ""}
+          defaultValue={product.lineage || product.archivedLineage || ""}
           placeholder="Cap Junky x Rosetta Stone"
           maxLength={300}
           className="mt-1 w-full bg-panel border border-line px-3 py-2 text-sm"

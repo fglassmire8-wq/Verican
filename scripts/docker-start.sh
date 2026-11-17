@@ -29,6 +29,8 @@ node scripts/seed-if-empty.mjs
 # Idempotent: publish approved Animal Star Cookies if it is not already live.
 node scripts/publish-animal-star-cookies.mjs
 node scripts/publish-thai-wedding-cake.mjs
+# Idempotent: photo-only Nov 15 catalog pages.
+node scripts/publish-nov15-photos.mjs
 
 if [ "$#" -gt 0 ]; then
   exec "$@"

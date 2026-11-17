@@ -10,7 +10,7 @@ type PortalReview = {
   rating: number | null;
   createdAt: Date;
   product: { slug: string; strain: string; brand: { name: string } };
-  store: { name: string; city: string; state: string };
+  store: { name: string; city: string; state: string } | null;
   photos: unknown[];
   likes: unknown[];
   user: { role: string; affiliateStatus: string };
@@ -69,7 +69,7 @@ export function PortalReviewsTable({ reviews }: { reviews: PortalReview[] }) {
                         </p>
                       </td>
                       <td className="px-4 py-3 text-muted">
-                        {review.store.name}, {review.store.city}
+                        {review.store ? `${review.store.name}, ${review.store.city}` : ""}
                       </td>
                       <td
                         className={`px-4 py-3 tracking-[0.14em] uppercase text-xs ${
@@ -116,7 +116,7 @@ function ReviewCardRow({ review }: { review: PortalReview }) {
             {review.product.strain}
           </Link>
           <p className="text-xs text-muted mt-1">
-            {review.product.brand.name} · {review.store.name}, {review.store.city}
+            {review.product.brand.name} · {review.store ? `${review.store.name}, ${review.store.city}` : ""}
           </p>
         </div>
         <span

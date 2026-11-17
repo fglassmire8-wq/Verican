@@ -1,0 +1,1336 @@
+[
+  {
+    "primary": 1,
+    "merged_from": [],
+    "slug": "jersey-diesel",
+    "strain": "Jersey Diesel",
+    "brand": "3rd & Main",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "1g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_1728.JPEG",
+      "IMG_1729.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 1,
+        "folder": "01-jersey-diesel",
+        "files": [
+          "IMG_1728.JPEG",
+          "IMG_1729.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 2,
+    "merged_from": [],
+    "slug": "animal-face-small-flower-indica",
+    "strain": "Animal Face Small Flower (Indica)",
+    "brand": "GTI / Rythm",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_1839.JPEG",
+      "IMG_1841.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 2,
+        "folder": "02-gti-rythm-animal-face",
+        "files": [
+          "IMG_1839.JPEG",
+          "IMG_1841.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 3,
+    "merged_from": [],
+    "slug": "z-x-zikigai-test-kitchen-leftovers",
+    "strain": "Z X Zikigai (Test Kitchen Leftovers)",
+    "brand": "Test Kitchen 'Leftovers' / Garden Greens",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_1996.JPEG",
+      "IMG_1997.JPEG",
+      "IMG_1998.JPEG",
+      "IMG_1999.JPEG",
+      "IMG_2001.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 3,
+        "folder": "03-z-x-zikigai-test-kitchen-leftovers",
+        "files": [
+          "IMG_1996.JPEG",
+          "IMG_1997.JPEG",
+          "IMG_1998.JPEG",
+          "IMG_1999.JPEG",
+          "IMG_2001.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 4,
+    "merged_from": [],
+    "slug": "omg-pre-pack-mixed-buds-7g-good-green-hybrid",
+    "strain": "OMG Pre-Pack (Mixed Buds) 7g - Good Green (Hybrid)",
+    "brand": "Good Green",
+    "legalName": "GTI",
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2041.JPEG",
+      "IMG_2042.JPEG",
+      "IMG_2110.JPEG",
+      "IMG_2111.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 4,
+        "folder": "04-omg-pre-pack-good-green",
+        "files": [
+          "IMG_2041.JPEG",
+          "IMG_2042.JPEG",
+          "IMG_2110.JPEG",
+          "IMG_2111.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 5,
+    "merged_from": [],
+    "slug": "velcroz-mixed-buds-flower-14g-hybrid",
+    "strain": "VELCROZ Mixed Buds Flower 14g (Hybrid)",
+    "brand": "GTI / Rythm",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2148.JPEG",
+      "IMG_2150.JPEG",
+      "IMG_2152.JPEG",
+      "IMG_2153.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 5,
+        "folder": "05-gti-rythm-velcroz",
+        "files": [
+          "IMG_2148.JPEG",
+          "IMG_2150.JPEG",
+          "IMG_2152.JPEG",
+          "IMG_2153.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 6,
+    "merged_from": [],
+    "slug": "arancello-flower-3-5g",
+    "strain": "Arancello Flower 3.5g",
+    "brand": "Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2298.JPEG",
+      "IMG_2299.JPEG",
+      "IMG_2300.JPEG",
+      "IMG_2302.JPEG",
+      "IMG_2303.JPEG",
+      "IMG_2306.JPEG",
+      "IMG_2307.JPEG",
+      "IMG_2323.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 6,
+        "folder": "06-arancello",
+        "files": [
+          "IMG_2298.JPEG",
+          "IMG_2299.JPEG",
+          "IMG_2300.JPEG",
+          "IMG_2302.JPEG",
+          "IMG_2303.JPEG",
+          "IMG_2306.JPEG",
+          "IMG_2307.JPEG",
+          "IMG_2323.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 7,
+    "merged_from": [],
+    "slug": "dirty-taxi-reserves-flower-indica-3-5g",
+    "strain": "Dirty Taxi (Reserves Flower, Indica, 3.5G)",
+    "brand": "TerrAscend New Jersey",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2324.JPEG",
+      "IMG_2326.JPEG",
+      "IMG_2328.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 7,
+        "folder": "07-dirty-taxi",
+        "files": [
+          "IMG_2324.JPEG",
+          "IMG_2326.JPEG",
+          "IMG_2328.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 8,
+    "merged_from": [],
+    "slug": "sour-dubb-x-tmz-hybrid",
+    "strain": "Sour Dubb x TMZ (Hybrid)",
+    "brand": "Rythm",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2329.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 8,
+        "folder": "08-rythm-sour-dubb-x-tmz",
+        "files": [
+          "IMG_2329.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 9,
+    "merged_from": [
+      11
+    ],
+    "slug": "baked-potato-kush-hybrid-3-5g",
+    "strain": "Baked Potato Kush (Hybrid, 3.5G)",
+    "brand": "Gillie's Galaxy / Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2387.JPEG",
+      "IMG_2402.JPEG",
+      "IMG_2413.JPEG",
+      "IMG_2414.JPEG",
+      "IMG_2822.JPEG",
+      "IMG_2823.JPEG",
+      "IMG_2824.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 9,
+        "folder": "09-baked-potato-kush",
+        "files": [
+          "IMG_2387.JPEG"
+        ]
+      },
+      {
+        "num": 11,
+        "folder": "11-baked-potato-kush",
+        "files": [
+          "IMG_2402.JPEG",
+          "IMG_2413.JPEG",
+          "IMG_2414.JPEG",
+          "IMG_2822.JPEG",
+          "IMG_2823.JPEG",
+          "IMG_2824.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 10,
+    "merged_from": [],
+    "slug": "white-iverson-indica-3-5g",
+    "strain": "White Iverson (Indica, 3.5G)",
+    "brand": "Kind Tree",
+    "legalName": "TerrAscend",
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2388.JPEG",
+      "IMG_2389.JPEG",
+      "IMG_2393.JPEG",
+      "IMG_2394.JPEG",
+      "IMG_2395.JPEG",
+      "IMG_2396.JPEG",
+      "IMG_2397.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 10,
+        "folder": "10-white-iverson",
+        "files": [
+          "IMG_2388.JPEG",
+          "IMG_2389.JPEG",
+          "IMG_2393.JPEG",
+          "IMG_2394.JPEG",
+          "IMG_2395.JPEG",
+          "IMG_2396.JPEG",
+          "IMG_2397.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 12,
+    "merged_from": [],
+    "slug": "jet-fuel-og-small-flower-7g-hybrid",
+    "strain": "Jet Fuel OG Small Flower 7g (Hybrid)",
+    "brand": "GTI / Rythm",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2826.JPEG",
+      "IMG_2827.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 12,
+        "folder": "12-gti-rythm-jet-fuel-og-small-flower",
+        "files": [
+          "IMG_2826.JPEG",
+          "IMG_2827.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 13,
+    "merged_from": [],
+    "slug": "afghan-kush-indica-7g",
+    "strain": "Afghan Kush (Indica, 7G)",
+    "brand": "Roman Brothers Cannabis Inc.",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2840.JPEG",
+      "IMG_2841.JPEG",
+      "IMG_2842.JPEG",
+      "IMG_2843.JPEG",
+      "IMG_2844.JPEG",
+      "IMG_2867.JPEG",
+      "IMG_2868.JPEG",
+      "IMG_2869.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 13,
+        "folder": "13-afghan-kush-roman-brothers",
+        "files": [
+          "IMG_2840.JPEG",
+          "IMG_2841.JPEG",
+          "IMG_2842.JPEG",
+          "IMG_2843.JPEG",
+          "IMG_2844.JPEG",
+          "IMG_2867.JPEG",
+          "IMG_2868.JPEG",
+          "IMG_2869.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 14,
+    "merged_from": [],
+    "slug": "frosted-jungle-smalls-7g",
+    "strain": "Frosted Jungle Smalls 7G",
+    "brand": "Strane Stash",
+    "legalName": "Holistic Industries",
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2911.JPEG",
+      "IMG_2912.JPEG",
+      "IMG_2913.JPEG",
+      "IMG_2914.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 14,
+        "folder": "14-strane-stash-frosted-jungle-smalls",
+        "files": [
+          "IMG_2911.JPEG",
+          "IMG_2912.JPEG",
+          "IMG_2913.JPEG",
+          "IMG_2914.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 15,
+    "merged_from": [
+      19
+    ],
+    "slug": "chem-scout-87-pre-pack-mixed-buds-14g-good-green-hybrid",
+    "strain": "Chem Scout '87 Pre-Pack (Mixed Buds) 14g - Good Green (Hybrid)",
+    "brand": "Good Green",
+    "legalName": "GTI",
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_2923.JPEG",
+      "IMG_2924.JPEG",
+      "IMG_2925.JPEG",
+      "IMG_2926.JPEG",
+      "IMG_3046.JPEG",
+      "IMG_3047.JPEG",
+      "IMG_3048.JPEG",
+      "IMG_3108.JPEG",
+      "IMG_3109.JPEG",
+      "IMG_3123.JPEG",
+      "IMG_3124.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 15,
+        "folder": "15-chem-scout-87-good-green",
+        "files": [
+          "IMG_2923.JPEG",
+          "IMG_2924.JPEG",
+          "IMG_2925.JPEG",
+          "IMG_2926.JPEG",
+          "IMG_3046.JPEG",
+          "IMG_3047.JPEG",
+          "IMG_3048.JPEG"
+        ]
+      },
+      {
+        "num": 19,
+        "folder": "19-chem-scout-87-good-green",
+        "files": [
+          "IMG_3108.JPEG",
+          "IMG_3109.JPEG",
+          "IMG_3123.JPEG",
+          "IMG_3124.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 16,
+    "merged_from": [],
+    "slug": "unknown-strain",
+    "strain": "Unknown strain",
+    "brand": "Green Lightning Cannabis",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3049.JPEG",
+      "IMG_3054.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 16,
+        "folder": "16-green-lightning-strain-unreadable",
+        "files": [
+          "IMG_3049.JPEG",
+          "IMG_3054.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 17,
+    "merged_from": [],
+    "slug": "chaos-kush-flower-3-5g",
+    "strain": "Chaos Kush Flower 3.5G",
+    "brand": "Cresco",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3055.JPEG",
+      "IMG_3056.JPEG",
+      "IMG_3057.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 17,
+        "folder": "17-cresco-chaos-kush",
+        "files": [
+          "IMG_3055.JPEG",
+          "IMG_3056.JPEG",
+          "IMG_3057.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 18,
+    "merged_from": [],
+    "slug": "814-fireworks-flower-3-5g",
+    "strain": "814 Fireworks Flower 3.5G",
+    "brand": "Cresco",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3064.JPEG",
+      "IMG_3065.JPEG",
+      "IMG_3066.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 18,
+        "folder": "18-cresco-814-fireworks",
+        "files": [
+          "IMG_3064.JPEG",
+          "IMG_3065.JPEG",
+          "IMG_3066.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 20,
+    "merged_from": [],
+    "slug": "swamp-water-fumez-7g-indica",
+    "strain": "Swamp Water Fumez 7G (Indica)",
+    "brand": "Ethos",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "7g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3125.JPEG",
+      "IMG_3138.JPEG",
+      "IMG_3139.JPEG",
+      "IMG_3246.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 20,
+        "folder": "20-swamp-water-fumez",
+        "files": [
+          "IMG_3125.JPEG",
+          "IMG_3138.JPEG",
+          "IMG_3139.JPEG",
+          "IMG_3246.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 21,
+    "merged_from": [],
+    "slug": "zips-miracle-alien-cookies-28g",
+    "strain": "Zips - Miracle Alien Cookies - 28g",
+    "brand": "Zips 'Garden State Gas' / Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "28g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3247.JPEG",
+      "IMG_3319.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 21,
+        "folder": "21-zips-miracle-alien-cookies",
+        "files": [
+          "IMG_3247.JPEG",
+          "IMG_3319.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 22,
+    "merged_from": [],
+    "slug": "tahiti-midnight",
+    "strain": "Tahiti Midnight",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3320.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 22,
+        "folder": "22-tahiti-midnight",
+        "files": [
+          "IMG_3320.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 23,
+    "merged_from": [],
+    "slug": "joint-custody",
+    "strain": "Joint Custody",
+    "brand": "Gillie's Galaxy / Fresh Grow",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3330.JPEG",
+      "IMG_3333.JPEG",
+      "IMG_3334.JPEG",
+      "IMG_3335.JPEG",
+      "IMG_3336.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 23,
+        "folder": "23-gillies-galaxy-joint-custody",
+        "files": [
+          "IMG_3330.JPEG",
+          "IMG_3333.JPEG",
+          "IMG_3334.JPEG",
+          "IMG_3335.JPEG",
+          "IMG_3336.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 24,
+    "merged_from": [],
+    "slug": "la-kush-cke-14g-premium-hybrid",
+    "strain": "LA KUSH CKE 14G Premium (Hybrid)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3374.JPEG",
+      "IMG_3394.JPEG",
+      "IMG_3395.JPEG",
+      "IMG_3396.JPEG",
+      "IMG_3397.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 24,
+        "folder": "24-insa-la-kush-cke",
+        "files": [
+          "IMG_3374.JPEG",
+          "IMG_3394.JPEG",
+          "IMG_3395.JPEG",
+          "IMG_3396.JPEG",
+          "IMG_3397.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 25,
+    "merged_from": [],
+    "slug": "mx-fln-indica-14g",
+    "strain": "MX FLN (Indica, 14G)",
+    "brand": "Ilera Healthcare / TerrAscend (PA)",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3530.JPEG",
+      "IMG_3532.JPEG",
+      "IMG_3533.JPEG",
+      "IMG_3823.JPEG",
+      "IMG_3824.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 25,
+        "folder": "25-mx-fln",
+        "files": [
+          "IMG_3530.JPEG",
+          "IMG_3532.JPEG",
+          "IMG_3533.JPEG",
+          "IMG_3823.JPEG",
+          "IMG_3824.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 26,
+    "merged_from": [],
+    "slug": "mac-1-28g-premium-hybrid",
+    "strain": "MAC 1 28G Premium (Hybrid)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "28g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_3825.JPEG",
+      "IMG_4265.JPEG",
+      "IMG_4266.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 26,
+        "folder": "26-insa-mac-1",
+        "files": [
+          "IMG_3825.JPEG",
+          "IMG_4265.JPEG",
+          "IMG_4266.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 27,
+    "merged_from": [],
+    "slug": "la-kush-cke-2-0-14g-premium-hybrid",
+    "strain": "LA KUSH CKE 2.0 14G Premium (Hybrid)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4267.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 27,
+        "folder": "27-insa-la-kush-cke-2-0",
+        "files": [
+          "IMG_4267.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 28,
+    "merged_from": [
+      37
+    ],
+    "slug": "wedding-c-3-5g",
+    "strain": "WEDDING C 3.5G",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4346.JPEG",
+      "IMG_4347.JPEG",
+      "IMG_4348.JPEG",
+      "IMG_4418.JPEG",
+      "IMG_4419.JPEG",
+      "IMG_4420.JPEG",
+      "IMG_5320.JPEG",
+      "IMG_5321.JPEG",
+      "IMG_5322.JPEG",
+      "IMG_5458.JPEG",
+      "IMG_5470.JPEG",
+      "IMG_5471.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 28,
+        "folder": "28-insa-wedding-c",
+        "files": [
+          "IMG_4346.JPEG",
+          "IMG_4347.JPEG",
+          "IMG_4348.JPEG",
+          "IMG_4418.JPEG",
+          "IMG_4419.JPEG",
+          "IMG_4420.JPEG"
+        ]
+      },
+      {
+        "num": 37,
+        "folder": "37-insa-wedding-c",
+        "files": [
+          "IMG_5320.JPEG",
+          "IMG_5321.JPEG",
+          "IMG_5322.JPEG",
+          "IMG_5458.JPEG",
+          "IMG_5470.JPEG",
+          "IMG_5471.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 29,
+    "merged_from": [],
+    "slug": "fresh-sb-gary-x-mac-3-5g",
+    "strain": "Fresh - SB - Gary x MAC - 3.5g",
+    "brand": "Fresh (Small Batch) / Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4421.JPEG",
+      "IMG_4422.JPEG",
+      "IMG_4474.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 29,
+        "folder": "29-fresh-gary-x-mac",
+        "files": [
+          "IMG_4421.JPEG",
+          "IMG_4422.JPEG",
+          "IMG_4474.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 30,
+    "merged_from": [],
+    "slug": "jet-fuel-og-pen-live-resin-2000mg-rythm-hybrid",
+    "strain": "Jet Fuel OG Pen (Live Resin) 2000mg - Rythm (Hybrid)",
+    "brand": "Rythm",
+    "legalName": "GTI",
+    "category": "VAPE",
+    "size": "2000mg",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4478.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 30,
+        "folder": "30-rythm-jet-fuel-og-pen",
+        "files": [
+          "IMG_4478.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 31,
+    "merged_from": [],
+    "slug": "moonraker-14g-premium-indica",
+    "strain": "MOONRAKER 14G Premium (Indica)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4497.JPEG",
+      "IMG_4500.JPEG",
+      "IMG_4501.JPEG",
+      "IMG_4503.JPEG",
+      "IMG_4504.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 31,
+        "folder": "31-insa-moonraker",
+        "files": [
+          "IMG_4497.JPEG",
+          "IMG_4500.JPEG",
+          "IMG_4501.JPEG",
+          "IMG_4503.JPEG",
+          "IMG_4504.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 32,
+    "merged_from": [],
+    "slug": "cheetah-2g-live-resin-vape-dream-n-sour-black",
+    "strain": "Cheetah 2g Live Resin Vape - Dream N Sour (Black)",
+    "brand": "Cheetah",
+    "legalName": "Whole Plants LLC",
+    "category": "VAPE",
+    "size": "2g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4525.JPEG",
+      "IMG_4526.JPEG",
+      "IMG_4528.JPEG",
+      "IMG_4529.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 32,
+        "folder": "32-cheetah-dream-n-sour-2g",
+        "files": [
+          "IMG_4525.JPEG",
+          "IMG_4526.JPEG",
+          "IMG_4528.JPEG",
+          "IMG_4529.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 33,
+    "merged_from": [],
+    "slug": "cheetah-yuck-mouth-live-resin-1g-dark-green",
+    "strain": "Cheetah Yuck Mouth Live Resin 1G - Dark Green",
+    "brand": "Cheetah",
+    "legalName": "MPX NJ",
+    "category": "VAPE",
+    "size": "1g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4537.JPEG",
+      "IMG_4538.JPEG",
+      "IMG_4539.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 33,
+        "folder": "33-cheetah-yuck-mouth-1g",
+        "files": [
+          "IMG_4537.JPEG",
+          "IMG_4538.JPEG",
+          "IMG_4539.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 34,
+    "merged_from": [],
+    "slug": "dark-matter-3-5g",
+    "strain": "DARK MATTER 3.5G",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4543.JPEG",
+      "IMG_4544.JPEG",
+      "IMG_4545.JPEG",
+      "IMG_4546.JPEG",
+      "IMG_4547.JPEG",
+      "IMG_4613.JPEG",
+      "IMG_4614.JPEG",
+      "IMG_4615.JPEG",
+      "IMG_4616.JPEG",
+      "IMG_4851.JPEG",
+      "IMG_4852.JPEG",
+      "IMG_4853.JPEG",
+      "IMG_4854.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 34,
+        "folder": "34-insa-dark-matter",
+        "files": [
+          "IMG_4543.JPEG",
+          "IMG_4544.JPEG",
+          "IMG_4545.JPEG",
+          "IMG_4546.JPEG",
+          "IMG_4547.JPEG",
+          "IMG_4613.JPEG",
+          "IMG_4614.JPEG",
+          "IMG_4615.JPEG",
+          "IMG_4616.JPEG",
+          "IMG_4851.JPEG",
+          "IMG_4852.JPEG",
+          "IMG_4853.JPEG",
+          "IMG_4854.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 35,
+    "merged_from": [],
+    "slug": "4-kings-og-14g-premium-indica",
+    "strain": "4 KINGS OG 14G Premium (Indica)",
+    "brand": "INSA",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_4855.JPEG",
+      "IMG_4856.JPEG",
+      "IMG_5187.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 35,
+        "folder": "35-insa-4-kings-og",
+        "files": [
+          "IMG_4855.JPEG",
+          "IMG_4856.JPEG",
+          "IMG_5187.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 38,
+    "merged_from": [
+      43
+    ],
+    "slug": "gras-cap-junky-flower-14g-indica",
+    "strain": "GRAS - CAP JUNKY FLOWER: 14G (Indica)",
+    "brand": "GRAS",
+    "legalName": "AES Compassionate Care LLC",
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_5472.JPEG",
+      "IMG_5819.JPEG",
+      "IMG_5836.JPEG",
+      "IMG_5934.JPEG",
+      "IMG_5935.JPEG",
+      "IMG_5936.JPEG",
+      "IMG_5937.JPEG",
+      "IMG_5938.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 38,
+        "folder": "38-gras-cap-junky",
+        "files": [
+          "IMG_5472.JPEG"
+        ]
+      },
+      {
+        "num": 43,
+        "folder": "43-gras-cap-junky",
+        "files": [
+          "IMG_5819.JPEG",
+          "IMG_5836.JPEG",
+          "IMG_5934.JPEG",
+          "IMG_5935.JPEG",
+          "IMG_5936.JPEG",
+          "IMG_5937.JPEG",
+          "IMG_5938.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 39,
+    "merged_from": [],
+    "slug": "vybz-14g-premium-hybrid",
+    "strain": "VYBZ 14G Premium (Hybrid)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_5492.JPEG",
+      "IMG_5497.JPEG",
+      "IMG_5498.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 39,
+        "folder": "39-insa-vybz",
+        "files": [
+          "IMG_5492.JPEG",
+          "IMG_5497.JPEG",
+          "IMG_5498.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 40,
+    "merged_from": [],
+    "slug": "cheetah-1g-live-rosin-vape-10gs-dark-green",
+    "strain": "Cheetah 1g Live Rosin Vape - 10G's (Dark Green)",
+    "brand": "Cheetah",
+    "legalName": "Whole Plants LLC",
+    "category": "VAPE",
+    "size": "1g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_5525.JPEG",
+      "IMG_5536.JPEG",
+      "IMG_5537.JPEG",
+      "IMG_5566.JPEG",
+      "IMG_5568.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 40,
+        "folder": "40-cheetah-10gs-1g",
+        "files": [
+          "IMG_5525.JPEG",
+          "IMG_5536.JPEG",
+          "IMG_5537.JPEG",
+          "IMG_5566.JPEG",
+          "IMG_5568.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 41,
+    "merged_from": [],
+    "slug": "blue-dream-blueberry-x-super-silver-haze-sativa-3-5g",
+    "strain": "BLUE DREAM (Blueberry x Super Silver Haze, Sativa, 3.5g)",
+    "brand": "",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "3.5g",
+    "lineage_from_label": "Blueberry x Super Silver Haze",
+    "photos": [
+      "IMG_5569.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 41,
+        "folder": "41-blue-dream",
+        "files": [
+          "IMG_5569.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 42,
+    "merged_from": [],
+    "slug": "cap-junky-14g-premium-hybrid",
+    "strain": "CAP JUNKY 14G Premium (Hybrid)",
+    "brand": "INSA",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_5570.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 42,
+        "folder": "42-insa-cap-junky-premium",
+        "files": [
+          "IMG_5570.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 44,
+    "merged_from": [],
+    "slug": "anthologie-white-widow-flower-14g-hybrid",
+    "strain": "Anthologie White Widow Flower - 14g (Hybrid)",
+    "brand": "Anthologie",
+    "legalName": "MPXNJ",
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_5939.JPEG",
+      "IMG_5998.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 44,
+        "folder": "44-anthologie-white-widow",
+        "files": [
+          "IMG_5939.JPEG",
+          "IMG_5998.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 45,
+    "merged_from": [],
+    "slug": "animal-mntz-animal-cookies-x-sinmint-cookies-indica-28g",
+    "strain": "Animal Mntz (Animal Cookies x SinMint Cookies, Indica, 28g)",
+    "brand": "Natural Selections / Ethos PA",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "28g",
+    "lineage_from_label": "Animal Cookies x SinMint Cookies",
+    "photos": [
+      "IMG_6130.JPEG",
+      "IMG_6131.JPEG",
+      "IMG_6132.JPEG",
+      "IMG_6133.JPEG",
+      "IMG_6134.JPEG",
+      "IMG_6150.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 45,
+        "folder": "45-animal-mntz",
+        "files": [
+          "IMG_6130.JPEG",
+          "IMG_6134.JPEG",
+          "IMG_6131.JPEG",
+          "IMG_6132.JPEG",
+          "IMG_6133.JPEG",
+          "IMG_6150.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 47,
+    "merged_from": [],
+    "slug": "funk-bomb-premium-smalls-14g-sativa",
+    "strain": "Funk Bomb | Premium Smalls | 14g (Sativa)",
+    "brand": "The Fireplace New Jersey LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_6163.JPEG",
+      "IMG_6169.JPEG",
+      "IMG_6170.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 47,
+        "folder": "47-funk-bomb-premium-smalls",
+        "files": [
+          "IMG_6163.JPEG",
+          "IMG_6169.JPEG",
+          "IMG_6170.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 48,
+    "merged_from": [],
+    "slug": "cookies-vienna-14g-baked-alaska-x-georgia-pie",
+    "strain": "Cookies - Vienna - 14g (Baked Alaska x Georgia Pie)",
+    "brand": "Harvest Moon Farms / Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": "Baked Alaska x Georgia Pie",
+    "photos": [
+      "IMG_6171.JPEG",
+      "IMG_6287.JPEG",
+      "IMG_6288.JPEG",
+      "IMG_6289.JPEG",
+      "IMG_6332.JPEG",
+      "IMG_6333.JPEG",
+      "IMG_6334.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 48,
+        "folder": "48-cookies-vienna",
+        "files": [
+          "IMG_6171.JPEG",
+          "IMG_6287.JPEG",
+          "IMG_6288.JPEG",
+          "IMG_6289.JPEG",
+          "IMG_6332.JPEG",
+          "IMG_6333.JPEG",
+          "IMG_6334.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 49,
+    "merged_from": [],
+    "slug": "toad-venom-smalls-5g",
+    "strain": "Toad Venom - Smalls (5g)",
+    "brand": "niche",
+    "legalName": "Smalls by niche.",
+    "category": "FLOWER",
+    "size": "5g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_6335.JPEG",
+      "IMG_6336.JPEG",
+      "IMG_6389.JPEG",
+      "IMG_6390.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 49,
+        "folder": "49-niche-smalls-toad-venom",
+        "files": [
+          "IMG_6335.JPEG",
+          "IMG_6336.JPEG",
+          "IMG_6389.JPEG",
+          "IMG_6390.JPEG"
+        ]
+      }
+    ]
+  },
+  {
+    "primary": 50,
+    "merged_from": [],
+    "slug": "cookies-cheetah-piss-x-georgia-pie-9-14g",
+    "strain": "Cookies - Cheetah Piss x Georgia Pie #9 - 14g",
+    "brand": "Fresh Grow LLC",
+    "legalName": null,
+    "category": "FLOWER",
+    "size": "14g",
+    "lineage_from_label": null,
+    "photos": [
+      "IMG_6391.JPEG",
+      "IMG_6530.JPEG",
+      "IMG_6531.JPEG"
+    ],
+    "sources": [
+      {
+        "num": 50,
+        "folder": "50-cookies-cheetah-piss-x-georgia-pie",
+        "files": [
+          "IMG_6391.JPEG",
+          "IMG_6530.JPEG",
+          "IMG_6531.JPEG"
+        ]
+      }
+    ]
+  }
+]

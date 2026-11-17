@@ -108,9 +108,9 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     data.createdAt = createdAt;
   }
   if (body.storeName !== undefined || body.storeCity !== undefined || body.storeState !== undefined) {
-    const name = String(body.storeName ?? review.store.name).trim();
-    const city = String(body.storeCity ?? review.store.city).trim();
-    const state = String(body.storeState ?? review.store.state).trim().toUpperCase();
+    const name = String(body.storeName ?? review.store?.name).trim();
+    const city = String(body.storeCity ?? review.store?.city).trim();
+    const state = String(body.storeState ?? review.store?.state).trim().toUpperCase();
     if (!name || !city || !state) {
       return NextResponse.json({ error: "Store name, city, and state are required." }, { status: 400 });
     }

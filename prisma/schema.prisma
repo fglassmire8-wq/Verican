@@ -23,6 +23,8 @@ model User {
   createdAt       DateTime        @default(now())
   reviews         Review[]
   likes           Like[]
+  strainGeneticsUpdates StrainGenetics[]        @relation("StrainGeneticsUpdatedBy")
+  strainGeneticsHistory StrainGeneticsHistory[] @relation("StrainGeneticsHistoryAddedBy")
 }
 
 model Brand {
@@ -63,8 +65,8 @@ model Review {
   product     Product  @relation(fields: [productId], references: [id])
   userId      String
   user        User     @relation(fields: [userId], references: [id])
-  storeId     String
-  store       Store    @relation(fields: [storeId], references: [id])
+  storeId     String?
+  store       Store?   @relation(fields: [storeId], references: [id])
   amount      String
   priceCents  Int
   currency          String   @default("USD")
@@ -80,6 +82,7 @@ model Review {
   status      String   @default("PENDING")
   createdAt   DateTime @default(now())
   rating      Int?
+  photoOnly   Boolean  @default(false)
   photos      Photo[]
   likes       Like[]
   ratings     ReviewRating[]
@@ -140,4 +143,33 @@ model PublishLock {
   key       String   @id
   reviewId  String?
   createdAt DateTime @default(now())
+}
+
+/// Archive of strain lineage, keyed by a normalized strain name.
+/// Current value lives here; prior values are kept in StrainGeneticsHistory.
+model StrainGenetics {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  displayName String
+  lineage     String
+  sourceReviewId String?
+  updatedById String?
+  updatedBy   User?    @relation("StrainGeneticsUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  history     StrainGeneticsHistory[]
+}
+
+model StrainGeneticsHistory {
+  id          String   @id @default(cuid())
+  geneticsId  String
+  genetics    StrainGenetics @relation(fields: [geneticsId], references: [id], onDelete: Cascade)
+  lineage     String
+  displayName String
+  sourceReviewId String?
+  addedById   String?
+  addedBy     User?    @relation("StrainGeneticsHistoryAddedBy", fields: [addedById], references: [id], onDelete: SetNull)
+  addedAt     DateTime @default(now())
+
+  @@index([geneticsId])
 }

@@ -90,8 +90,8 @@ export default async function ModerationPage() {
                       </span>
                     </p>
                     <p className="text-sm text-muted mt-1">
-                      {review.user.name} · {review.store.name}, {review.store.city},{" "}
-                      {review.store.state} · {review.amount} ·{" "}
+                      {review.user.name} · {review.store?.name}, {review.store?.city},{" "}
+                      {review.store?.state} · {review.amount} ·{" "}
                       {formatPrice(review.priceCents, review.currency)} ·{" "}
                       {review.photos.length} photo
                       {review.photos.length === 1 ? "" : "s"} ·{" "}

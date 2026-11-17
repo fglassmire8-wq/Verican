@@ -23,7 +23,7 @@ type ReviewCardProps = {
     createdAt: Date;
     rating: number | null;
     user: { name: string; role: string; affiliateStatus: string };
-    store: { name: string; city: string; state: string };
+    store: { name: string; city: string; state: string } | null;
     likes: { userId: string }[];
   };
   currentUserId?: string;
@@ -70,11 +70,14 @@ export function ReviewCard({
         </span>
       </div>
 
+      {review.notes.trim() ? (
       <p className="mt-5 text-[17px] leading-relaxed text-cream/90 whitespace-pre-wrap">
         {review.notes}
       </p>
+      ) : null}
 
       <dl className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-muted">
+        {review.store ? (
         <div>
           <dt className="uppercase tracking-widest text-[10px] text-gold">Bought</dt>
           <dd>
@@ -83,6 +86,7 @@ export function ReviewCard({
               .join(", ")}
           </dd>
         </div>
+        ) : null}
         <div>
           <dt className="uppercase tracking-widest text-[10px] text-gold">Amount / price</dt>
           <dd>

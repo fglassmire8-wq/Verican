@@ -4,6 +4,7 @@ import { deleteReviewAndFiles } from "@/lib/admin-reviews";
 import { prisma } from "@/lib/prisma";
 import { parseCategory } from "@/lib/categories";
 import { normalizeLineage } from "@/lib/product-lineage";
+import { upsertStrainGenetics } from "@/lib/strain-genetics";
 import { slugify } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -47,6 +48,14 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     data.lineage = lineage.lineage;
   }
   const updated = await prisma.product.update({ where: { id }, data });
+  if (data.lineage) {
+    const archived = await upsertStrainGenetics({
+      strainName: String(updated.strain),
+      lineage: String(data.lineage),
+      userId: auth.user?.id,
+    });
+    if (!archived.ok) return NextResponse.json({ error: archived.error }, { status: 400 });
+  }
   return NextResponse.json({ ok: true, product: { id: updated.id, slug: updated.slug } });
 }
 

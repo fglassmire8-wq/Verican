@@ -62,7 +62,7 @@ export default async function AdminReviewsPage({
                 </p>
               </div>
               <p className="mt-1 text-sm text-muted">
-                {review.user.name} · {review.store.name}, {review.store.city} ·{" "}
+                {review.user.name} · {review.store?.name}, {review.store?.city} ·{" "}
                 {formatDate(review.createdAt)} · {review._count.photos} photos · {review._count.likes}{" "}
                 likes · {review._count.ratings} ratings
               </p>

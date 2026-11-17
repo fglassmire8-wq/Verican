@@ -3,6 +3,9 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 import { categoryLabel } from "@/lib/categories";
 import { publicLineage } from "@/lib/product-lineage";
+import { archivedLineageFor } from "@/lib/strain-genetics";
+import { ProductPhotoEditor } from "@/components/admin/ProductPhotoEditor";
+import { ProductLineageEditor } from "@/components/admin/ProductLineageEditor";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
 import { PhotoGallery } from "@/components/PhotoGallery";
 import { ReviewCard } from "@/components/ReviewCard";
@@ -33,8 +36,10 @@ export async function generateMetadata({
     },
   });
   if (!product) return { title: "Page not found" };
-  const title = `${product.strain} — ${product.brand.name}`;
-  const description = productShareDescription(product.strain, product.brand.name);
+  const title = product.brand.name ? `${product.strain} — ${product.brand.name}` : product.strain;
+  const description = product.brand.name
+    ? productShareDescription(product.strain, product.brand.name)
+    : `Photos of ${product.strain}. Independent 21+ reviews. Green Vault is not a store and does not sell cannabis.`;
   const photo = product.reviews.flatMap((review) => review.photos)[0];
   return {
     title,
@@ -84,13 +89,14 @@ export default async function ProductPage({
     { includeVisitor: true },
   );
 
-  const trusted = product.reviews.filter((review) =>
+  const written = product.reviews.filter((review) => !review.photoOnly);
+  const trusted = written.filter((review) =>
     isTrustedReview(review.status, review.user),
   );
-  const member = product.reviews.filter(
+  const member = written.filter(
     (review) => !isTrustedReview(review.status, review.user),
   );
-  const photos = trusted.flatMap((review) => review.photos);
+  const photos = product.reviews.flatMap((review) => review.photos);
   const uniquePhotos = photos.filter(
     (photo, i) => photos.findIndex((p) => p.path === photo.path) === i,
   );
@@ -98,17 +104,27 @@ export default async function ProductPage({
   const buy = trusted.filter((r) => r.verdict === "BUY").length;
   const dont = trusted.filter((r) => r.verdict === "DONT_BUY").length;
   const likes = trusted.reduce((sum, r) => sum + r.likes.length, 0);
-  const lineage = publicLineage(product.lineage);
+  const archived = publicLineage(product.lineage)
+    ? null
+    : await archivedLineageFor(product.strain);
+  const lineage = publicLineage(product.lineage) ?? publicLineage(archived);
+  const isFounder = session?.user?.role === "OWNER";
+  const manageReview =
+    product.reviews.find((review) => review.photoOnly) ?? product.reviews[0] ?? null;
+  const photoOnlySize = product.reviews.find((review) => review.photoOnly && review.amount)?.amount ?? "";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
+      {product.brand.name ? (
       <p className="text-[11px] uppercase tracking-[0.12em] text-gold">
         {product.brand.name}
         {product.brand.location ? ` · ${product.brand.location}` : ""}
       </p>
+      ) : null}
       <h1 className="font-display text-4xl sm:text-5xl mt-2">{product.strain}</h1>
       <p className="mt-2 text-muted text-sm">
         {categoryLabel(product.category)}
+        {photoOnlySize ? ` · ${photoOnlySize}` : ""}
         {product.brand.legalName ? ` · ${product.brand.legalName}` : ""}
         {product.brand.license ? ` · license ${product.brand.license}` : ""}
       </p>
@@ -118,17 +134,33 @@ export default async function ProductPage({
           <span className="ml-2">{lineage}</span>
         </p>
       ) : null}
+      {isFounder ? (
+        <ProductLineageEditor
+          productId={product.id}
+          strain={product.strain}
+          lineage={product.lineage}
+          archivedLineage={archived}
+        />
+      ) : null}
 
-      <p className="mt-4 text-sm text-cream/80">
-        {trusted.length === 0
-          ? "No verified-affiliate reviews yet."
-          : `${trusted.length} verified review${trusted.length === 1 ? "" : "s"} · ${buy} ${verdictLabel("BUY")}${
+      {trusted.length === 0 ? (
+        uniquePhotos.length ? (
+          <p className="mt-4 text-sm text-muted">No written review yet.</p>
+        ) : (
+          <p className="mt-4 text-sm text-cream/80">No verified-affiliate reviews yet.</p>
+        )
+      ) : (
+        <>
+          <p className="mt-4 text-sm text-cream/80">
+            {`${trusted.length} verified review${trusted.length === 1 ? "" : "s"} · ${buy} ${verdictLabel("BUY")}${
               dont ? ` · ${dont} ${verdictLabel("DONT_BUY")}` : ""
             } · ${likes} like${likes === 1 ? "" : "s"}`}
-      </p>
-      <p className="mt-1 text-xs text-muted">
-        Trusted rank uses approved verified-affiliate reviews only. There is no invented score.
-      </p>
+          </p>
+          <p className="mt-1 text-xs text-muted">
+            Trusted rank uses approved verified-affiliate reviews only. There is no invented score.
+          </p>
+        </>
+      )}
 
       <div className="mt-10 grid gap-10 lg:grid-cols-2">
         <PhotoGallery
@@ -148,6 +180,18 @@ export default async function ProductPage({
           ))}
         </div>
       </div>
+
+      {isFounder && manageReview ? (
+        <ProductPhotoEditor
+          reviewId={manageReview.id}
+          photos={manageReview.photos.map((photo) => ({
+            id: photo.id,
+            path: photo.path,
+            alt: photo.alt,
+            sortOrder: photo.sortOrder,
+          }))}
+        />
+      ) : null}
 
       {member.length ? (
         <section className="mt-16">
