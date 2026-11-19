@@ -4,6 +4,7 @@ import { deleteReviewAndFiles } from "@/lib/admin-reviews";
 import { prisma } from "@/lib/prisma";
 import { parseCategory } from "@/lib/categories";
 import { normalizeLineage } from "@/lib/product-lineage";
+import { normalizeBatchId } from "@/lib/batch-id";
 import { upsertStrainGenetics } from "@/lib/strain-genetics";
 import { slugify } from "@/lib/utils";
 
@@ -54,6 +55,11 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
     const lineage = normalizeLineage(body.lineage);
     if (!lineage.ok) return NextResponse.json({ error: lineage.error }, { status: 400 });
     data.lineage = lineage.lineage;
+  }
+  if (body.batchId !== undefined) {
+    const batch = normalizeBatchId(body.batchId);
+    if (!batch.ok) return NextResponse.json({ error: batch.error }, { status: 400 });
+    data.batchId = batch.batchId;
   }
   let updated;
   try {

@@ -5,6 +5,7 @@ import { extFor, writeReviewPhoto } from "@/lib/uploads";
 import { parseStarRating } from "@/lib/rating";
 import { parseCategory } from "@/lib/categories";
 import { isTrustedAffiliate, slugify } from "@/lib/utils";
+import { applySubmittedBatchId, normalizeBatchId } from "@/lib/batch-id";
 
 const MAX_PHOTOS = 8;
 const MAX_BYTES = 10 * 1024 * 1024;
@@ -36,6 +37,11 @@ export async function POST(request: Request) {
   const thcRaw = String(form.get("thcPercent") || "").trim();
   const thcaRaw = String(form.get("thcaPercent") || "").trim();
   const topTerpene = String(form.get("topTerpene") || "").trim() || null;
+  const batchParse = normalizeBatchId(form.get("batchId"));
+  if (!batchParse.ok) {
+    return NextResponse.json({ error: batchParse.error }, { status: 400 });
+  }
+  const batchId = batchParse.batchId;
   const category = parseCategory(form.get("category"));
   const ratingParse = parseStarRating(form.get("rating"));
   if (!ratingParse.ok) {
@@ -135,8 +141,15 @@ export async function POST(request: Request) {
       topTerpene,
       status,
       rating,
+      batchId,
     },
   });
+
+  // Founder reviews publish immediately; copy the submitted batch ID onto the
+  // product only when the product does not already have one.
+  if (status === "APPROVED" && user.role === "OWNER") {
+    await applySubmittedBatchId(product.id, batchId);
+  }
 
   if (files.length) {
     const photos = [];

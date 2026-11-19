@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireOwner } from "@/lib/session";
+import { applySubmittedBatchId } from "@/lib/batch-id";
 
 export async function POST(
   request: Request,
@@ -23,10 +24,13 @@ export async function POST(
     return NextResponse.json({ error: "Review not found." }, { status: 404 });
   }
 
-  await prisma.review.update({
+  const updated = await prisma.review.update({
     where: { id },
     data: { status: decision },
   });
+  if (decision === "APPROVED") {
+    await applySubmittedBatchId(updated.productId, updated.batchId);
+  }
 
   return NextResponse.json({ ok: true });
 }

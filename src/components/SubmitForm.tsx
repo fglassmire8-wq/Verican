@@ -231,6 +231,15 @@ export function SubmitForm() {
               className="mt-1 w-full bg-panel border border-line px-3 py-3 outline-none focus:border-gold"
             />
           </label>
+          <label className="block text-sm sm:col-span-2">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-gold">Batch ID (from the back of the package)</span>
+            <input
+              name="batchId"
+              placeholder="Printed on the package back"
+              maxLength={80}
+              className="mt-1 w-full bg-panel border border-line px-3 py-3 outline-none focus:border-gold"
+            />
+          </label>
         </div>
       </details>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -20,6 +21,9 @@ export function ProductDetailsBoxes({
   brandLocation,
   lineage,
   archivedLineage,
+  batchId,
+  sameBatch,
+  reviewerSubmitted,
   isFounder,
 }: {
   productId: string;
@@ -30,6 +34,9 @@ export function ProductDetailsBoxes({
   brandLocation: string | null;
   lineage: string | null;
   archivedLineage: string | null;
+  batchId: string | null;
+  sameBatch: { slug: string; strain: string }[];
+  reviewerSubmitted: string[];
   isFounder: boolean;
 }) {
   const router = useRouter();
@@ -55,6 +62,7 @@ export function ProductDetailsBoxes({
         brandName: String(form.get("brandName") || ""),
         strain: String(form.get("strain") || ""),
         lineage: String(form.get("lineage") || ""),
+        batchId: String(form.get("batchId") || ""),
       }),
     });
     const json = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -116,11 +124,54 @@ export function ProductDetailsBoxes({
     </section>
   );
 
+  const showBatch = isFounder || Boolean(batchId);
+  const sameBatchNote =
+    batchId && sameBatch.length ? (
+      <p className="mt-2 text-xs text-muted">
+        Same batch as:{" "}
+        {sameBatch.map((item, index) => (
+          <span key={item.slug}>
+            {index > 0 ? ", " : null}
+            <Link href={`/product/${item.slug}`} className="text-gold hover:text-gold-bright">
+              {item.strain}
+            </Link>
+          </span>
+        ))}
+      </p>
+    ) : null;
+
+  const batchBox = showBatch ? (
+    <section className={boxClass}>
+      <p className={labelClass}>Batch ID</p>
+      {isFounder ? (
+        <label className="block mt-2 text-sm">
+          <span className="sr-only">Batch ID</span>
+          <input
+            name="batchId"
+            defaultValue={batchId ?? ""}
+            maxLength={80}
+            placeholder="From the back of the package"
+            className={fieldClass}
+          />
+        </label>
+      ) : (
+        <p className="mt-2">{batchId}</p>
+      )}
+      {sameBatchNote}
+      {isFounder && !batchId && reviewerSubmitted.length ? (
+        <p className="mt-2 text-xs text-muted">
+          Reviewer submitted: {reviewerSubmitted.join(", ")} (saved on the review; will not overwrite a founder-set value)
+        </p>
+      ) : null}
+    </section>
+  ) : null;
+
   if (!isFounder) {
     return (
       <div className="mt-4 grid gap-3 max-w-xl">
         {brandBox}
         {strainBox}
+        {batchBox}
       </div>
     );
   }
@@ -129,6 +180,7 @@ export function ProductDetailsBoxes({
     <form onSubmit={onSubmit} className="mt-4 grid gap-3 max-w-xl">
       {brandBox}
       {strainBox}
+      {batchBox}
       {error ? <p className="text-sm text-dont">{error}</p> : null}
       <button
         type="submit"

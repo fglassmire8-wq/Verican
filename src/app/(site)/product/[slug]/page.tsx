@@ -4,6 +4,7 @@ import { getSession } from "@/lib/session";
 import { categoryLabel } from "@/lib/categories";
 import { publicLineage } from "@/lib/product-lineage";
 import { archivedLineageFor } from "@/lib/strain-genetics";
+import { batchIdKey } from "@/lib/batch-id";
 import { ProductPhotoEditor } from "@/components/admin/ProductPhotoEditor";
 import { ProductDetailsBoxes } from "@/components/ProductDetailsBoxes";
 import { isTrustedReview, verdictLabel } from "@/lib/utils";
@@ -111,6 +112,26 @@ export default async function ProductPage({
   const manageReview =
     product.reviews.find((review) => review.photoOnly) ?? product.reviews[0] ?? null;
   const photoOnlySize = product.reviews.find((review) => review.photoOnly && review.amount)?.amount ?? "";
+  const batchKey = batchIdKey(product.batchId);
+  const sameBatch = batchKey
+    ? (
+        await prisma.product.findMany({
+          where: { id: { not: product.id }, batchId: { not: null } },
+          select: { slug: true, strain: true, batchId: true },
+        })
+      )
+        .filter((item) => batchIdKey(item.batchId) === batchKey)
+        .map((item) => ({ slug: item.slug, strain: item.strain }))
+    : [];
+  const reviewerSubmitted = isFounder
+    ? Array.from(
+        new Set(
+          product.reviews
+            .map((review) => review.batchId)
+            .filter((value): value is string => Boolean(value && value.trim())),
+        ),
+      )
+    : [];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
@@ -128,6 +149,9 @@ export default async function ProductPage({
         brandLocation={product.brand.location}
         lineage={publicLineage(product.lineage)}
         archivedLineage={archived}
+        batchId={product.batchId}
+        sameBatch={sameBatch}
+        reviewerSubmitted={reviewerSubmitted}
         isFounder={isFounder}
       />
 

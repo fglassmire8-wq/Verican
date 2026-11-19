@@ -28,6 +28,7 @@ export function ReviewEditForm({
     thcPercent: number | null;
     thcaPercent: number | null;
     topTerpene: string | null;
+    batchId: string | null;
     rating: number | null;
     createdAt: string;
     store: { name: string; city: string; state: string } | null;
@@ -62,6 +63,7 @@ export function ReviewEditForm({
         thcPercent: String(form.get("thcPercent") ?? "").trim() || null,
         thcaPercent: String(form.get("thcaPercent") ?? "").trim() || null,
         topTerpene: form.get("topTerpene"),
+        batchId: form.get("batchId"),
         rating: ratingRaw === "" ? null : ratingRaw,
         createdAt: form.get("createdAt"),
         storeName: form.get("storeName"),
@@ -169,6 +171,10 @@ export function ReviewEditForm({
       <label className="block text-sm">
         <span className="text-[11px] uppercase tracking-[0.16em] text-gold">Top terpenes / lab notes</span>
         <input name="topTerpene" defaultValue={review.topTerpene ?? ""} className="mt-1 w-full bg-panel border border-line px-3 py-2" />
+      </label>
+      <label className="block text-sm">
+        <span className="text-[11px] uppercase tracking-[0.16em] text-gold">Batch ID (from the back of the package)</span>
+        <input name="batchId" defaultValue={review.batchId ?? ""} maxLength={80} className="mt-1 w-full bg-panel border border-line px-3 py-2" />
       </label>
       {error ? <p className="text-sm text-dont">{error}</p> : null}
       {saved ? <p className="text-sm text-gold-bright">Saved.</p> : null}

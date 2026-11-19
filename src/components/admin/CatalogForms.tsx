@@ -61,6 +61,7 @@ export function ProductForm({
     brandName: string;
     lineage: string | null;
     archivedLineage?: string | null;
+    batchId?: string | null;
   };
 }) {
   return (
@@ -109,6 +110,16 @@ export function ProductForm({
             ))}
           </select>
         </label>
+      </section>
+      <section className="border border-line bg-panel-2 p-4 rounded-[14px]">
+        <p className="text-[11px] uppercase tracking-[0.12em] text-gold">Batch ID</p>
+        <input
+          name="batchId"
+          defaultValue={product.batchId ?? ""}
+          placeholder="From the back of the package"
+          maxLength={80}
+          className="mt-2 w-full bg-panel border border-line px-3 py-2 text-sm"
+        />
       </section>
     </SaveForm>
   );

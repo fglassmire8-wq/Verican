@@ -3,6 +3,7 @@ import { requireConfirm, requireFounderApi } from "@/lib/admin-auth";
 import { deleteReviewAndFiles, REVIEW_STATUSES } from "@/lib/admin-reviews";
 import { prisma } from "@/lib/prisma";
 import { parseStarRating } from "@/lib/rating";
+import { applySubmittedBatchId, normalizeBatchId } from "@/lib/batch-id";
 
 export const dynamic = "force-dynamic";
 
@@ -79,6 +80,11 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
   if (body.harvestDate !== undefined) data.harvestDate = optionalString(body.harvestDate);
   if (body.expDate !== undefined) data.expDate = optionalString(body.expDate);
   if (body.topTerpene !== undefined) data.topTerpene = optionalString(body.topTerpene);
+  if (body.batchId !== undefined) {
+    const batch = normalizeBatchId(body.batchId);
+    if (!batch.ok) return NextResponse.json({ error: batch.error }, { status: 400 });
+    data.batchId = batch.batchId;
+  }
   if (body.thcPercent !== undefined) {
     if (body.thcPercent === null || body.thcPercent === "") data.thcPercent = null;
     else {
@@ -123,6 +129,9 @@ export async function PATCH(request: NextRequest, context: { params: Promise<{ i
   }
 
   const updated = await prisma.review.update({ where: { id }, data });
+  if (updated.status === "APPROVED" && (data.status === "APPROVED" || data.batchId !== undefined)) {
+    await applySubmittedBatchId(updated.productId, updated.batchId);
+  }
   return NextResponse.json({ ok: true, review: { id: updated.id, status: updated.status } });
 }
 

@@ -19,6 +19,7 @@ type ReviewCardProps = {
     thcPercent: number | null;
     thcaPercent: number | null;
     topTerpene: string | null;
+    batchId?: string | null;
     status: string;
     createdAt: Date;
     rating: number | null;
@@ -125,6 +126,12 @@ export function ReviewCard({
           <div className="sm:col-span-2">
             <dt className="uppercase tracking-widest text-[10px] text-gold">Top terpene</dt>
             <dd>{review.topTerpene}</dd>
+          </div>
+        ) : null}
+        {review.batchId ? (
+          <div className="sm:col-span-2">
+            <dt className="uppercase tracking-widest text-[10px] text-gold">Batch ID</dt>
+            <dd>{review.batchId}</dd>
           </div>
         ) : null}
       </dl>
