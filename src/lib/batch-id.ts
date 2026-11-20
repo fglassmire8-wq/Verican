@@ -22,10 +22,17 @@ export function batchIdKey(value: string | null | undefined): string | null {
   return key || null;
 }
 
+
+export function looksLikeMetrcPackageId(value: string | null | undefined): boolean {
+  const key = batchIdKey(value);
+  return Boolean(key && /^1A4[A-Z0-9]{12,}$/.test(key));
+}
+
 /** Copy a reviewer-submitted batch ID onto the product only when the product has none. */
 export async function applySubmittedBatchId(productId: string, submitted: string | null | undefined) {
   const parsed = normalizeBatchId(submitted);
   if (!parsed.ok || !parsed.batchId) return;
+  if (looksLikeMetrcPackageId(parsed.batchId)) return;
   const product = await prisma.product.findUnique({
     where: { id: productId },
     select: { batchId: true },

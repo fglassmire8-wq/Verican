@@ -5,34 +5,14 @@
     "source": "public/uploads/814-fireworks-flower-3-5g/01.jpg (Batch ID on Cresco jar; original photos-nov15/sorted-v2/18-cresco-814-fireworks/IMG_3064.JPEG)"
   },
   {
-    "slug": "afghan-kush-indica-7g",
-    "batchId": "1A41103000091B5000000082",
-    "source": "public/uploads/afghan-kush-indica-7g/01.jpg (UID on Roman Brothers label)"
-  },
-  {
     "slug": "animal-mntz-animal-cookies-x-sinmint-cookies-indica-28g",
     "batchId": "PR.260605U",
     "source": "public/uploads/animal-mntz-animal-cookies-x-sinmint-cookies-indica-28g/01.jpg (Batch ID)"
   },
   {
-    "slug": "animal-star-cookies",
-    "batchId": "1A4110300003E1E000039101",
-    "source": "public/uploads/animal-star-cookies/02-back-label.jpg (METRC package ID by QR codes)"
-  },
-  {
     "slug": "anthologie-white-widow-flower-14g-hybrid",
     "batchId": "WHWI260729H-1",
     "source": "public/uploads/anthologie-white-widow-flower-14g-hybrid/01.jpg (HARVEST BATCH)"
-  },
-  {
-    "slug": "arancello-flower-3-5g",
-    "batchId": "1A4110300003C8D000021640",
-    "source": "public/uploads/arancello-flower-3-5g/01.jpg (package ID on Fresh Grow / Pizano label)"
-  },
-  {
-    "slug": "baked-potato-kush-hybrid-3-5g",
-    "batchId": "1A4110300003C8D000021502",
-    "source": "public/uploads/baked-potato-kush-hybrid-3-5g/01.jpg (package ID on Fresh Grow label)"
   },
   {
     "slug": "blue-dream-blueberry-x-super-silver-haze-sativa-3-5g",
@@ -65,34 +45,9 @@
     "source": "photos-nov15/sorted-v2/33-cheetah-yuck-mouth-1g/IMG_4537.JPEG (PRODUCTION BATCH)"
   },
   {
-    "slug": "chem-scout-87-pre-pack-mixed-buds-14g-good-green-hybrid",
-    "batchId": "1A4110300001CE9000126901",
-    "source": "public/uploads/chem-scout-87-pre-pack-mixed-buds-14g-good-green-hybrid/01.jpg (barcode package ID; Source line not used)"
-  },
-  {
-    "slug": "cookies-cheetah-piss-x-georgia-pie-9-14g",
-    "batchId": "1A4110300003C8D000054353",
-    "source": "public/uploads/cookies-cheetah-piss-x-georgia-pie-9-14g/01.jpg (package ID by barcode)"
-  },
-  {
-    "slug": "cookies-vienna-14g-baked-alaska-x-georgia-pie",
-    "batchId": "1A4110300003C8D000043918",
-    "source": "public/uploads/cookies-vienna-14g-baked-alaska-x-georgia-pie/01.jpg (package ID by barcode)"
-  },
-  {
     "slug": "dark-matter-3-5g",
     "batchId": "DKMT260211H",
     "source": "public/uploads/dark-matter-3-5g/01.jpg (Batch: on INSA cup)"
-  },
-  {
-    "slug": "dirty-taxi-reserves-flower-indica-3-5g",
-    "batchId": "1A41103000002BE000093677",
-    "source": "public/uploads/dirty-taxi-reserves-flower-indica-3-5g/01.jpg (Lot Number; Package Tag not used)"
-  },
-  {
-    "slug": "fresh-sb-gary-x-mac-3-5g",
-    "batchId": "1A4110300003C8D000028659",
-    "source": "public/uploads/fresh-sb-gary-x-mac-3-5g/01.jpg (package ID; 'Small Batch' is product wording)"
   },
   {
     "slug": "frosted-jungle-smalls-7g",
@@ -108,16 +63,6 @@
     "slug": "gras-cap-junky-flower-14g-indica",
     "batchId": "CAPJ260707HB01",
     "source": "public/uploads/gras-cap-junky-flower-14g-indica/01.jpg (BATCH; PKG ID not used)"
-  },
-  {
-    "slug": "jersey-diesel",
-    "batchId": "1A4110300007405000005869",
-    "source": "public/uploads/jersey-diesel/02.jpg (package ID under barcode on dispensary sticker)"
-  },
-  {
-    "slug": "jet-fuel-og-pen-live-resin-2000mg-rythm-hybrid",
-    "batchId": "1A41103000001F5000035476",
-    "source": "public/uploads/jet-fuel-og-pen-live-resin-2000mg-rythm-hybrid/01.jpg (barcode package ID, same as Source)"
   },
   {
     "slug": "la-kush-cke-14g-premium-hybrid",
@@ -150,11 +95,6 @@
     "source": "review-photos/ocifer/01.jpg (BATCH; PKG ID not used)"
   },
   {
-    "slug": "omg-pre-pack-mixed-buds-7g-good-green-hybrid",
-    "batchId": "1A4110300001CE9000126769",
-    "source": "public/uploads/omg-pre-pack-mixed-buds-7g-good-green-hybrid/01.jpg (barcode package ID; Source line not used)"
-  },
-  {
     "slug": "swamp-water-fumez-7g-indica",
     "batchId": "PR.251223B",
     "source": "public/uploads/swamp-water-fumez-7g-indica/01.jpg (BATCH ID)"
@@ -185,18 +125,8 @@
     "source": "public/uploads/wedding-c-3-5g/01.jpg (Batch: on INSA label)"
   },
   {
-    "slug": "white-iverson-indica-3-5g",
-    "batchId": "1A41103000002BE000108032",
-    "source": "public/uploads/white-iverson-indica-3-5g/01.jpg (LOT; Package Tag not used)"
-  },
-  {
     "slug": "z-x-zikigai-test-kitchen-leftovers",
     "batchId": "F5H84.3",
     "source": "public/uploads/z-x-zikigai-test-kitchen-leftovers/02.jpg (BATCH:; 'Small Batch Indoor' is product wording)"
-  },
-  {
-    "slug": "zips-miracle-alien-cookies-28g",
-    "batchId": "1A4110300003CBD000027421",
-    "source": "public/uploads/zips-miracle-alien-cookies-28g/01.jpg (package ID by barcode)"
   }
 ]

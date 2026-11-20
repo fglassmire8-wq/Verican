@@ -153,6 +153,9 @@ export function ProductDetailsBoxes({
             placeholder="From the back of the package"
             className={fieldClass}
           />
+          <span className="block mt-1 text-xs text-muted">
+            Use the batch/lot number, not the 1A4… state tracking ID.
+          </span>
         </label>
       ) : (
         <p className="mt-2">{batchId}</p>

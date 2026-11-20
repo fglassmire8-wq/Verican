@@ -1,7 +1,8 @@
 /**
- * Idempotent fill of Product.batchId from visually confirmed label photos.
- * Sets a value only when the product exists and batchId is currently empty.
- * Never overwrites a founder-set value. Does not write onto Review rows.
+ * Idempotent Product.batchId upkeep from visually confirmed label photos.
+ * - Fills a real batch/lot code only when the product field is empty.
+ * - Clears METRC package / state tracking IDs (values starting with 1A4…).
+ * - Never writes a 1A4 value. Does not write onto Review rows.
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -18,7 +19,29 @@ function normalize(value) {
   return text || null;
 }
 
+function looksLikeMetrcPackageId(value) {
+  const key = String(value || "")
+    .trim()
+    .replace(/\s+/g, "")
+    .toUpperCase();
+  return /^1A4[A-Z0-9]{12,}$/.test(key);
+}
+
 async function main() {
+  let cleared = 0;
+  const metrc = await prisma.product.findMany({
+    select: { id: true, slug: true, batchId: true },
+  });
+  for (const product of metrc) {
+    if (!looksLikeMetrcPackageId(product.batchId)) continue;
+    await prisma.product.update({
+      where: { id: product.id },
+      data: { batchId: null },
+    });
+    cleared += 1;
+    console.log(`batch-id cleared METRC: ${product.slug}`);
+  }
+
   let filled = 0;
   let skipped = 0;
   let missing = 0;
@@ -26,6 +49,10 @@ async function main() {
     const slug = String(row.slug || "").trim();
     const batchId = normalize(row.batchId);
     if (!slug || !batchId) continue;
+    if (looksLikeMetrcPackageId(batchId)) {
+      console.log(`batch-id skip (METRC in catalog file): ${slug}`);
+      continue;
+    }
     const product = await prisma.product.findUnique({
       where: { slug },
       select: { id: true, batchId: true },
@@ -46,7 +73,9 @@ async function main() {
     filled += 1;
     console.log(`batch-id filled: ${slug} = ${batchId}`);
   }
-  console.log(`batch-id apply done: filled=${filled} already-set=${skipped} missing=${missing}`);
+  console.log(
+    `batch-id apply done: cleared-metrc=${cleared} filled=${filled} already-set=${skipped} missing=${missing}`,
+  );
 }
 
 main()

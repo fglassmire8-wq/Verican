@@ -120,6 +120,9 @@ export function ProductForm({
           maxLength={80}
           className="mt-2 w-full bg-panel border border-line px-3 py-2 text-sm"
         />
+        <p className="mt-1 text-xs text-muted">
+          Use the batch/lot number, not the 1A4… state tracking ID.
+        </p>
       </section>
     </SaveForm>
   );

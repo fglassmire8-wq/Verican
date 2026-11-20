@@ -239,6 +239,9 @@ export function SubmitForm() {
               maxLength={80}
               className="mt-1 w-full bg-panel border border-line px-3 py-3 outline-none focus:border-gold"
             />
+            <span className="block mt-1 text-xs text-muted">
+              Use the batch/lot number, not the 1A4… state tracking ID.
+            </span>
           </label>
         </div>
       </details>
